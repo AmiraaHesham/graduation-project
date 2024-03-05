@@ -1,0 +1,123 @@
+.createaccount-continer {
+    width: 742px;
+    height: 600px;
+    left: 380px;
+    top: 90px;
+    position: absolute;
+    background: linear-gradient(200deg, #365486 0%, rgba(54, 84, 134, 0) 100%);
+    border-radius: 30px;
+    align-items: center;
+}
+
+.createaccount-continer h3 {
+    width: 294px;
+    height: 42px;
+    color: #DCF2F1;
+    font-size: 35px;
+    font-family: Inter;
+    font-weight: 800;
+    position: absolute;
+    margin-left: 250px;
+    margin-top: 30px;
+}
+
+.div-inputs {
+    width: 609px;
+    height: 486px;
+    position: absolute;
+    margin-top: 230px;
+    margin-left: 135px;
+}
+
+.div-inputs input {
+    width: 450px;
+    height: 55px;
+    background: #DCF2F1;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    align-content: center;
+    border: none;
+    font-size: 20px;
+    color: #365486;
+    font-weight: 700;
+
+}
+
+.div-inputs h4 {
+    color: rgb(1, 88, 1);
+    position: absolute;
+    top: 240px;
+    left: 125px;
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.btn-create {
+    width: 300px;
+    height: 50px;
+    position: absolute;
+    background: #7FC7D9;
+    border-radius: 20px;
+    position: absolute;
+    color: #365486;
+    font-size: 32px;
+    font-family: Inter;
+    font-weight: 1000;
+    word-wrap: break-word;
+    position: absolute;
+    top: 530px;
+    left: 210px;
+    border: none;
+}
+
+#btn-signin {
+    width: 300px;
+    height: 50px;
+    position: absolute;
+    background: #7FC7D9;
+    border-radius: 20px;
+    position: absolute;
+    color: #365486;
+    font-size: 32px;
+    font-family: Inter;
+    font-weight: 1000;
+    word-wrap: break-word;
+    position: absolute;
+    top: 530px;
+    left: 210px;
+    border: none;
+}
+
+.btn-create:hover {
+    background: #365486;
+    color: #7FC7D9;
+}
+
+.hide {
+    display: none;
+}
+
+.div-addPhoto {
+    width: 85px;
+    height: 85px;
+    position: absolute;
+    left: 320px;
+    top: 90px;
+    border: 2px solid #DCF2F1;
+    border-radius: 20px;
+    color: #365486;
+}
+
+.div-addPhoto svg {
+    position: absolute;
+    left: 13px;
+    top: 13px;
+
+}
+
+.div-addPhoto h5 {
+    position: absolute;
+    top: 65px;
+    left: 10px;
+
+}

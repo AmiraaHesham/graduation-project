@@ -1,0 +1,248 @@
+.header {
+    color: #DCF2F1;
+    width: 1519px;
+    height: 70px;
+    background: rgba(15, 16, 53, 0.78)
+}
+
+.side-bar {
+    width: 351px;
+    height: 830px;
+    position: absolute;
+    background: #5280A6;
+    display: flex;
+    cursor: pointer;
+}
+
+
+.header svg {
+    position: absolute;
+    left: 40px;
+    top: 20px;
+    color: #DCF2F1;
+
+}
+
+.header h4 {
+    position: absolute;
+    left: 650px;
+    font-size: 20px;
+}
+
+.side-bar #time {
+    position: absolute;
+    top: 25px;
+    left: 15px;
+    width: 50px;
+    height: 65px;
+    color: #1D2649
+}
+
+.Lecture-Dates-CurrentClass {
+    display: flex;
+    width: 350px;
+    height: 100px;
+    top: 40px;
+    left: -20px;
+    position: absolute;
+    justify-content: space-between;
+    margin: 20px 20px;
+}
+
+.Lecture-Dates-CurrentClass h2 {
+    width: 200px;
+    left: 100px;
+    top: 20px;
+    position: absolute;
+}
+
+.Current-Class {
+    display: flex;
+    width: 350px;
+    height: 100px;
+    top: 150px;
+    left: -20px;
+    position: absolute;
+    justify-content: space-between;
+    margin: 20px 20px;
+    background: rgba(54, 84, 134, 0.22);
+
+}
+
+.Current-Class h2 {
+    width: 200px;
+    left: 100px;
+    top: 20px;
+    position: absolute;
+}
+
+.Timetable-CurrentClass {
+    display: flex;
+    width: 350px;
+    height: 100px;
+    top: 260px;
+    left: -20px;
+    position: absolute;
+    justify-content: space-between;
+    margin: 20px 20px;
+}
+
+
+.Students-Attendance-CurrentClass:hover {
+    background: rgba(54, 83, 134, 0.105);
+
+}
+
+.Timetable-CurrentClass:hover {
+    background: rgba(54, 83, 134, 0.105);
+
+}
+
+.Lecture-Dates-CurrentClass:hover {
+    background: rgba(54, 83, 134, 0.105);
+
+}
+
+
+.Timetable-CurrentClass h2 {
+    width: 200px;
+    left: 100px;
+    top: 20px;
+    position: absolute;
+}
+
+.Students-Attendance-CurrentClass {
+    display: flex;
+    width: 350px;
+    height: 100px;
+    top: 370px;
+    left: -20px;
+    position: absolute;
+    justify-content: space-between;
+    margin: 20px 20px;
+
+}
+
+.Students-Attendance-CurrentClass h2 {
+    width: 500px;
+    left: 100px;
+    top: 20px;
+    position: absolute;
+}
+
+.continer {
+    width: 1000px;
+    height: 830px;
+    position: absolute;
+    left: 400px;
+}
+
+.div-QRcode {
+    width: 1036px;
+    height: 70px;
+    position: absolute;
+    top: 130px;
+    background: #47709A;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.div-QRcode h3,
+.attendList h3,
+.attendList-befor h3 {
+    width: 220px;
+    height: 45px;
+    position: absolute;
+    left: 50px;
+    top: -10px;
+    color: #DCF2F1;
+    font-size: 30px;
+    font-weight: 800;
+    word-wrap: break-word
+}
+
+.subject h3 {
+    width: 250px;
+    height: 67px;
+    color: #1D2649;
+    font-size: 24px;
+    font-family: Inter;
+    font-weight: 800;
+    word-wrap: break-word
+}
+
+.subject {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.attendList {
+    width: 1036px;
+    height: 70px;
+    position: absolute;
+    background: #47709A;
+    top: 230px;
+    border-radius: 10px
+}
+
+.attendList-befor {
+    width: 1036px;
+    height: 70px;
+    position: absolute;
+    top: 370px;
+    background: #47709A;
+    border-radius: 10px;
+
+}
+
+.generQR {
+    width: 1035px;
+    height: 150px;
+    position: absolute;
+    margin-top: 200px;
+    background: rgba(220, 242, 241, 0.57);
+    border-radius: 10px
+}
+
+.hide {
+    display: none;
+}
+
+#down-arrow {
+    color: #DCF2F1;
+    position: absolute;
+    left: 950px;
+    top: 20px;
+
+}
+
+.up-arrow {
+    color: #DCF2F1;
+    position: absolute;
+    left: 950px;
+    top: 20px;
+    transform: rotate(-180deg);
+
+}
+
+.btn-genrat {
+    width: 350px;
+    height: 60px;
+    background: #263658;
+    border-radius: 30px;
+    position: absolute;
+    left: 300px;
+    top: 40px;
+    color: #DCF2F1;
+    font-size: 28px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: initial;
+}
+
+.btn-genrat:hover {
+    background: #47709A;
+    border: none;
+    color: #263658;
+}

@@ -1,0 +1,112 @@
+body {
+    height: 20000px;
+
+}
+
+.sign-in-contener {
+    width: 700px;
+    height: 550px;
+    left: 400px;
+    top: 90px;
+    position: absolute;
+    background: linear-gradient(200deg, #365486 0%, rgba(54, 84, 134, 0) 100%);
+    border-radius: 30px;
+    align-items: center;
+
+}
+
+.sign-in-contener h3 {
+    width: 294px;
+    height: 42px;
+    color: #DCF2F1;
+    font-size: 38px;
+    font-weight: 1000;
+    word-wrap: break-word;
+    position: absolute;
+    margin-left: 280px;
+    margin-top: 50px;
+
+}
+
+.input-Email-pass {
+    width: 609px;
+    height: 486px;
+    position: relative;
+    top: 180px;
+    left: 120px;
+
+
+}
+
+.Email,
+.password {
+    width: 450px;
+    height: 60px;
+    background: #DCF2F1;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    align-content: center;
+    border: none;
+    font-size: 20px;
+    color: #365486;
+    font-weight: 700;
+
+}
+
+::placeholder {
+    width: 200px;
+    height: 40px;
+    color: rgba(54, 84, 134, 0.72);
+    font-size: 20px;
+    font-family: Inter;
+    font-weight: 400;
+    word-wrap: break-word;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+}
+
+.btn-h5-login {
+    position: absolute;
+    top: 400px;
+    left: 180px;
+
+}
+
+.btn-login {
+    width: 350px;
+    height: 50px;
+    background: #7FC7D9;
+    border-radius: 20px;
+    position: absolute;
+    color: #365486;
+    font-size: 32px;
+    font-family: Inter;
+    font-weight: 700;
+    word-wrap: break-word;
+    border: none;
+}
+
+.btn-login:hover {
+    background: #365486;
+    color: #7FC7D9;
+}
+
+
+h5 {
+    width: 300px;
+    height: 22px;
+    color: #DCF2F1;
+    font-size: 17px;
+    font-weight: 500;
+    word-wrap: break-word;
+    position: absolute;
+    top: 40px;
+    left: 60px;
+    text-decoration: none;
+}
+
+Link {
+    text-decoration: none;
+
+}
