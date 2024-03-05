@@ -7,10 +7,9 @@
 
 .side-bar {
     width: 351px;
-    height: 830px;
+    height: 930px;
     position: absolute;
     background: #5280A6;
-    display: flex;
     color: #1D2649;
     cursor: pointer;
 }

@@ -5,19 +5,36 @@ import { Link } from 'react-router-dom'
 const CurrentClass = () => {
     const handleBtnShowQR = () => {
         let divgenrat = document.querySelector('#genratQR')
-        let divAttendList = document.querySelector('#attendList')
-        let arrows = document.querySelector('#down-arrow')
+        let AttendList = document.querySelector('#attendList')
+        let arrows = document.querySelector('#down-arrowQR')
+        let conteiner_attendList = document.querySelector('#conteiner_attendList')
+        conteiner_attendList.classList.toggle('div-attendList-befor')
         divgenrat.classList.toggle("hide")
         divgenrat.classList.toggle("generQR")
-        divAttendList.classList.toggle("attendList")
-        divAttendList.classList.toggle("attendList-befor")
+        AttendList.classList.toggle("attendList")
+        AttendList.classList.toggle("attendList-befor")
         arrows.classList.toggle("up-arrow")
+
+
+    }
+
+    const handleShowAttendList = () => {
+        // let divgenrat = document.querySelector('#genratQR')
+        // divgenrat.classList.add("hide")
+        let arrows = document.querySelector('#down-arrowAttend')
+        arrows.classList.toggle("up-arrow")
+        let conteiner_attendList = document.querySelector('#conteiner_attendList')
+        conteiner_attendList.classList.toggle("hide")
+        conteiner_attendList.classList.toggle("div-attendList")
+
+
     }
 
     return (
         <div>
             <div className='header' >
-                <svg id='time' xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 1200 1200" ><path fill="currentColor" d="M0 0v240h1200V0zm0 480v240h1200V480zm0 480v240h1200V960z" /></svg>
+                <svg id='time' xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 1200 1200" ><path fill="currentColor"
+                    d="M0 0v240h1200V0zm0 480v240h1200V480zm0 480v240h1200V960z" /></svg>
 
                 <h4>Smart Attendance System</h4>
             </div>
@@ -55,16 +72,24 @@ const CurrentClass = () => {
 
                 <div className='div-QRcode' onClick={handleBtnShowQR}>
                     <h3>QR Code</h3>
-                    <svg xmlns="http://www.w3.org/2000/svg" id='down-arrow' width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M11.178 19.569a.998.998 0 0 0 1.644 0l9-13A.999.999 0 0 0 21 5H3a1.002 1.002 0 0 0-.822 1.569z" /></svg></div>
+                    <svg xmlns="http://www.w3.org/2000/svg" id='down-arrowQR' width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M11.178 19.569a.998.998 0 0 0 1.644 0l9-13A.999.999 0 0 0 21 5H3a1.002 1.002 0 0 0-.822 1.569z" /></svg></div>
 
                 <div className='hide' id='genratQR'>
                     <button className='btn-genrat'>Generate QR code</button>
                 </div>
 
 
-                <div className='attendList' id='attendList'>
+                <div className='attendList' id='attendList' onClick={handleShowAttendList}>
                     <h3>Attendance List</h3>
-                    <svg xmlns="http://www.w3.org/2000/svg" id='down-arrow' width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M11.178 19.569a.998.998 0 0 0 1.644 0l9-13A.999.999 0 0 0 21 5H3a1.002 1.002 0 0 0-.822 1.569z" /></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" id='down-arrowAttend' width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor"
+                        d="M11.178 19.569a.998.998 0 0 0 1.644 0l9-13A.999.999 0 0 0 21 5H3a1.002 1.002 0 0 0-.822 1.569z" /></svg>
+                </div>
+                <div className='hide' id='conteiner_attendList'>
+                    <div className='btns-prs-aps'>
+                        <button className='btn-present'>Present</button>
+                        <button className='btn-absent'>Absent</button>
+                    </div>
+
 
                 </div>
 

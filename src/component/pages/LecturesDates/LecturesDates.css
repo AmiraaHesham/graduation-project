@@ -1,6 +1,8 @@
 body {
-    height: 900px;
-
+    height: 1000px;
+    background: linear-gradient(220deg, #7FC7D9 0%, #365486 100%);
+    margin: 0px;
+    font-family: 'Inter';
 }
 
 .header {
@@ -12,14 +14,12 @@ body {
 
 .side-bar {
     width: 351px;
-    height: 830px;
+    height: 930px;
     position: absolute;
     background: #5280A6;
-    display: flex;
     color: #1D2649;
     cursor: pointer;
 }
-
 
 .header svg {
     position: absolute;
@@ -136,8 +136,8 @@ body {
 }
 
 .div-timetable {
-    width: 766px;
-    height: 810px;
+    width: 820px;
+    height: 910px;
     position: absolute;
     left: 390px;
     top: 90px;
@@ -145,7 +145,7 @@ body {
 }
 
 .header-timetable {
-    width: 766px;
+    width: 820px;
     height: 80px;
     position: absolute;
     background: #273758;
