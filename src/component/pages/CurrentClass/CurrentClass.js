@@ -7,6 +7,7 @@ const CurrentClass = () => {
         let divgenrat = document.querySelector('#genratQR')
         let AttendList = document.querySelector('#attendList')
         let arrows = document.querySelector('#down-arrowQR')
+        let list = document.querySelector('#list')
         let conteiner_attendList = document.querySelector('#conteiner_attendList')
         conteiner_attendList.classList.toggle('div-attendList-befor')
         divgenrat.classList.toggle("hide")
@@ -14,13 +15,13 @@ const CurrentClass = () => {
         AttendList.classList.toggle("attendList")
         AttendList.classList.toggle("attendList-befor")
         arrows.classList.toggle("up-arrow")
+        list.classList.toggle('div-list-befor')
+        list.classList.toggle('div-list')
 
 
     }
 
     const handleShowAttendList = () => {
-        // let divgenrat = document.querySelector('#genratQR')
-        // divgenrat.classList.add("hide")
         let arrows = document.querySelector('#down-arrowAttend')
         arrows.classList.toggle("up-arrow")
         let conteiner_attendList = document.querySelector('#conteiner_attendList')
@@ -42,7 +43,7 @@ const CurrentClass = () => {
                 <Link to={"/LecturesDates"} style={{ textDecoration: 'none', color: '#1D2649' }}> <div className='Lecture-Dates-CurrentClass'>
                     <h2>Lectures Dates</h2>
                     <svg id='time' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048"><path fill="currentColor"
-                        d="M1792 993q60 41 107 93t81 114t50 131t18 141q0 119-45 224t-124 183t-183 123t-224 46q-91 0-176-27t-156-78t-126-122t-85-157H128V128h256V0h128v128h896V0h128v128h256zM256 256v256h1408V256h-128v128h-128V256H512v128H384V256zm643 1280q-3-31-3-64q0-86 24-167t73-153h-97v-128h128v86q41-51 91-90t108-67t121-42t128-15q100 0 192 33V640H256v896zm573 384q93 0 174-35t142-96t96-142t36-175q0-93-35-174t-96-142t-142-96t-175-36q-93 0-174 35t-142 96t-96 142t-36 175q0 93 35 174t96 142t142 96t175 36m64-512h192v128h-320v-384h128zM384 1024h128v128H384zm256 0h128v128H640zm0-256h128v128H640zm-256 512h128v128H384zm256 0h128v128H640zm384-384H896V768h128zm256 0h-128V768h128zm256 0h-128V768h128z" /></svg>
+                        d="M1792 993q60 41 107 93t81 114t50 131t18 141q0 119-45 224t-124 183t-183 123t-224 46q-91 0-176-27t-156-78t-126-122t-85-157H128V128h256V0h128v128h896V0h128v128h256zM256 256v256h1408V256h-128v128h-128V256h212v128H384V256zm643 1280q-3-31-3-64q0-86 24-167t73-153h-97v-128h128v86q41-51 91-90t108-67t121-42t128-15q100 0 192 33V640H256v896zm573 384q93 0 174-35t142-96t96-142t36-175q0-93-35-174t-96-142t-142-96t-175-36q-93 0-174 35t-142 96t-96 142t-36 175q0 93 35 174t96 142t142 96t175 36m64-512h192v128h-320v-384h128zM384 1024h128v128H384zm256 0h128v128H640zm0-256h128v128H640zm-256 512h128v128H384zm256 0h128v128H640zm384-384H896V768h128zm256 0h-128V768h128zm256 0h-128V768h128z" /></svg>
                 </div></Link>
                 <div className='Current-Class'>
                     <h2>Current Class</h2>
@@ -89,10 +90,116 @@ const CurrentClass = () => {
                         <button className='btn-present'>Present</button>
                         <button className='btn-absent'>Absent</button>
                     </div>
-
-
+                    <div className='div-list' id='list'>
+                        <table className='tab-attend'>
+                            <tr>
+                                <th id='id'>ID</th>
+                                <th id='name'>NAME</th>
+                                <th id='prog'>PROGRAMME</th>
+                                <th id='stat'>STATUS</th>
+                            </tr>
+                            <tr>
+                                <td>12345</td>
+                                <td>اميره هشام محمد محمود</td>
+                                <td>medical</td>
+                                <td>Present</td>
+                            </tr>
+                            <tr>
+                                <td>12345</td>
+                                <td>اميره هشام محمد محمود</td>
+                                <td>medical</td>
+                                <td>Present</td>
+                            </tr><tr>
+                                <td>12345</td>
+                                <td>اميره هشام محمد محمود</td>
+                                <td>medical</td>
+                                <td>Present</td>
+                            </tr>
+                            <tr>
+                                <td>12345</td>
+                                <td>اميره هشام محمد محمود</td>
+                                <td>medical</td>
+                                <td>Present</td>
+                            </tr>
+                            <tr>
+                                <td>12345</td>
+                                <td>اميره هشام محمد محمود</td>
+                                <td>medical</td>
+                                <td>Present</td>
+                            </tr><tr>
+                                <td>12345</td>
+                                <td>اميره هشام محمد محمود</td>
+                                <td>medical</td>
+                                <td>Present</td>
+                            </tr><tr>
+                                <td>12345</td>
+                                <td>اميره هشام محمد محمود</td>
+                                <td>medical</td>
+                                <td>Present</td>
+                            </tr><tr>
+                                <td>12345</td>
+                                <td>اميره هشام محمد محمود</td>
+                                <td>medical</td>
+                                <td>Present</td>
+                            </tr><tr>
+                                <td>12345</td>
+                                <td>اميره هشام محمد محمود</td>
+                                <td>medical</td>
+                                <td>Present</td>
+                            </tr><tr>
+                                <td>12345</td>
+                                <td>اميره هشام محمد محمود</td>
+                                <td>medical</td>
+                                <td>Present</td>
+                            </tr><tr>
+                                <td>12345</td>
+                                <td>اميره هشام محمد محمود</td>
+                                <td>medical</td>
+                                <td>Present</td>
+                            </tr><tr>
+                                <td>12345</td>
+                                <td>اميره هشام محمد محمود</td>
+                                <td>medical</td>
+                                <td>Present</td>
+                            </tr><tr>
+                                <td>12345</td>
+                                <td>اميره هشام محمد محمود</td>
+                                <td>medical</td>
+                                <td>Present</td>
+                            </tr><tr>
+                                <td>12345</td>
+                                <td>اميره هشام محمد محمود</td>
+                                <td>medical</td>
+                                <td>Present</td>
+                            </tr><tr>
+                                <td>12345</td>
+                                <td>اميره هشام محمد محمود</td>
+                                <td>medical</td>
+                                <td>Present</td>
+                            </tr><tr>
+                                <td>12345</td>
+                                <td>اميره هشام محمد محمود</td>
+                                <td>medical</td>
+                                <td>Present</td>
+                            </tr><tr>
+                                <td>12345</td>
+                                <td>اميره هشام محمد محمود</td>
+                                <td>medical</td>
+                                <td>Present</td>
+                            </tr><tr>
+                                <td>12345</td>
+                                <td>اميره هشام محمد محمود</td>
+                                <td>medical</td>
+                                <td>Present</td>
+                            </tr><tr>
+                                <td>12345</td>
+                                <td>اميره هشام محمد محمود</td>
+                                <td>medical</td>
+                                <td>Present</td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
-
             </div>
         </div>
     )

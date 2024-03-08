@@ -272,7 +272,7 @@
 .btns-prs-aps {
     position: absolute;
     width: 300px;
-    top: 35px;
+    top: 20px;
     left: 700px;
 }
 
@@ -302,4 +302,80 @@
     word-wrap: break-word;
     border: none;
     margin-right: 20px;
+}
+
+.div-list {
+    top: 75px;
+    left: 10px;
+    width: 1020px;
+    position: absolute;
+    height: 550px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.div-list-befor {
+    top: 75px;
+    left: 10px;
+    width: 1020px;
+    position: absolute;
+    height: 400px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.tab-attend th {
+    height: 35px;
+    margin-bottom: 100px;
+    background: rgba(71, 112, 154, 0.40);
+    color: #1D2649;
+    font-size: 24px;
+    font-weight: 800;
+    text-align: center;
+    border: none;
+    word-wrap: break-word
+}
+
+
+
+th#id {
+
+    width: 153px;
+}
+
+th#name {
+
+    width: 390px;
+    left: 156px;
+
+}
+
+th#prog {
+
+    width: 270px;
+    left: 548px;
+}
+
+th#stat {
+
+    width: 180px;
+    left: 820px;
+
+}
+
+
+.tab-attend td {
+    background: rgba(220, 242, 241, 0.434);
+    margin-top: 50px;
+    height: 35px;
+    font-size: 24px;
+    font-weight: 800;
+    color: #263658;
+    text-align: center;
+    word-wrap: break-word
+}
+
+tr {
+    border: none;
+
 }

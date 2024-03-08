@@ -12,6 +12,7 @@ import Weekly from './component/pages/Weekly/Weekly.js';
 function App() {
   return (
     <div className="App">
+
       <Routes>
         <Route path='/CreateAccount' element={<CreateAccount />} />
         <Route path='/' element={<SignIn />} />
