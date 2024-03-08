@@ -331,51 +331,38 @@
     color: #1D2649;
     font-size: 24px;
     font-weight: 800;
+    /* display: 'flexbox'; */
     text-align: center;
     border: none;
-    word-wrap: break-word
+    word-wrap: break-word;
 }
 
 
 
 th#id {
-
     width: 153px;
 }
 
 th#name {
-
     width: 390px;
-    left: 156px;
-
 }
 
 th#prog {
-
     width: 270px;
-    left: 548px;
 }
 
 th#stat {
-
     width: 180px;
-    left: 820px;
-
 }
 
 
 .tab-attend td {
     background: rgba(220, 242, 241, 0.434);
-    margin-top: 50px;
     height: 35px;
     font-size: 24px;
     font-weight: 800;
     color: #263658;
     text-align: center;
-    word-wrap: break-word
-}
-
-tr {
-    border: none;
+    word-wrap: break-word;
 
 }

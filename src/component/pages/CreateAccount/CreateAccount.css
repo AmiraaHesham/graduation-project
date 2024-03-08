@@ -37,7 +37,7 @@
     margin-bottom: 10px;
     align-content: center;
     border: none;
-    font-size: 20px;
+    font-size: 25px;
     color: #365486;
     font-weight: 700;
 
@@ -118,6 +118,6 @@
 .div-addPhoto h5 {
     position: absolute;
     top: 65px;
-    left: 10px;
+    left: 5px;
 
 }

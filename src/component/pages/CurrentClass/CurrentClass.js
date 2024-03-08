@@ -92,111 +92,114 @@ const CurrentClass = () => {
                     </div>
                     <div className='div-list' id='list'>
                         <table className='tab-attend'>
-                            <tr>
-                                <th id='id'>ID</th>
-                                <th id='name'>NAME</th>
-                                <th id='prog'>PROGRAMME</th>
-                                <th id='stat'>STATUS</th>
-                            </tr>
-                            <tr>
-                                <td>12345</td>
-                                <td>اميره هشام محمد محمود</td>
-                                <td>medical</td>
-                                <td>Present</td>
-                            </tr>
-                            <tr>
-                                <td>12345</td>
-                                <td>اميره هشام محمد محمود</td>
-                                <td>medical</td>
-                                <td>Present</td>
-                            </tr><tr>
-                                <td>12345</td>
-                                <td>اميره هشام محمد محمود</td>
-                                <td>medical</td>
-                                <td>Present</td>
-                            </tr>
-                            <tr>
-                                <td>12345</td>
-                                <td>اميره هشام محمد محمود</td>
-                                <td>medical</td>
-                                <td>Present</td>
-                            </tr>
-                            <tr>
-                                <td>12345</td>
-                                <td>اميره هشام محمد محمود</td>
-                                <td>medical</td>
-                                <td>Present</td>
-                            </tr><tr>
-                                <td>12345</td>
-                                <td>اميره هشام محمد محمود</td>
-                                <td>medical</td>
-                                <td>Present</td>
-                            </tr><tr>
-                                <td>12345</td>
-                                <td>اميره هشام محمد محمود</td>
-                                <td>medical</td>
-                                <td>Present</td>
-                            </tr><tr>
-                                <td>12345</td>
-                                <td>اميره هشام محمد محمود</td>
-                                <td>medical</td>
-                                <td>Present</td>
-                            </tr><tr>
-                                <td>12345</td>
-                                <td>اميره هشام محمد محمود</td>
-                                <td>medical</td>
-                                <td>Present</td>
-                            </tr><tr>
-                                <td>12345</td>
-                                <td>اميره هشام محمد محمود</td>
-                                <td>medical</td>
-                                <td>Present</td>
-                            </tr><tr>
-                                <td>12345</td>
-                                <td>اميره هشام محمد محمود</td>
-                                <td>medical</td>
-                                <td>Present</td>
-                            </tr><tr>
-                                <td>12345</td>
-                                <td>اميره هشام محمد محمود</td>
-                                <td>medical</td>
-                                <td>Present</td>
-                            </tr><tr>
-                                <td>12345</td>
-                                <td>اميره هشام محمد محمود</td>
-                                <td>medical</td>
-                                <td>Present</td>
-                            </tr><tr>
-                                <td>12345</td>
-                                <td>اميره هشام محمد محمود</td>
-                                <td>medical</td>
-                                <td>Present</td>
-                            </tr><tr>
-                                <td>12345</td>
-                                <td>اميره هشام محمد محمود</td>
-                                <td>medical</td>
-                                <td>Present</td>
-                            </tr><tr>
-                                <td>12345</td>
-                                <td>اميره هشام محمد محمود</td>
-                                <td>medical</td>
-                                <td>Present</td>
-                            </tr><tr>
-                                <td>12345</td>
-                                <td>اميره هشام محمد محمود</td>
-                                <td>medical</td>
-                                <td>Present</td>
-                            </tr><tr>
-                                <td>12345</td>
-                                <td>اميره هشام محمد محمود</td>
-                                <td>medical</td>
-                                <td>Present</td>
-                            </tr><tr>
-                                <td>12345</td>
-                                <td>اميره هشام محمد محمود</td>
-                                <td>medical</td>
-                                <td>Present</td>
-                            </tr>
+                            <thead>
+                                <tr>
+                                    <th id='id'>ID</th>
+                                    <th id='name'>NAME</th>
+                                    <th id='prog'>PROGRAMME</th>
+                                    <th id='stat'>STATUS</th>
+                                </tr></thead>
+                            <tbody>
+                                <tr>
+                                    <td>12345</td>
+                                    <td>اميره هشام محمد محمود</td>
+                                    <td>medical</td>
+                                    <td>Present</td>
+                                </tr>
+                                <tr>
+                                    <td>12345</td>
+                                    <td>اميره هشام محمد محمود</td>
+                                    <td>medical</td>
+                                    <td>Present</td>
+                                </tr><tr>
+                                    <td>12345</td>
+                                    <td>اميره هشام محمد محمود</td>
+                                    <td>medical</td>
+                                    <td>Present</td>
+                                </tr>
+                                <tr>
+                                    <td>12345</td>
+                                    <td>اميره هشام محمد محمود</td>
+                                    <td>medical</td>
+                                    <td>Present</td>
+                                </tr>
+                                <tr>
+                                    <td>12345</td>
+                                    <td>اميره هشام محمد محمود</td>
+                                    <td>medical</td>
+                                    <td>Present</td>
+                                </tr><tr>
+                                    <td>12345</td>
+                                    <td>اميره هشام محمد محمود</td>
+                                    <td>medical</td>
+                                    <td>Present</td>
+                                </tr><tr>
+                                    <td>12345</td>
+                                    <td>اميره هشام محمد محمود</td>
+                                    <td>medical</td>
+                                    <td>Present</td>
+                                </tr><tr>
+                                    <td>12345</td>
+                                    <td>اميره هشام محمد محمود</td>
+                                    <td>medical</td>
+                                    <td>Present</td>
+                                </tr><tr>
+                                    <td>12345</td>
+                                    <td>اميره هشام محمد محمود</td>
+                                    <td>medical</td>
+                                    <td>Present</td>
+                                </tr><tr>
+                                    <td>12345</td>
+                                    <td>اميره هشام محمد محمود</td>
+                                    <td>medical</td>
+                                    <td>Present</td>
+                                </tr><tr>
+                                    <td>12345</td>
+                                    <td>اميره هشام محمد محمود</td>
+                                    <td>medical</td>
+                                    <td>Present</td>
+                                </tr><tr>
+                                    <td>12345</td>
+                                    <td>اميره هشام محمد محمود</td>
+                                    <td>medical</td>
+                                    <td>Present</td>
+                                </tr><tr>
+                                    <td>12345</td>
+                                    <td>اميره هشام محمد محمود</td>
+                                    <td>medical</td>
+                                    <td>Present</td>
+                                </tr><tr>
+                                    <td>12345</td>
+                                    <td>اميره هشام محمد محمود</td>
+                                    <td>medical</td>
+                                    <td>Present</td>
+                                </tr><tr>
+                                    <td>12345</td>
+                                    <td>اميره هشام محمد محمود</td>
+                                    <td>medical</td>
+                                    <td>Present</td>
+                                </tr><tr>
+                                    <td>12345</td>
+                                    <td>اميره هشام محمد محمود</td>
+                                    <td>medical</td>
+                                    <td>Present</td>
+                                </tr><tr>
+                                    <td>12345</td>
+                                    <td>اميره هشام محمد محمود</td>
+                                    <td>medical</td>
+                                    <td>Present</td>
+                                </tr><tr>
+                                    <td>12345</td>
+                                    <td>اميره هشام محمد محمود</td>
+                                    <td>medical</td>
+                                    <td>Present</td>
+                                </tr><tr>
+                                    <td>12345</td>
+                                    <td>اميره هشام محمد محمود</td>
+                                    <td>medical</td>
+                                    <td>Present</td>
+                                </tr>
+                            </tbody>
                         </table>
                     </div>
                 </div>
