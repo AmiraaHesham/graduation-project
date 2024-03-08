@@ -43,33 +43,6 @@ const CreateAccount = () => {
                 transition: 'Bounce',
             });
         }
-        if (empty.current.value === '') {
-            toast.warn('Enter All Data!', {
-                position: "top-center",
-                autoClose: '1000',
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: false,
-                draggable: false,
-                progress: undefined,
-                theme: "light",
-                transition: 'Bounce',
-            });
-        }
-        if (password !== Confirmpassword) {
-            toast.warn('Not Confirm!', {
-                position: "top-center",
-                autoClose: 1000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: false,
-                draggable: false,
-                progress: undefined,
-                theme: "light",
-                transition: 'Bounce',
-            });
-        }
-
     }
 
 
@@ -93,7 +66,7 @@ const CreateAccount = () => {
                 <Link to="/SignIn" ><button className='hide' id='btn-signin'>SignIn</button ></Link>
 
             </div>
-        </div >
+        </div>
     )
 }
 
