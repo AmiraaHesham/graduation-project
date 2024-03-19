@@ -1,43 +1,4 @@
-.header {
-    color: #DCF2F1;
-    width: 1519px;
-    height: 70px;
-    background: rgba(15, 16, 53, 0.78)
-}
-
-.side-bar {
-    width: 351px;
-    height: 930px;
-    position: absolute;
-    background: #5280A6;
-    color: #1D2649;
-    cursor: pointer;
-}
-
-.header svg {
-    position: absolute;
-    left: 40px;
-    top: 20px;
-    color: #DCF2F1;
-
-}
-
-.header h4 {
-    position: absolute;
-    left: 650px;
-    font-size: 20px;
-}
-
-.side-bar #time {
-    position: absolute;
-    top: 25px;
-    left: 15px;
-    width: 50px;
-    height: 65px;
-    color: #1D2649
-}
-
-.Lecture-Dates-CurrentClass {
+.Lecture-Dates {
     display: flex;
     width: 350px;
     height: 100px;
@@ -48,14 +9,14 @@
     margin: 20px 20px;
 }
 
-.Lecture-Dates-CurrentClass h2 {
+.Lecture-Dates h2 {
     width: 200px;
     left: 100px;
     top: 20px;
     position: absolute;
 }
 
-.Current-Class {
+.Current-Class-page {
     display: flex;
     width: 350px;
     height: 100px;
@@ -68,14 +29,14 @@
 
 }
 
-.Current-Class h2 {
+.Current-Class-page h2 {
     width: 200px;
     left: 100px;
     top: 20px;
     position: absolute;
 }
 
-.Timetable-CurrentClass {
+.Timetable {
     display: flex;
     width: 350px;
     height: 100px;
@@ -87,30 +48,30 @@
 }
 
 
-.Students-Attendance-CurrentClass:hover {
+.Students-Attendance:hover {
     background: rgba(54, 83, 134, 0.105);
 
 }
 
-.Timetable-CurrentClass:hover {
+.Timetable:hover {
     background: rgba(54, 83, 134, 0.105);
 
 }
 
-.Lecture-Dates-CurrentClass:hover {
+.Lecture-Dates:hover {
     background: rgba(54, 83, 134, 0.105);
 
 }
 
 
-.Timetable-CurrentClass h2 {
+.Timetable h2 {
     width: 200px;
     left: 100px;
     top: 20px;
     position: absolute;
 }
 
-.Students-Attendance-CurrentClass {
+.Students-Attendance {
     display: flex;
     width: 350px;
     height: 100px;
@@ -122,7 +83,7 @@
 
 }
 
-.Students-Attendance-CurrentClass h2 {
+.Students-Attendance h2 {
     width: 500px;
     left: 100px;
     top: 20px;
@@ -133,36 +94,13 @@
     width: 1000px;
     height: 830px;
     position: absolute;
-    left: 400px;
+    margin-left: 400px;
     cursor: pointer;
-}
-
-.div-QRcode {
-    width: 1036px;
-    height: 70px;
-    position: absolute;
-    top: 130px;
-    background: #47709A;
-    border-radius: 10px;
-}
-
-.div-QRcode h3,
-.attendList h3,
-.attendList-befor h3 {
-    width: 220px;
-    height: 45px;
-    position: absolute;
-    left: 50px;
-    top: -10px;
-    color: #DCF2F1;
-    font-size: 30px;
-    font-weight: 800;
-    word-wrap: break-word
 }
 
 .subject h3 {
     width: 300px;
-    height: 67px;
+    height: 55px;
     color: #1D2649;
     font-size: 27px;
     font-weight: 800;
@@ -170,60 +108,68 @@
 }
 
 .subject {
-    position: absolute;
-    top: 20px;
-    left: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.div-QRcode {
+    width: 1036px;
+    height: 70px;
+    background: #47709A;
+    border-radius: 10px;
+}
+
+.div-QRcode h3,
+.attendList h3,
+.attendList-after h3 {
+    width: 220px;
+    height: 45px;
+    padding: 15px;
+    margin-left: 50px;
+    color: #DCF2F1;
+    font-size: 30px;
+    font-weight: 800;
+    word-wrap: break-word
 }
 
 .attendList {
     width: 1036px;
     height: 70px;
-    position: absolute;
     background: #47709A;
-    top: 230px;
-    border-radius: 10px
+    margin-top: -10px;
+    border-radius: 10px;
 }
 
-.attendList-befor {
+.attendList-after {
     width: 1036px;
     height: 70px;
-    position: absolute;
-    top: 370px;
+    margin-top: -15px;
     background: #47709A;
     border-radius: 10px;
-
-}
-
-
-.generQR {
-    width: 1035px;
-    height: 150px;
-    position: absolute;
-    margin-top: 200px;
-    background: rgba(220, 242, 241, 0.57);
-    border-radius: 10px
-}
-
-.hide {
-    display: none;
 }
 
 #down-arrowQR,
 #down-arrowAttend {
     color: #DCF2F1;
     position: absolute;
-    left: 950px;
-    top: 20px;
-
+    margin-top: -80px;
+    margin-left: 950px;
 }
 
 .up-arrow {
     color: #DCF2F1;
-    position: absolute;
-    left: 950px;
-    top: 20px;
+    margin-left: 950px;
+    margin-top: 20px;
     transform: rotate(-180deg);
 
+}
+
+.generQR {
+    width: 1035px;
+    height: 150px;
+    margin-top: 0px;
+    background: rgba(220, 242, 241, 0.57);
+    border-radius: 10px
 }
 
 .btn-genrat {
@@ -231,9 +177,8 @@
     height: 60px;
     background: #263658;
     border-radius: 30px;
-    position: absolute;
-    left: 300px;
-    top: 40px;
+    margin-left: 300px;
+    margin-top: 40px;
     color: #DCF2F1;
     font-size: 28px;
     font-weight: 700;
@@ -247,33 +192,35 @@
     color: #263658;
 }
 
+.hide {
+    display: none;
+}
+
 .div-attendList {
     width: 1036px;
-    height: 630px;
-    left: 0px;
-    top: 300px;
-    position: absolute;
+    height: 650px;
+    margin-left: 0px;
+    margin-top: 0px;
     background: rgba(220, 242, 241, 0.50);
     border-radius: 10px;
+    cursor: pointer;
 
 }
 
-.div-attendList-befor {
+.div-attendList-after {
     width: 1036px;
-    height: 490px;
-    left: 0px;
-    top: 440px;
-    position: absolute;
+    height: 510px;
     background: rgba(220, 242, 241, 0.50);
     border-radius: 10px;
+    cursor: pointer;
 
 }
 
 .btns-prs-aps {
-    position: absolute;
     width: 300px;
-    top: 20px;
-    left: 700px;
+    margin-left: 700px;
+    margin-top: -65px;
+    margin-bottom: 10px;
 }
 
 .btn-present {
@@ -283,9 +230,10 @@
     border-radius: 30px;
     color: #DCF2F1;
     font-size: 24px;
-    font-family: Inter;
+    font-family: 'Inter';
     font-weight: 800;
     word-wrap: break-word;
+    margin-top: 20px;
     border: none;
     margin-right: 20px;
 }
@@ -297,31 +245,54 @@
     border-radius: 30px;
     color: #DCF2F1;
     font-size: 24px;
-    font-family: Inter;
     font-weight: 800;
+    margin-top: 20px;
     word-wrap: break-word;
     border: none;
     margin-right: 20px;
+    font-family: 'Inter';
+
+}
+
+.input-search {
+    width: 350px;
+    height: 40px;
+    margin-top: 20px;
+    margin-left: 20px;
+    color: #263658;
+    border: none;
+    background: #DCF2F1;
+    border-radius: 5px;
+    font-size: 25px;
+    font-family: 'Inter';
+    text-align: right;
+}
+
+.input-search::placeholder {
+    font-size: 20px;
+    color: #47709A;
+    position: absolute;
+    margin-top: -10px;
 }
 
 .div-list {
-    top: 75px;
-    left: 10px;
+    margin-left: 8px;
+    margin-top: 15px;
     width: 1020px;
-    position: absolute;
-    height: 550px;
+    height: 560px;
     overflow: hidden;
+    position: absolute;
     overflow-y: scroll;
 }
 
-.div-list-befor {
-    top: 75px;
-    left: 10px;
+.div-list-after {
+    margin-left: 8px;
+    margin-top: 15px;
     width: 1020px;
-    position: absolute;
-    height: 400px;
+    height: 420px;
     overflow: hidden;
     overflow-y: scroll;
+    position: absolute;
 }
 
 .tab-attend th {
@@ -331,13 +302,13 @@
     color: #1D2649;
     font-size: 24px;
     font-weight: 800;
-    /* display: 'flexbox'; */
     text-align: center;
     border: none;
     word-wrap: break-word;
+    border-top-right-radius: 7px;
+    border-top-left-radius: 7px;
+
 }
-
-
 
 th#id {
     width: 153px;
@@ -355,6 +326,9 @@ th#stat {
     width: 180px;
 }
 
+table {
+    border: 20px;
+}
 
 .tab-attend td {
     background: rgba(220, 242, 241, 0.434);
@@ -363,6 +337,6 @@ th#stat {
     font-weight: 800;
     color: #263658;
     text-align: center;
-    word-wrap: break-word;
+    border-spacing: separate;
 
 }

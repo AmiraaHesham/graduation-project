@@ -1,8 +1,8 @@
 .createaccount-continer {
     width: 742px;
-    height: 600px;
+    height: 750px;
     left: 380px;
-    top: 90px;
+    top: 150px;
     position: absolute;
     background: linear-gradient(200deg, #365486 0%, rgba(54, 84, 134, 0) 100%);
     border-radius: 30px;
@@ -13,11 +13,11 @@
     width: 294px;
     height: 42px;
     color: #DCF2F1;
-    font-size: 35px;
-    font-family: Inter;
+    font-size: 40px;
+    font-family: 'Inter';
     font-weight: 800;
     position: absolute;
-    margin-left: 250px;
+    margin-left: 230px;
     margin-top: 30px;
 }
 
@@ -25,7 +25,7 @@
     width: 609px;
     height: 486px;
     position: absolute;
-    margin-top: 230px;
+    margin-top: 270px;
     margin-left: 135px;
 }
 
@@ -53,7 +53,7 @@
 }
 
 .btn-create {
-    width: 300px;
+    width: 350px;
     height: 50px;
     position: absolute;
     background: #7FC7D9;
@@ -65,26 +65,8 @@
     font-weight: 1000;
     word-wrap: break-word;
     position: absolute;
-    top: 530px;
-    left: 210px;
-    border: none;
-}
-
-#btn-signin {
-    width: 300px;
-    height: 50px;
-    position: absolute;
-    background: #7FC7D9;
-    border-radius: 20px;
-    position: absolute;
-    color: #365486;
-    font-size: 32px;
-    font-family: Inter;
-    font-weight: 1000;
-    word-wrap: break-word;
-    position: absolute;
-    top: 530px;
-    left: 210px;
+    top: 650px;
+    left: 185px;
     border: none;
 }
 
@@ -102,7 +84,7 @@
     height: 85px;
     position: absolute;
     left: 320px;
-    top: 90px;
+    top: 120px;
     border: 2px solid #DCF2F1;
     border-radius: 20px;
     color: #365486;
@@ -119,5 +101,18 @@
     position: absolute;
     top: 65px;
     left: 5px;
+
+}
+
+.iupt-photo {
+    display: none;
+}
+
+.div-addPhoto img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    margin-top: -10px;
+    margin-left: -10px;
 
 }

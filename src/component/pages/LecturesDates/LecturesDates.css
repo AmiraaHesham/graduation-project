@@ -5,46 +5,8 @@ body {
     font-family: 'Inter';
 }
 
-.header {
-    color: #DCF2F1;
-    width: 1519px;
-    height: 70px;
-    background: rgba(15, 16, 53, 0.78)
-}
 
-.side-bar {
-    width: 351px;
-    height: 930px;
-    position: absolute;
-    background: #5280A6;
-    color: #1D2649;
-    cursor: pointer;
-}
-
-.header svg {
-    position: absolute;
-    left: 40px;
-    top: 20px;
-    color: #DCF2F1;
-
-}
-
-.header h4 {
-    position: absolute;
-    left: 650px;
-    font-size: 20px;
-}
-
-.side-bar #time {
-    position: absolute;
-    top: 25px;
-    left: 15px;
-    width: 50px;
-    height: 65px;
-    color: #1D2649
-}
-
-.Lecture-Dates {
+.Lecture-Dates-page {
     display: flex;
     width: 350px;
     height: 100px;
@@ -56,14 +18,14 @@ body {
     background: rgba(54, 84, 134, 0.22);
 }
 
-.Lecture-Dates h2 {
+.Lecture-Dates-page h2 {
     width: 200px;
     left: 100px;
     top: 20px;
     position: absolute;
 }
 
-.Current-Class-LectureDates {
+.Current-Class {
     display: flex;
     width: 350px;
     height: 100px;
@@ -74,14 +36,14 @@ body {
     margin: 20px 20px;
 }
 
-.Current-Class-LectureDates h2 {
+.Current-Class h2 {
     width: 200px;
     left: 100px;
     top: 20px;
     position: absolute;
 }
 
-.Timetable-LectureDates {
+.Timetable {
     display: flex;
     width: 350px;
     height: 100px;
@@ -93,29 +55,29 @@ body {
 }
 
 
-.Students-Attendance-LectureDates:hover {
+.Students-Attendance:hover {
     background: rgba(54, 83, 134, 0.105);
 
 }
 
-.Timetable-LectureDates:hover {
+.Timetable:hover {
     background: rgba(54, 83, 134, 0.105);
 
 }
 
-.Current-Class-LectureDates:hover {
+.Current-Class:hover {
     background: rgba(54, 83, 134, 0.105);
 
 }
 
-.Timetable-LectureDates h2 {
+.Timetable h2 {
     width: 200px;
     left: 100px;
     top: 20px;
     position: absolute;
 }
 
-.Students-Attendance-LectureDates {
+.Students-Attendance {
     display: flex;
     width: 350px;
     height: 100px;
@@ -128,7 +90,7 @@ body {
 }
 
 
-.Students-Attendance-LectureDates h2 {
+.Students-Attendance h2 {
     width: 500px;
     left: 100px;
     top: 20px;

@@ -1,13 +1,8 @@
-body {
-    height: 20000px;
-
-}
-
 .sign-in-contener {
     width: 700px;
     height: 550px;
     left: 400px;
-    top: 90px;
+    top: 150px;
     position: absolute;
     background: linear-gradient(200deg, #365486 0%, rgba(54, 84, 134, 0) 100%);
     border-radius: 30px;

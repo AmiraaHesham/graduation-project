@@ -13,6 +13,7 @@ function App() {
   return (
     <div className="App">
 
+
       <Routes>
         <Route path='/CreateAccount' element={<CreateAccount />} />
         <Route path='/' element={<SignIn />} />
@@ -22,12 +23,6 @@ function App() {
         <Route path='/Timetable' element={<Timetable />} />
         <Route path='/OverAll' element={<OverAll />} />
         <Route path='/Weekly' element={<Weekly />} />
-
-
-
-
-
-
       </Routes>
     </div>
   );
