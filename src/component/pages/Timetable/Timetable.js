@@ -12,7 +12,6 @@ const Timetable = () => {
             <Header />
 
             <div className='side-bar'>
-
                 <Link to={"/LecturesDates"} style={{ textDecoration: 'none', color: '#1D2649' }}>
                     <div className='Lecture-Dates'>
                         <h2>Lectures Dates</h2>
@@ -42,8 +41,41 @@ const Timetable = () => {
                 </Link>
 
             </div>
+            <div className='div-courses'>
+                <div className='add-course'>
+                    <h3>Add Course</h3>
+                    <hr></hr>
+                    <div className='input-details-course'>
+                        <input placeholder='Lecture Name' />
+                        <input name='section' placeholder='Lecture Day' list='Days' />
+                        <datalist id='Days'>
+                            <option value='Sat' >Sat</option>
+                            <option value='Sun' >Sun</option>
+                            <option value='Mon' >Mon</option>
+                            <option value='Tue' >Tue</option>
+                            <option value='Thu' >Thu</option>
+                        </datalist>
 
-        </div>
+                        <input placeholder='Lecture Time' type='time' />
+                        <input placeholder='Lecture Duration' />
+                        <input placeholder='level' list='levels' />
+                        <datalist id='levels'>
+                            <option value='First' />
+                            <option value='Second' />
+                            <option value='Third' />
+                            <option value='Fourth' />
+                        </datalist>
+                        <div className='div-btn-dis-conf'>
+                            <button className='btn-discard'>DISCARD</button>
+                            <button className='btn-confirm'>CONFIRM</button></div>
+                    </div >
+                </div >
+                <div className='edit-course'>
+                    <h3>Edit Courses</h3>
+                    <hr></hr>
+                </div>
+            </div >
+        </div >
     )
 }
 

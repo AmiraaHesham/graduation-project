@@ -5,13 +5,28 @@ import Header from '../header/header'
 
 const LecturesDates = () => {
 
+    let [date, setDate] = useState()
 
+    useEffect(() => {
+        showDate()
+    }, [])
+    const showDate = () => {
+        const today = new Date();
+        const day = today.getDate()
+        const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][new Date().getDay()]
+        const month = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"][new Date().getMonth()]
+        const year = today.getFullYear();
+        const currentDate = weekday + ' - ' + month + ' ' + day + ' , ' + year
+        setDate(currentDate)
+
+
+    }
 
     return (
         <div className='body'>
             <Header />
             <div className='side-bar'>
-
                 <div className='Lecture-Dates-page '>
                     <h2>Lectures Dates</h2>
                     <svg id='time' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048"><path fill="currentColor"
@@ -41,8 +56,8 @@ const LecturesDates = () => {
             </div>
 
             <div className='div-timetable'>
-                <div className='header-timetable'>
-                    <h2>Today - Sunday, 29-Feb-2024</h2>
+                <div className='header-timetable' >
+                    <h2> {date} </h2>
                 </div>
                 <div className='div-summary'>
                     <div className='header-summary'>

@@ -84,7 +84,7 @@
 }
 
 .Students-Attendance h2 {
-    width: 500px;
+    width: 250px;
     left: 100px;
     top: 20px;
     position: absolute;
@@ -272,11 +272,11 @@
     font-size: 20px;
     color: #47709A;
     position: absolute;
-    margin-top: -10px;
+
 }
 
 .div-list {
-    margin-left: 8px;
+    margin-left: 10px;
     margin-top: 15px;
     width: 1020px;
     height: 560px;
@@ -302,41 +302,16 @@
     color: #1D2649;
     font-size: 24px;
     font-weight: 800;
-    text-align: center;
-    border: none;
-    word-wrap: break-word;
-    border-top-right-radius: 7px;
-    border-top-left-radius: 7px;
-
 }
 
-th#id {
-    width: 153px;
-}
-
-th#name {
-    width: 390px;
-}
-
-th#prog {
-    width: 270px;
-}
-
-th#stat {
-    width: 180px;
-}
-
-table {
-    border: 20px;
-}
 
 .tab-attend td {
     background: rgba(220, 242, 241, 0.434);
+    margin-top: 50px;
     height: 35px;
     font-size: 24px;
     font-weight: 800;
     color: #263658;
     text-align: center;
-    border-spacing: separate;
-
+    word-wrap: break-word
 }

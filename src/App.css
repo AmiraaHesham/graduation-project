@@ -2,7 +2,12 @@
     color: #DCF2F1;
     width: 1519px;
     height: 70px;
-    background: rgba(15, 16, 53, 0.78)
+    background: rgba(15, 16, 53, 0.78);
+    cursor: pointer;
+}
+
+* {
+    font-family: "Inter";
 }
 
 .side-bar {
@@ -29,11 +34,13 @@
 }
 
 .profile {
-    width: 150px;
+    width: 120px;
     height: 70px;
-    margin-left: 1330px;
+    margin-left: 1300px;
     position: absolute;
     top: 1px;
+    cursor: pointer;
+
 }
 
 
@@ -52,7 +59,7 @@
 }
 
 .profile-name {
-    width: 100px;
+    width: 90px;
     height: 50px;
     color: #DCF2F1;
     font-size: 20px;
@@ -63,6 +70,8 @@
 
 
 }
+
+
 
 .side-bar #time {
     position: absolute;

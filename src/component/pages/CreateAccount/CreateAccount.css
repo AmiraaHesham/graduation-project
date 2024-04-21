@@ -6,8 +6,11 @@
     position: absolute;
     background: linear-gradient(200deg, #365486 0%, rgba(54, 84, 134, 0) 100%);
     border-radius: 30px;
-    align-items: center;
+    cursor: pointer;
+
 }
+
+
 
 .createaccount-continer h3 {
     width: 294px;
@@ -23,10 +26,11 @@
 
 .div-inputs {
     width: 609px;
-    height: 486px;
+    height: 350px;
     position: absolute;
-    margin-top: 270px;
+    margin-top: 260px;
     margin-left: 135px;
+
 }
 
 .div-inputs input {
@@ -40,7 +44,15 @@
     font-size: 25px;
     color: #365486;
     font-weight: 700;
+    cursor: pointer;
 
+
+}
+
+.div-inputs input::placeholder {
+    color: #365386b6;
+    font-size: 20px;
+    font-weight: 600;
 }
 
 .div-inputs h4 {
@@ -53,21 +65,19 @@
 }
 
 .btn-create {
+
     width: 350px;
     height: 50px;
-    position: absolute;
     background: #7FC7D9;
     border-radius: 20px;
-    position: absolute;
     color: #365486;
     font-size: 32px;
-    font-family: Inter;
-    font-weight: 1000;
+    font-weight: 700;
     word-wrap: break-word;
-    position: absolute;
-    top: 650px;
-    left: 185px;
     border: none;
+    margin-top: 630px;
+    margin-left: 180px;
+    cursor: pointer;
 }
 
 .btn-create:hover {
@@ -80,27 +90,27 @@
 }
 
 .div-addPhoto {
-    width: 85px;
-    height: 85px;
+    width: 100px;
+    height: 100px;
     position: absolute;
-    left: 320px;
-    top: 120px;
+    left: 310px;
+    top: 100px;
     border: 2px solid #DCF2F1;
-    border-radius: 20px;
+    border-radius: 50px;
     color: #365486;
 }
 
 .div-addPhoto svg {
     position: absolute;
-    left: 13px;
-    top: 13px;
+    left: 20px;
+    top: 20px;
 
 }
 
 .div-addPhoto h5 {
     position: absolute;
-    top: 65px;
-    left: 5px;
+    top: 80px;
+    left: 15px;
 
 }
 
@@ -111,8 +121,13 @@
 .div-addPhoto img {
     width: 100px;
     height: 100px;
-    border-radius: 10px;
-    margin-top: -10px;
-    margin-left: -10px;
+    border-radius: 50px;
 
+}
+
+.div-h4-Registered h4 {
+    color: #dcf2f1ca;
+    font-size: 15px;
+    font-family: 700;
+    margin-left: 280px;
 }

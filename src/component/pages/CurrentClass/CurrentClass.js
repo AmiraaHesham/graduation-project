@@ -38,7 +38,6 @@ const CurrentClass = () => {
     return (
         <div>
             <Header />
-
             <div className='side-bar'>
                 <Link to={"/LecturesDates"} style={{ textDecoration: 'none', color: '#1D2649' }}>
                     <div className='Lecture-Dates'>
@@ -97,15 +96,13 @@ const CurrentClass = () => {
                     </div>
                     <div className='div-list' id='list'>
 
-                        <table className='tab-attend' style={{ position: 'absolute', border: 'none' }}>
-
-                            <thead>
-                                <tr>
-                                    <th id='id'>ID</th>
-                                    <th id='name'>NAME</th>
-                                    <th id='prog'>PROGRAMME</th>
-                                    <th id='stat'>STATUS</th>
-                                </tr></thead>
+                        <table className='tab-attend' style={{ width: '100%', position: 'absolute', border: 'none' }}>
+                            <tr>
+                                <th >ID</th>
+                                <th >NAME</th>
+                                <th >PROGRAMME</th>
+                                <th >STATUS</th>
+                            </tr>
                             <tbody>
                                 <tr>
                                     <td>12345</td>
@@ -224,46 +221,6 @@ const CurrentClass = () => {
                                     <td>Present</td>
                                 </tr>
                                 <tr>
-                                    <td>12345</td>
-                                    <td>اميره هشام محمد محمود</td>
-                                    <td>medical</td>
-                                    <td>Present</td>
-                                </tr><tr>
-                                    <td>12345</td>
-                                    <td>اميره هشام محمد محمود</td>
-                                    <td>medical</td>
-                                    <td>Present</td>
-                                </tr><tr>
-                                    <td>12345</td>
-                                    <td>اميره هشام محمد محمود</td>
-                                    <td>medical</td>
-                                    <td>Present</td>
-                                </tr><tr>
-                                    <td>12345</td>
-                                    <td>اميره هشام محمد محمود</td>
-                                    <td>medical</td>
-                                    <td>Present</td>
-                                </tr><tr>
-                                    <td>12345</td>
-                                    <td>اميره هشام محمد محمود</td>
-                                    <td>medical</td>
-                                    <td>Present</td>
-                                </tr><tr>
-                                    <td>12345</td>
-                                    <td>اميره هشام محمد محمود</td>
-                                    <td>medical</td>
-                                    <td>Present</td>
-                                </tr><tr>
-                                    <td>12345</td>
-                                    <td>اميره هشام محمد محمود</td>
-                                    <td>medical</td>
-                                    <td>Present</td>
-                                </tr><tr>
-                                    <td>12345</td>
-                                    <td>اميره هشام محمد محمود</td>
-                                    <td>medical</td>
-                                    <td>Present</td>
-                                </tr><tr>
                                     <td>12345</td>
                                     <td>اميره هشام محمد محمود</td>
                                     <td>medical</td>

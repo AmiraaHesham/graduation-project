@@ -10,6 +10,12 @@
 
 }
 
+* {
+    font-family: "Inter";
+
+}
+
+
 .sign-in-contener h3 {
     width: 294px;
     height: 42px;
@@ -17,18 +23,21 @@
     font-size: 38px;
     font-weight: 1000;
     word-wrap: break-word;
-    position: absolute;
-    margin-left: 280px;
-    margin-top: 50px;
+    text-align: center;
+    margin-left: 200px;
 
+}
+
+.sign-in-contener img {
+    width: 90px;
+    height: 100px;
 }
 
 .input-Email-pass {
     width: 609px;
     height: 486px;
-    position: relative;
-    top: 180px;
-    left: 120px;
+    margin-left: 120px;
+    margin-top: 100px;
 
 
 }
@@ -42,13 +51,24 @@
     margin-bottom: 15px;
     align-content: center;
     border: none;
-    font-size: 20px;
+    font-size: 25px;
     color: #365486;
-    font-weight: 700;
+    font-weight: 800;
+    cursor: pointer;
+
 
 }
 
-::placeholder {
+.input-Email-pass h4 {
+    margin-top: -4px;
+    margin-left: 20px;
+    color: #0f1035c1;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.input-Email-pass input::placeholder {
     width: 200px;
     height: 40px;
     color: rgba(54, 84, 134, 0.72);
@@ -73,13 +93,14 @@
     height: 50px;
     background: #7FC7D9;
     border-radius: 20px;
-    position: absolute;
     color: #365486;
     font-size: 32px;
-    font-family: Inter;
     font-weight: 700;
     word-wrap: break-word;
     border: none;
+    margin-left: -5px;
+    cursor: pointer;
+
 }
 
 .btn-login:hover {

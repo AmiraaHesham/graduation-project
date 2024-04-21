@@ -10,7 +10,6 @@ const Weekly = () => {
             <Header />
 
             <div className='side-bar'>
-
                 <Link to={"/LecturesDates"} style={{ textDecoration: 'none', color: '#1D2649' }}>
                     <div className='Lecture-Dates'>
                         <h2>Lectures Dates</h2>

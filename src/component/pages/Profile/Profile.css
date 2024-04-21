@@ -1,0 +1,196 @@
+.div-profile-info {
+    background: linear-gradient(200deg, #365486 0%, rgba(54, 84, 134, 0) 100%);
+    width: 800px;
+    height: 700px;
+    margin-left: 370px;
+    margin-top: 60px;
+    border-radius: 20px;
+}
+
+.div-imgprofile {
+    width: 130px;
+    height: 130px;
+    border-radius: 70px;
+    position: absolute;
+    margin-top: 50px;
+    margin-left: 330px;
+}
+
+.div-imgprofile img {
+    width: 130px;
+    display: block;
+    height: 130px;
+    border-radius: 70px;
+}
+
+.editpictuer {
+    position: absolute;
+    margin-top: 135px;
+    margin-left: 40px;
+    cursor: pointer;
+}
+
+
+.name,
+.email {
+    margin-left: 20px;
+    width: 200px;
+}
+
+.div-name {
+    margin-top: 75px;
+    margin-left: 37px;
+    padding-top: 10px;
+    color: #365486;
+    width: 430px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    background: #dcf2f1b0;
+    cursor: pointer;
+}
+
+.div-email {
+    margin-top: 25px;
+    margin-left: 37px;
+    padding-top: 10px;
+    color: #365486;
+    width: 430px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    background: #dcf2f1b0;
+    cursor: pointer;
+}
+
+
+#inpEditName {
+    margin-top: 75px;
+    margin-left: 75px;
+    color: #365486;
+    width: 340px;
+    height: 45px;
+    border-radius: 10px;
+    font-size: 25px;
+    font-weight: 600;
+    background: #dcf2f1b0;
+    text-align: center;
+    border: 3px solid rgba(15, 16, 53, 0.78);
+}
+
+#inpEditEmail {
+    margin-top: 75px;
+    margin-left: 75px;
+    color: #365486;
+    width: 340px;
+    height: 45px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    background: #dcf2f1b0;
+    text-align: center;
+    border: 3px solid rgba(15, 16, 53, 0.78);
+}
+
+.div-info {
+    background: #365486;
+    width: 500px;
+    height: 400px;
+    position: absolute;
+    margin-top: 250px;
+    margin-left: 150px;
+    border-radius: 20px;
+}
+
+.btns-edit-changpass {
+    margin-top: 50px;
+    margin-left: 155px;
+}
+
+.btn-Changepassword {
+    width: 200px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    font-size: 20px;
+    font-family: 800;
+    background: #022f5cb6;
+    color: #DCF2F1;
+    margin-bottom: 10px;
+
+}
+
+
+
+#btns-save-cancel-Name {
+    margin-top: 30px;
+    margin-left: 150px;
+}
+
+#btns-save-cancel-Email {
+    margin-top: 30px;
+    margin-left: 150px;
+}
+
+#btn-save,
+#btn-cancel {
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    font-size: 20px;
+    font-family: 800;
+    background: #022f5cb6;
+    color: #DCF2F1;
+    margin-right: 10px;
+
+}
+
+#btn-save:hover {
+    background: rgb(4, 88, 4);
+    border: 2px solid rgb(0, 66, 0);
+}
+
+#btn-cancel:hover {
+    background: brown;
+    border: 2px solid rgb(109, 13, 13);
+}
+
+.btns-logout-delete {
+    width: 310px;
+    height: 30px;
+    position: absolute;
+    margin-top: 570px;
+    margin-left: 250px;
+}
+
+.btn-logout {
+    width: 120px;
+    height: 30px;
+    margin-right: 50px;
+    background: #47709A;
+    border-radius: 10px;
+    border: 1px solid #DCF2F1;
+    color: #DCF2F1;
+    font-size: medium;
+    font-weight: 600;
+}
+
+.btn-delete {
+    width: 120px;
+    height: 30px;
+    margin-left: 20px;
+    background: #47709A;
+    border-radius: 10px;
+    border: 1px solid brown;
+    color: brown;
+    font-size: medium;
+    font-weight: 600;
+
+}
+
+.hide {
+    display: none;
+}
