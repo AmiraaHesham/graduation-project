@@ -194,4 +194,10 @@ hr {
 
 .btn-confirm {
     background: #1d2649af;
+
+}
+
+.btn-confirm:hover {
+    background: #0f1b49;
+
 }

@@ -1,11 +1,79 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import './Timetable.css'
 import Header from '../header/header'
+import axios from 'axios'
+import { toast, Toaster } from 'react-hot-toast';
 
 
 const Timetable = () => {
 
+    const [LectureName, setLectureName] = useState('')
+    const [LectureDay, setLectureDay] = useState('')
+    const [LectureTime, setLectureTime] = useState('')
+    const [LectureDuration, setLectureDuration] = useState('')
+    const [level, setlevel] = useState('')
+
+    const inputRefLecName = useRef()
+    const inputRefLecDay = useRef()
+    const inputRefLecDuration = useRef()
+    const inputRefLeclevel = useRef()
+    const inputRefLecTime = useRef()
+
+    const createCourse = async () => {
+        try {
+            const res = await axios.post('http://127.0.0.1:3000/api/v1/courses', {
+                name: LectureName,
+                lectureDay: LectureDay,
+                lectureDuration: LectureDuration,
+                level: level,
+                lectureTime: LectureTime
+            }, {
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Credentials": "true",
+                    "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
+                    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+                    "Authorization": 'Bearer ' + localStorage.token
+                }
+            })
+            inputRefLecDay.current.value = ''
+            inputRefLecDuration.current.value = ''
+            inputRefLecName.current.value = ''
+            inputRefLecTime.current.value = ''
+            inputRefLeclevel.current.value = ''
+            console.log(res)
+        }
+        catch (error) {
+            if (inputRefLecName.current.value === '') {
+                toast.error(error.response.data.errors[0].msg)
+            }
+            else if (inputRefLecDuration.current.value === '') {
+                toast.error(error.response.data.error.errors.lectureDuration.message)
+            }
+            else if (inputRefLecDay.current.value === '') {
+                toast.error(error.response.data.error.errors.lectureDay.message)
+            }
+            else if (inputRefLecTime.current.value === '') {
+                toast.error(error.response.data.error.errors.lectureTime.message)
+            }
+            else if (inputRefLeclevel.current.value === '') {
+                toast.error(error.response.data.error.errors.level.message)
+            }
+
+        }
+    }
+    const handleBtnDiscard = () => {
+        inputRefLecName.current.value = ''
+        inputRefLecDuration.current.value = ''
+        inputRefLecDay.current.value = ''
+        inputRefLeclevel.current.value = ''
+        inputRefLecTime.current.value = ''
+    }
+
+    const getCourses = () => {
+
+    }
 
     return (
         <div>
@@ -42,12 +110,13 @@ const Timetable = () => {
 
             </div>
             <div className='div-courses'>
+
                 <div className='add-course'>
                     <h3>Add Course</h3>
                     <hr></hr>
                     <div className='input-details-course'>
-                        <input placeholder='Lecture Name' />
-                        <input name='section' placeholder='Lecture Day' list='Days' />
+                        <input ref={inputRefLecName} placeholder='Lecture Name' onChange={(e) => { setLectureName(e.target.value) }} />
+                        <input ref={inputRefLecDay} name='section' onChange={(e) => { setLectureDay(e.target.value) }} placeholder='Lecture Day' list='Days' />
                         <datalist id='Days'>
                             <option value='Sat' >Sat</option>
                             <option value='Sun' >Sun</option>
@@ -56,9 +125,9 @@ const Timetable = () => {
                             <option value='Thu' >Thu</option>
                         </datalist>
 
-                        <input placeholder='Lecture Time' type='time' />
-                        <input placeholder='Lecture Duration' />
-                        <input placeholder='level' list='levels' />
+                        <input ref={inputRefLecTime} placeholder='Lecture Time' onChange={(e) => { setLectureTime(e.target.value) }} type='time' />
+                        <input ref={inputRefLecDuration} placeholder='Lecture Duration' onChange={(e) => { setLectureDuration(e.target.value) }} />
+                        <input ref={inputRefLeclevel} placeholder='level' list='levels' onChange={(e) => { setlevel(e.target.value) }} />
                         <datalist id='levels'>
                             <option value='First' />
                             <option value='Second' />
@@ -66,8 +135,8 @@ const Timetable = () => {
                             <option value='Fourth' />
                         </datalist>
                         <div className='div-btn-dis-conf'>
-                            <button className='btn-discard'>DISCARD</button>
-                            <button className='btn-confirm'>CONFIRM</button></div>
+                            <button onClick={handleBtnDiscard} className='btn-discard'>DISCARD</button>
+                            <button onClick={createCourse} className='btn-confirm'>CONFIRM</button></div>
                     </div >
                 </div >
                 <div className='edit-course'>
@@ -75,6 +144,10 @@ const Timetable = () => {
                     <hr></hr>
                 </div>
             </div >
+            <Toaster
+                position="bottom-center"
+                reverseOrder={true}
+            />
         </div >
     )
 }

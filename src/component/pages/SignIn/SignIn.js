@@ -30,7 +30,7 @@ const SignIn = () => {
                     }
 
                 },)
-            // console.log(res.data)
+            console.log(res)
             // console.log(res.data.token)
             // console.log(res.data.data.name)
             // console.log(res.data.data.profileImage)
@@ -38,12 +38,15 @@ const SignIn = () => {
             let token = res.data.token
             let name = res.data.data.name
             let profileImage = res.data.data.profileImage
-            let email = res.data.data.email
+            // let email = res.data.data.email
+            let id = res.data.data._id
+
 
             localStorage.setItem('token', token)
             localStorage.setItem('name', name)
             localStorage.setItem('profileImage', profileImage)
-            localStorage.setItem('email', email)
+            // localStorage.setItem('email', email)
+            localStorage.setItem('id', id)
 
 
             navigate('/LecturesDates')
