@@ -9,6 +9,9 @@ import Timetable from './component/pages/Timetable/Timetable.js';
 import OverAll from './component/pages/OverAll/OverAll.js';
 import Weekly from './component/pages/Weekly/Weekly.js';
 import Profile from './component/pages/Profile/Profile.js';
+import Assignments from './component/pages/Assignments/Assignments.js'
+import StudentSolution from './component/pages/StudentSolution/StudentSolution.js'
+
 
 function App() {
   return (
@@ -24,6 +27,8 @@ function App() {
         <Route path='/Timetable' element={<Timetable />} />
         <Route path='/OverAll' element={<OverAll />} />
         <Route path='/Weekly' element={<Weekly />} />
+        <Route path='/Assignments' element={<Assignments />} />
+        <Route path='/StudentSolution' element={<StudentSolution />} />
       </Routes>
     </div>
   );

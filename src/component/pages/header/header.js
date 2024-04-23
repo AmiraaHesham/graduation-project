@@ -15,7 +15,6 @@ const Header = () => {
         setName(name)
         if (profileImage !== 'undefined') {
             setprofileImage(profileImage);
-            console.log(profileImage)
         }
         else {
             setprofileImage('logoUser.png');

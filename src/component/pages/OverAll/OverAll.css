@@ -1,77 +1,8 @@
-.Lecture-Dates {
-    display: flex;
-    width: 350px;
-    height: 100px;
-    top: 40px;
-    left: -20px;
-    position: absolute;
-    justify-content: space-between;
-    margin: 20px 20px;
-}
-
-.Lecture-Dates h2 {
-    width: 200px;
-    left: 100px;
-    top: 20px;
-    position: absolute;
-}
-
-.Current-Class {
-    display: flex;
-    width: 350px;
-    height: 100px;
-    top: 150px;
-    left: -20px;
-    position: absolute;
-    justify-content: space-between;
-    margin: 20px 20px;
-}
-
-.Current-Class h2 {
-    width: 200px;
-    left: 100px;
-    top: 20px;
-    position: absolute;
-}
-
-.Timetable {
-    display: flex;
-    width: 350px;
-    height: 100px;
-    top: 260px;
-    left: -20px;
-    position: absolute;
-    justify-content: space-between;
-    margin: 20px 20px;
-}
-
-.Lecture-Dates:hover {
-    background: rgba(54, 83, 134, 0.105);
-
-}
-
-.Timetable:hover {
-    background: rgba(54, 83, 134, 0.105);
-
-}
-
-.Current-Class:hover {
-    background: rgba(54, 83, 134, 0.105);
-
-}
-
-.Timetable h2 {
-    width: 200px;
-    left: 100px;
-    top: 20px;
-    position: absolute;
-}
-
 .Students-Attendance-page {
     display: flex;
     width: 350px;
     height: 100px;
-    top: 370px;
+    top: 480px;
     left: -20px;
     position: absolute;
     justify-content: space-between;
@@ -89,7 +20,7 @@
     display: flex;
     width: 350px;
     height: 100px;
-    top: 480px;
+    top: 590px;
     left: -20px;
     position: absolute;
     justify-content: space-between;
@@ -115,7 +46,7 @@
     display: flex;
     width: 350px;
     height: 100px;
-    top: 590px;
+    top: 700px;
     left: -20px;
     position: absolute;
     justify-content: space-between;

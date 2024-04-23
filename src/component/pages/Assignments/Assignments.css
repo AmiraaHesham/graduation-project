@@ -1,4 +1,23 @@
-.Students-Attendance-page {
+.Assignments-page {
+    background: rgba(54, 84, 134, 0.22);
+    display: flex;
+    width: 350px;
+    height: 100px;
+    top: 370px;
+    left: -20px;
+    position: absolute;
+    justify-content: space-between;
+    margin: 20px 20px;
+}
+
+.Assignments-page h2 {
+    width: 200px;
+    left: 100px;
+    top: 20px;
+    position: absolute;
+}
+
+.div-StudentSolution {
     display: flex;
     width: 350px;
     height: 100px;
@@ -9,14 +28,24 @@
     margin: 20px 20px;
 }
 
-.Students-Attendance-page h2 {
-    width: 250px;
-    left: 100px;
+.StudentSolution {
+    position: absolute;
+    left: 50px
+}
+
+.StudentSolution h2 {
+    width: 200px;
+    left: 80px;
     top: 20px;
     position: absolute;
 }
 
-.div-OverAll-Weekly {
+.div-StudentSolution:hover {
+    background: rgba(54, 83, 134, 0.105);
+
+}
+
+.StudentsAttendance {
     display: flex;
     width: 350px;
     height: 100px;
@@ -27,34 +56,14 @@
     margin: 20px 20px;
 }
 
-.OverAll-Weekly,
-.Weekly {
-    position: absolute;
-    left: 50px;
-}
-
-.OverAll-Weekly h2,
-.Weekly h2 {
-    width: 200px;
+.StudentsAttendance h2 {
+    width: 350px;
     left: 100px;
     top: 20px;
     position: absolute;
 }
 
-.div-Weekly {
-    display: flex;
-    width: 350px;
-    height: 100px;
-    top: 700px;
-    left: -20px;
-    position: absolute;
-    justify-content: space-between;
-    margin: 20px 20px;
-    background: rgba(54, 84, 134, 0.22);
-
-}
-
-.div-OverAll-Weekly:hover {
+.StudentsAttendance:hover {
     background: rgba(54, 83, 134, 0.105);
 
 }

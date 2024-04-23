@@ -2,10 +2,46 @@ import React, { useState, useEffect } from 'react'
 import './CurrentClass.css'
 import { Link } from 'react-router-dom'
 import Header from '../header/header'
+import axios from 'axios'
 
 const CurrentClass = () => {
+    const [qr, setQr] = useState('')
+    const [course, setcourse] = useState([])
+    useEffect(() => {
+        getCoursePresent()
+    }, [])
+
+    const getCoursePresent = async () => {
+        const date = new Date();
+        const showTime = date.getHours() + ':' + date.getMinutes()
+        const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+        [new Date().getDay()]
+
+        try {
+            const res = await axios.get('http://127.0.0.1:3000/api/v1/courses', {
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Credentials": "true",
+                    "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
+                    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+                    "Authorization": 'Bearer ' + localStorage.token
+                }
+            })
 
 
+            for (let i = 0; i <= res.data.data.length; i++) {
+                if (res.data.data[i].lectureTime === showTime && weekday === res.data.data[i].lectureDay) {
+                    setcourse(res.data.data[i].name)
+                }
+                else {
+                    setcourse('There is no lecture now')
+                }
+            }
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
 
     const handleBtnShowQR = () => {
         let divgenrat = document.querySelector('#genratQR')
@@ -35,6 +71,19 @@ const CurrentClass = () => {
 
     }
 
+    const genratQR = async () => {
+        const res = await axios.post('http://127.0.0.1:3000/api/v1/qr', {
+            title: "data",
+            course: "66267a81c2ab06ff3f42620b",
+        })
+        setQr(res.data.data.course._id)
+        console.log(qr)
+
+        // const res1 = await axios.get(`http://127.0.0.1:3000/api/v1/qr/qr`)
+        // console.log(res1)
+    }
+
+
     return (
         <div>
             <Header />
@@ -58,7 +107,12 @@ const CurrentClass = () => {
                             d="M6 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3zm12 2H6a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1" clip-rule="evenodd" /></g></svg>
                     </div>
                 </Link>
-
+                <Link to={"/Assignments"} style={{ textDecoration: 'none', color: '#1D2649' }}>
+                    <div className='Assignments'>
+                        <h2>Assignments</h2>
+                        <svg id='time' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19 3h-4.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2m-7 0c.55 0 1 .45 1 1s-.45 1-1 1s-1-.45-1-1s.45-1 1-1m1 14H8c-.55 0-1-.45-1-1s.45-1 1-1h5c.55 0 1 .45 1 1s-.45 1-1 1m3-4H8c-.55 0-1-.45-1-1s.45-1 1-1h8c.55 0 1 .45 1 1s-.45 1-1 1m0-4H8c-.55 0-1-.45-1-1s.45-1 1-1h8c.55 0 1 .45 1 1s-.45 1-1 1" /></svg>
+                    </div>
+                </Link>
                 <Link to={"/OverAll"} style={{ textDecoration: 'none', color: '#1D2649' }}>
                     <div className='Students-Attendance'>
                         <h2>Students’ Attendance</h2>
@@ -68,9 +122,11 @@ const CurrentClass = () => {
                 </Link>
             </div>
             <div className='continer'>
+                <div className='hide' id='div-QR'>
+
+                </div>
                 <div className='subject'>
-                    <h3>Super Subject Monday
-                        6:00 pm | 3 Hour(s)</h3>
+                    <h3>{course}</h3>
                 </div>
 
                 <div className='div-QRcode' onClick={handleBtnShowQR}>
@@ -78,8 +134,10 @@ const CurrentClass = () => {
                     <svg xmlns="http://www.w3.org/2000/svg" id='down-arrowQR' width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M11.178 19.569a.998.998 0 0 0 1.644 0l9-13A.999.999 0 0 0 21 5H3a1.002 1.002 0 0 0-.822 1.569z" /></svg></div>
 
                 <div className='hide' id='genratQR'>
-                    <button className='btn-genrat'>Generate QR code</button>
+                    <button onClick={genratQR} className='btn-genrat'>Generate QR code</button>
                 </div>
+
+
 
 
                 <div className='attendList' id='attendList' onClick={handleShowAttendList}>
@@ -104,158 +162,7 @@ const CurrentClass = () => {
                                 <th >STATUS</th>
                             </tr>
                             <tbody>
-                                <tr>
-                                    <td>12345</td>
-                                    <td>اميره هشام محمد محمود</td>
-                                    <td>medical</td>
-                                    <td>Present</td>
-                                </tr>
-                                <tr>
-                                    <td>12345</td>
-                                    <td>اميره هشام محمد محمود</td>
-                                    <td>medical</td>
-                                    <td>Present</td>
-                                </tr><tr>
-                                    <td>12345</td>
-                                    <td>اميره هشام محمد محمود</td>
-                                    <td>medical</td>
-                                    <td>Present</td>
-                                </tr>
-                                <tr>
-                                    <td>12345</td>
-                                    <td>اميره هشام محمد محمود</td>
-                                    <td>medical</td>
-                                    <td>Present</td>
-                                </tr>
-                                <tr>
-                                    <td>12345</td>
-                                    <td>اميره هشام محمد محمود</td>
-                                    <td>medical</td>
-                                    <td>Present</td>
-                                </tr><tr>
-                                    <td>12345</td>
-                                    <td>اميره هشام محمد محمود</td>
-                                    <td>medical</td>
-                                    <td>Present</td>
-                                </tr><tr>
-                                    <td>12345</td>
-                                    <td>اميره هشام محمد محمود</td>
-                                    <td>medical</td>
-                                    <td>Present</td>
-                                </tr><tr>
-                                    <td>12345</td>
-                                    <td>اميره هشام محمد محمود</td>
-                                    <td>medical</td>
-                                    <td>Present</td>
-                                </tr><tr>
-                                    <td>12345</td>
-                                    <td>اميره هشام محمد محمود</td>
-                                    <td>medical</td>
-                                    <td>Present</td>
-                                </tr><tr>
-                                    <td>12345</td>
-                                    <td>اميره هشام محمد محمود</td>
-                                    <td>medical</td>
-                                    <td>Present</td>
-                                </tr><tr>
-                                    <td>12345</td>
-                                    <td>اميره هشام محمد محمود</td>
-                                    <td>medical</td>
-                                    <td>Present</td>
-                                </tr><tr>
-                                    <td>12345</td>
-                                    <td>اميره هشام محمد محمود</td>
-                                    <td>medical</td>
-                                    <td>Present</td>
-                                </tr><tr>
-                                    <td>12345</td>
-                                    <td>اميره هشام محمد محمود</td>
-                                    <td>medical</td>
-                                    <td>Present</td>
-                                </tr><tr>
-                                    <td>12345</td>
-                                    <td>اميره هشام محمد محمود</td>
-                                    <td>medical</td>
-                                    <td>Present</td>
-                                </tr><tr>
-                                    <td>12345</td>
-                                    <td>اميره هشام محمد محمود</td>
-                                    <td>medical</td>
-                                    <td>Present</td>
-                                </tr><tr>
-                                    <td>12345</td>
-                                    <td>اميره هشام محمد محمود</td>
-                                    <td>medical</td>
-                                    <td>Present</td>
-                                </tr><tr>
-                                    <td>12345</td>
-                                    <td>اميره هشام محمد محمود</td>
-                                    <td>medical</td>
-                                    <td>Present</td>
-                                </tr><tr>
-                                    <td>12345</td>
-                                    <td>اميره هشام محمد محمود</td>
-                                    <td>medical</td>
-                                    <td>Present</td>
-                                </tr><tr>
-                                    <td>12345</td>
-                                    <td>اميره هشام محمد محمود</td>
-                                    <td>medical</td>
-                                    <td>Present</td>
-                                </tr>
-                                <tr>
-                                    <td>12345</td>
-                                    <td>اميره هشام محمد محمود</td>
-                                    <td>medical</td>
-                                    <td>Present</td>
-                                </tr><tr>
-                                    <td>12345</td>
-                                    <td>اميره هشام محمد محمود</td>
-                                    <td>medical</td>
-                                    <td>Present</td>
-                                </tr>
-                                <tr>
-                                    <td>12345</td>
-                                    <td>اميره هشام محمد محمود</td>
-                                    <td>medical</td>
-                                    <td>Present</td>
-                                </tr>
-                                <tr>
-                                    <td>12345</td>
-                                    <td>اميره هشام محمد محمود</td>
-                                    <td>medical</td>
-                                    <td>Present</td>
-                                </tr><tr>
-                                    <td>12345</td>
-                                    <td>اميره هشام محمد محمود</td>
-                                    <td>medical</td>
-                                    <td>Present</td>
-                                </tr><tr>
-                                    <td>12345</td>
-                                    <td>اميره هشام محمد محمود</td>
-                                    <td>medical</td>
-                                    <td>Present</td>
-                                </tr><tr>
-                                    <td>12345</td>
-                                    <td>اميره هشام محمد محمود</td>
-                                    <td>medical</td>
-                                    <td>Present</td>
-                                </tr><tr>
-                                    <td>12345</td>
-                                    <td>اميره هشام محمد محمود</td>
-                                    <td>medical</td>
-                                    <td>Present</td>
-                                </tr><tr>
-                                    <td>12345</td>
-                                    <td>اميره هشام محمد محمود</td>
-                                    <td>medical</td>
-                                    <td>Present</td>
-                                </tr><tr>
-                                    <td>12345</td>
-                                    <td>اميره هشام محمد محمود</td>
-                                    <td>medical</td>
-                                    <td>Present</td>
-                                </tr>
+
                             </tbody>
                         </table>
                     </div>

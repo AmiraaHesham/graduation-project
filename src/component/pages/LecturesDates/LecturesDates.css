@@ -17,7 +17,7 @@
     position: absolute;
 }
 
-.Current-Class {
+/* .Current-Class {
     display: flex;
     width: 350px;
     height: 100px;
@@ -46,6 +46,43 @@
     margin: 20px 20px;
 }
 
+.Assignments {
+    display: flex;
+    width: 350px;
+    height: 100px;
+    top: 370px;
+    left: -20px;
+    position: absolute;
+    justify-content: space-between;
+    margin: 20px 20px;
+}
+
+.Assignments h2 {
+    width: 200px;
+    left: 100px;
+    top: 20px;
+    position: absolute;
+}
+
+.Students-Attendance {
+    display: flex;
+    width: 350px;
+    height: 100px;
+    top: 480px;
+    left: -20px;
+    position: absolute;
+    justify-content: space-between;
+    margin: 20px 20px;
+
+}
+
+
+.Students-Attendance h2 {
+    width: 250px;
+    left: 100px;
+    top: 20px;
+    position: absolute;
+}
 
 .Students-Attendance:hover {
     background: rgba(54, 83, 134, 0.105);
@@ -62,32 +99,19 @@
 
 }
 
+.Assignments:hover {
+    background: rgba(54, 83, 134, 0.105);
+
+}
+
 .Timetable h2 {
     width: 200px;
     left: 100px;
     top: 20px;
     position: absolute;
-}
-
-.Students-Attendance {
-    display: flex;
-    width: 350px;
-    height: 100px;
-    top: 370px;
-    left: -20px;
-    position: absolute;
-    justify-content: space-between;
-    margin: 20px 20px;
-
-}
+} */
 
 
-.Students-Attendance h2 {
-    width: 250px;
-    left: 100px;
-    top: 20px;
-    position: absolute;
-}
 
 .div-timetable {
     width: 820px;

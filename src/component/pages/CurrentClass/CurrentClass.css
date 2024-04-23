@@ -1,21 +1,3 @@
-.Lecture-Dates {
-    display: flex;
-    width: 350px;
-    height: 100px;
-    top: 40px;
-    left: -20px;
-    position: absolute;
-    justify-content: space-between;
-    margin: 20px 20px;
-}
-
-.Lecture-Dates h2 {
-    width: 200px;
-    left: 100px;
-    top: 20px;
-    position: absolute;
-}
-
 .Current-Class-page {
     display: flex;
     width: 350px;
@@ -36,59 +18,6 @@
     position: absolute;
 }
 
-.Timetable {
-    display: flex;
-    width: 350px;
-    height: 100px;
-    top: 260px;
-    left: -20px;
-    position: absolute;
-    justify-content: space-between;
-    margin: 20px 20px;
-}
-
-
-.Students-Attendance:hover {
-    background: rgba(54, 83, 134, 0.105);
-
-}
-
-.Timetable:hover {
-    background: rgba(54, 83, 134, 0.105);
-
-}
-
-.Lecture-Dates:hover {
-    background: rgba(54, 83, 134, 0.105);
-
-}
-
-
-.Timetable h2 {
-    width: 200px;
-    left: 100px;
-    top: 20px;
-    position: absolute;
-}
-
-.Students-Attendance {
-    display: flex;
-    width: 350px;
-    height: 100px;
-    top: 370px;
-    left: -20px;
-    position: absolute;
-    justify-content: space-between;
-    margin: 20px 20px;
-
-}
-
-.Students-Attendance h2 {
-    width: 250px;
-    left: 100px;
-    top: 20px;
-    position: absolute;
-}
 
 .continer {
     width: 1000px;
@@ -170,6 +99,16 @@
     margin-top: 0px;
     background: rgba(220, 242, 241, 0.57);
     border-radius: 10px
+}
+
+#div-QR {
+    width: 900px;
+    height: 700px;
+    background: #DCF2F1;
+    position: absolute;
+    border-radius: 10px;
+    margin-left: 80px;
+    margin-top: 50px;
 }
 
 .btn-genrat {

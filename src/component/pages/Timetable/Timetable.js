@@ -4,6 +4,8 @@ import './Timetable.css'
 import Header from '../header/header'
 import axios from 'axios'
 import { toast, Toaster } from 'react-hot-toast';
+import { FiEdit } from "react-icons/fi";
+import { MdDeleteOutline } from "react-icons/md";
 
 
 const Timetable = () => {
@@ -13,6 +15,8 @@ const Timetable = () => {
     const [LectureTime, setLectureTime] = useState('')
     const [LectureDuration, setLectureDuration] = useState('')
     const [level, setlevel] = useState('')
+    const [courses, setcourses] = useState([])
+
 
     const inputRefLecName = useRef()
     const inputRefLecDay = useRef()
@@ -20,9 +24,12 @@ const Timetable = () => {
     const inputRefLeclevel = useRef()
     const inputRefLecTime = useRef()
 
+    useEffect(() => {
+        getCourses()
+    }, [courses])
     const createCourse = async () => {
         try {
-            const res = await axios.post('http://127.0.0.1:3000/api/v1/courses', {
+            const res = await axios.post('http://127.0.0.1:3000/api/v1/lecturer/CoursesForLecturer/' + localStorage.id, {
                 name: LectureName,
                 lectureDay: LectureDay,
                 lectureDuration: LectureDuration,
@@ -71,8 +78,22 @@ const Timetable = () => {
         inputRefLecTime.current.value = ''
     }
 
-    const getCourses = () => {
-
+    const getCourses = async () => {
+        try {
+            const res = await axios.get('http://127.0.0.1:3000/api/v1/lecturer/CoursesForLecturer/6609e6811383662004df88d1' + localStorage.id, {
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Credentials": "true",
+                    "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
+                    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+                    "Authorization": 'Bearer ' + localStorage.token
+                }
+            })
+            setcourses(res.data.data)
+        }
+        catch (error) {
+            console.log(error)
+        }
     }
 
     return (
@@ -99,7 +120,12 @@ const Timetable = () => {
                     <svg xmlns="http://www.w3.org/2000/svg" id='time' viewBox="0 0 24 24"><g fill="currentColor"><path d="M8 13a1 1 0 1 1 0-2a1 1 0 0 1 0 2m0 4a1 1 0 1 1 0-2a1 1 0 0 1 0 2m3-1a1 1 0 1 0 2 0a1 1 0 0 0-2 0m5 1a1 1 0 1 1 0-2a1 1 0 0 1 0 2m-5-5a1 1 0 1 0 2 0a1 1 0 0 0-2 0m5 1a1 1 0 1 1 0-2a1 1 0 0 1 0 2M8 7a1 1 0 0 0 0 2h8a1 1 0 1 0 0-2z" /><path fill-rule="evenodd"
                         d="M6 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3zm12 2H6a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1" clip-rule="evenodd" /></g></svg>
                 </div>
-
+                <Link to={"/Assignments"} style={{ textDecoration: 'none', color: '#1D2649' }}>
+                    <div className='Assignments'>
+                        <h2>Assignments</h2>
+                        <svg id='time' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19 3h-4.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2m-7 0c.55 0 1 .45 1 1s-.45 1-1 1s-1-.45-1-1s.45-1 1-1m1 14H8c-.55 0-1-.45-1-1s.45-1 1-1h5c.55 0 1 .45 1 1s-.45 1-1 1m3-4H8c-.55 0-1-.45-1-1s.45-1 1-1h8c.55 0 1 .45 1 1s-.45 1-1 1m0-4H8c-.55 0-1-.45-1-1s.45-1 1-1h8c.55 0 1 .45 1 1s-.45 1-1 1" /></svg>
+                    </div>
+                </Link>
                 <Link to={"/OverAll"} style={{ textDecoration: 'none', color: '#1D2649' }}>
                     <div className='Students-Attendance'>
                         <h2>Students’ Attendance</h2>
@@ -118,11 +144,11 @@ const Timetable = () => {
                         <input ref={inputRefLecName} placeholder='Lecture Name' onChange={(e) => { setLectureName(e.target.value) }} />
                         <input ref={inputRefLecDay} name='section' onChange={(e) => { setLectureDay(e.target.value) }} placeholder='Lecture Day' list='Days' />
                         <datalist id='Days'>
-                            <option value='Sat' >Sat</option>
-                            <option value='Sun' >Sun</option>
-                            <option value='Mon' >Mon</option>
-                            <option value='Tue' >Tue</option>
-                            <option value='Thu' >Thu</option>
+                            <option value='Sunday' >Sunday</option>
+                            <option value='Monday' >Monday</option>
+                            <option value='Tuesday' >Tuesday</option>
+                            <option value='Wednesday' >Wednesday</option>
+                            <option value='Thursday' >Thursday</option>
                         </datalist>
 
                         <input ref={inputRefLecTime} placeholder='Lecture Time' onChange={(e) => { setLectureTime(e.target.value) }} type='time' />
@@ -142,6 +168,21 @@ const Timetable = () => {
                 <div className='edit-course'>
                     <h3>Edit Courses</h3>
                     <hr></hr>
+                    <div className='list-courses'>
+                        {courses.map((course, index) => {
+                            return <div key={index} className='div-course' >
+                                <div style={{ marginLeft: '400px' }}>
+                                    <span> <FiEdit /></span>
+                                    <span><MdDeleteOutline /></span></div>
+
+                                <div>Lecture Name: {course.name}</div>
+                                <div>Lecture Day: {course.lectureDay}</div>
+                                <div>Lecture Duration :{course.lectureDuration}</div>
+                                <div>Lecture Time :{course.lectureTime}</div>
+                                <div>Level :{course.level}</div>
+                            </div>
+                        })}
+                    </div>
                 </div>
             </div >
             <Toaster
