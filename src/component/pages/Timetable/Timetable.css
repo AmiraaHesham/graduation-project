@@ -44,8 +44,7 @@
     width: 550px;
     height: 768px;
     background: #5280A6;
-    overflow: hidden;
-    overflow-y: scroll;
+
 
 }
 
@@ -133,20 +132,31 @@ hr {
 
 .list-courses {
     margin-left: 40px;
+    height: 650px;
     font-size: 25px;
     /* font-family: ; */
+    overflow: hidden;
+    position: absolute;
+    overflow-y: scroll;
 
+}
 
+.list-courses h4 {
+    margin-bottom: 2px;
 }
 
 .div-course {
     background: #365386be;
-    border-radius: 10px;
+    border-radius: 7px;
+    width: 450px;
     margin-left: 0px;
     margin-right: 20px;
-    margin-bottom: 5px;
     margin-top: 10px;
-    color: #0f1b49;
+    border: 2px solid #0f1b49;
+    color: #DCF2F1;
+    font-size: '30px';
+    font-weight: 700;
+
 }
 
 .div-course div {

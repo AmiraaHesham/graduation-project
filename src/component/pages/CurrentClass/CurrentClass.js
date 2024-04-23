@@ -9,6 +9,7 @@ const CurrentClass = () => {
     const [qrImage, setqrImage] = useState('')
     const [qrId, setQrId] = useState('')
     const [courseId, setcourseId] = useState('')
+    const [timeAndDuration, settimeAndDuration] = useState('')
     const [course, setcourse] = useState([])
     useEffect(() => {
         getCoursePresent()
@@ -16,6 +17,7 @@ const CurrentClass = () => {
 
     const getCoursePresent = async () => {
         const date = new Date();
+
         const showTime = date.getHours() + ':' + date.getMinutes()
         const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
         [new Date().getDay()]
@@ -30,13 +32,26 @@ const CurrentClass = () => {
                     "Authorization": 'Bearer ' + localStorage.token
                 }
             })
+            // const time = new Date();
+            // console.log(time.getHours() + )
+            // console.log(time)
 
 
             for (let i = 0; i <= res.data.data.length; i++) {
+                const time = new Date();
+
+                let hour = res.data.data[i].lectureDuration
+                // hour = Number(hour)
+                let Duration = time.getHours() + hour
+                console.log(time.getHours() + hour)
+                console.log(res.data.data[i].lectureTime + Duration)
                 if (res.data.data[i].lectureTime <= showTime && weekday === res.data.data[i].lectureDay) {
 
                     setcourse(res.data.data[i])
+                    settimeAndDuration(res.data.data[i].lectureTime + '  AM  || ' + res.data.data[i].lectureDuration + ' Hours')
                     setcourseId(res.data.data[i]._id)
+
+
 
                 }
                 else {
@@ -98,7 +113,6 @@ const CurrentClass = () => {
         QRimg.classList.add('hide')
     }
 
-
     return (
         <div>
             <Header />
@@ -137,20 +151,16 @@ const CurrentClass = () => {
                 </Link>
             </div>
 
-
-
             <div className='continer'>
-
                 <div className='subject'>
                     <h1>{course.name}</h1>
-                    <h3>{course.lectureTime} || {course.lectureDuration} Hours</h3>
+                    <h3>{timeAndDuration} </h3>
                 </div>
 
                 <div className='hide' id='div-QRimg'>
                     <img className='qrImg' src={qrImage} alt=''></img>
                     <button onClick={handleBtnClose} className='btn-Close'>Close</button>
                 </div>
-
 
                 <div className='div-QRcode' onClick={handleDivShowQR}>
                     <h3>QR Code</h3>
@@ -163,6 +173,7 @@ const CurrentClass = () => {
                 <div className='attendList' id='attendList' onClick={handleShowAttendList}>
                     <h3>Attendance List</h3>
                 </div>
+
                 <div className='hide' id='conteiner_attendList'>
                     <input className='input-search' placeholder='Search By Name' type='text'></input>
 
@@ -170,8 +181,8 @@ const CurrentClass = () => {
                         <button className='btn-present'>Present</button>
                         <button className='btn-absent'>Absent</button>
                     </div>
-                    <div className='div-list' id='list'>
 
+                    <div className='div-list' id='list'>
                         <table className='tab-attend' style={{ width: '100%', position: 'absolute', border: 'none' }}>
                             <tr>
                                 <th >ID</th>

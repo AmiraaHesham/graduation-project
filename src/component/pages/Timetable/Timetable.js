@@ -7,7 +7,6 @@ import { toast, Toaster } from 'react-hot-toast';
 import { FiEdit } from "react-icons/fi";
 import { MdDeleteOutline } from "react-icons/md";
 
-
 const Timetable = () => {
 
     const [LectureName, setLectureName] = useState('')
@@ -171,15 +170,20 @@ const Timetable = () => {
                     <div className='list-courses'>
                         {courses.map((course, index) => {
                             return <div key={index} className='div-course' >
-                                <span style={{ alignItems: 'start   ' }}>
+                                <span style={{ position: 'absolute', marginTop: '5px', marginLeft: '390px', fontSize: '25px', fontWeight: '700' }}>
                                     <span> <FiEdit /></span>
                                     <span><MdDeleteOutline /></span></span>
-                                <span>
-                                    <div>Lecture Name: {course.name}</div>
-                                    <div>Lecture Day: {course.lectureDay}</div>
-                                    <div>Lecture Duration :{course.lectureDuration}</div>
-                                    <div>Lecture Time :{course.lectureTime}</div>
-                                    <div>Level :{course.level}</div></span>
+                                <div style={{ margin: '5px 0px 5px 5px ' }}>
+                                    <span>Name: {course.name}</span>
+                                    <br></br>
+                                    <span> Day: {course.lectureDay}</span>
+                                    <br></br>
+                                    <span> Duration: {course.lectureDuration}</span>
+                                    <br></br>
+                                    <span>Time: {course.lectureTime}</span>
+                                    <br></br>
+                                    <span>Level:   {course.level}</span>
+                                </div>
                             </div>
                         })}
                     </div>
