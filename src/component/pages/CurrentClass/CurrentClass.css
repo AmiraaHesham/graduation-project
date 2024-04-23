@@ -33,7 +33,20 @@
     color: #1D2649;
     font-size: 27px;
     font-weight: 800;
-    word-wrap: break-word
+    margin-top: -30px;
+    margin-left: 10px;
+}
+
+.subject h1 {
+    text-transform: uppercase;
+    width: 500px;
+    height: 55px;
+    color: #1D2649;
+    font-size: 30px;
+    font-weight: 800;
+    word-wrap: break-word;
+    margin-top: 30px;
+
 }
 
 .subject {
@@ -46,6 +59,7 @@
     height: 70px;
     background: #47709A;
     border-radius: 10px;
+    margin-top: -30px;
 }
 
 .div-QRcode h3,
@@ -77,21 +91,22 @@
     border-radius: 10px;
 }
 
-#down-arrowQR,
+/* #down-arrowQR,
 #down-arrowAttend {
     color: #DCF2F1;
-    position: absolute;
-    margin-top: -80px;
-    margin-left: 950px;
-}
+    /* position: absolute; */
+/* margin-top: -0px;
+    margin-left: 950px; */
+/* } */
 
-.up-arrow {
+/* .up-arrow {
     color: #DCF2F1;
     margin-left: 950px;
     margin-top: 20px;
+    position: relative;
     transform: rotate(-180deg);
 
-}
+} */
 
 .generQR {
     width: 1035px;
@@ -101,14 +116,39 @@
     border-radius: 10px
 }
 
-#div-QR {
-    width: 900px;
-    height: 700px;
-    background: #DCF2F1;
+#div-QRimg {
+    width: 1000px;
+    height: 800px;
+    background: #47719ae8;
     position: absolute;
     border-radius: 10px;
     margin-left: 80px;
+    margin-top: -50px;
+}
+
+#div-QRimg img {
+    width: 650px;
+    height: 650px;
+    margin-left: 170px;
     margin-top: 50px;
+}
+
+.btn-Close {
+    position: absolute;
+    margin-top: 730px;
+    margin-left: -400px;
+    width: 120px;
+    height: 40px;
+    background: #1D2649;
+    color: #DCF2F1;
+    font-size: 20px;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+}
+
+.btn-Close:hover {
+    background: #C80B0B;
 }
 
 .btn-genrat {
@@ -137,7 +177,7 @@
 
 .div-attendList {
     width: 1036px;
-    height: 650px;
+    height: 640px;
     margin-left: 0px;
     margin-top: 0px;
     background: rgba(220, 242, 241, 0.50);
@@ -148,7 +188,7 @@
 
 .div-attendList-after {
     width: 1036px;
-    height: 510px;
+    height: 490px;
     background: rgba(220, 242, 241, 0.50);
     border-radius: 10px;
     cursor: pointer;
@@ -218,9 +258,9 @@
     margin-left: 10px;
     margin-top: 15px;
     width: 1020px;
-    height: 560px;
+    height: 550px;
     overflow: hidden;
-    position: absolute;
+    /* position: absolute; */
     overflow-y: scroll;
 }
 
@@ -228,10 +268,10 @@
     margin-left: 8px;
     margin-top: 15px;
     width: 1020px;
-    height: 420px;
+    height: 400px;
     overflow: hidden;
     overflow-y: scroll;
-    position: absolute;
+    /* position: absolute; */
 }
 
 .tab-attend th {
@@ -241,6 +281,7 @@
     color: #1D2649;
     font-size: 24px;
     font-weight: 800;
+
 }
 
 
@@ -252,5 +293,6 @@
     font-weight: 800;
     color: #263658;
     text-align: center;
-    word-wrap: break-word
+
+
 }

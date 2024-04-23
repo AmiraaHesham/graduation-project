@@ -29,7 +29,7 @@ const Timetable = () => {
     }, [courses])
     const createCourse = async () => {
         try {
-            const res = await axios.post('http://127.0.0.1:3000/api/v1/lecturer/CoursesForLecturer/' + localStorage.id, {
+            const res = await axios.post('http://127.0.0.1:3000/api/v1/courses', {
                 name: LectureName,
                 lectureDay: LectureDay,
                 lectureDuration: LectureDuration,
@@ -80,7 +80,7 @@ const Timetable = () => {
 
     const getCourses = async () => {
         try {
-            const res = await axios.get('http://127.0.0.1:3000/api/v1/lecturer/CoursesForLecturer/6609e6811383662004df88d1' + localStorage.id, {
+            const res = await axios.get('http://127.0.0.1:3000/api/v1/courses', {
                 headers: {
                     "Access-Control-Allow-Origin": "*",
                     "Access-Control-Allow-Credentials": "true",
@@ -171,15 +171,15 @@ const Timetable = () => {
                     <div className='list-courses'>
                         {courses.map((course, index) => {
                             return <div key={index} className='div-course' >
-                                <div style={{ marginLeft: '400px' }}>
+                                <span style={{ alignItems: 'start   ' }}>
                                     <span> <FiEdit /></span>
-                                    <span><MdDeleteOutline /></span></div>
-
-                                <div>Lecture Name: {course.name}</div>
-                                <div>Lecture Day: {course.lectureDay}</div>
-                                <div>Lecture Duration :{course.lectureDuration}</div>
-                                <div>Lecture Time :{course.lectureTime}</div>
-                                <div>Level :{course.level}</div>
+                                    <span><MdDeleteOutline /></span></span>
+                                <span>
+                                    <div>Lecture Name: {course.name}</div>
+                                    <div>Lecture Day: {course.lectureDay}</div>
+                                    <div>Lecture Duration :{course.lectureDuration}</div>
+                                    <div>Lecture Time :{course.lectureTime}</div>
+                                    <div>Level :{course.level}</div></span>
                             </div>
                         })}
                     </div>

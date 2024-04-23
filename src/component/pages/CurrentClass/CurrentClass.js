@@ -5,7 +5,10 @@ import Header from '../header/header'
 import axios from 'axios'
 
 const CurrentClass = () => {
-    const [qr, setQr] = useState('')
+    // const [qr, setQr] = useState('')
+    const [qrImage, setqrImage] = useState('')
+    const [qrId, setQrId] = useState('')
+    const [courseId, setcourseId] = useState('')
     const [course, setcourse] = useState([])
     useEffect(() => {
         getCoursePresent()
@@ -30,8 +33,11 @@ const CurrentClass = () => {
 
 
             for (let i = 0; i <= res.data.data.length; i++) {
-                if (res.data.data[i].lectureTime === showTime && weekday === res.data.data[i].lectureDay) {
-                    setcourse(res.data.data[i].name)
+                if (res.data.data[i].lectureTime <= showTime && weekday === res.data.data[i].lectureDay) {
+
+                    setcourse(res.data.data[i])
+                    setcourseId(res.data.data[i]._id)
+
                 }
                 else {
                     setcourse('There is no lecture now')
@@ -43,10 +49,9 @@ const CurrentClass = () => {
         }
     }
 
-    const handleBtnShowQR = () => {
+    const handleDivShowQR = () => {
         let divgenrat = document.querySelector('#genratQR')
         let AttendList = document.querySelector('#attendList')
-        let arrows = document.querySelector('#down-arrowQR')
         let list = document.querySelector('#list')
         let conteiner_attendList = document.querySelector('#conteiner_attendList')
         conteiner_attendList.classList.toggle('div-attendList-after')
@@ -54,7 +59,6 @@ const CurrentClass = () => {
         divgenrat.classList.toggle("generQR")
         AttendList.classList.toggle("attendList")
         AttendList.classList.toggle("attendList-after")
-        arrows.classList.toggle("up-arrow")
         list.classList.toggle('div-list-after')
         list.classList.toggle('div-list')
 
@@ -62,8 +66,6 @@ const CurrentClass = () => {
     }
 
     const handleShowAttendList = () => {
-        let arrows = document.querySelector('#down-arrowAttend')
-        arrows.classList.toggle("up-arrow")
         let conteiner_attendList = document.querySelector('#conteiner_attendList')
         conteiner_attendList.classList.toggle("hide")
         conteiner_attendList.classList.toggle("div-attendList")
@@ -71,16 +73,29 @@ const CurrentClass = () => {
 
     }
 
-    const genratQR = async () => {
-        const res = await axios.post('http://127.0.0.1:3000/api/v1/qr', {
-            title: "data",
-            course: "66267a81c2ab06ff3f42620b",
-        })
-        setQr(res.data.data.course._id)
-        console.log(qr)
+    const btnGenratQR = async () => {
+        try {
+            const res = await axios.post('http://127.0.0.1:3000/api/v1/qr', {
+                title: course,
+                course: courseId,
+            })
+            let QRId = res.data.data._id
 
-        // const res1 = await axios.get(`http://127.0.0.1:3000/api/v1/qr/qr`)
-        // console.log(res1)
+            let QRimg = document.querySelector('#div-QRimg')
+            QRimg.classList.remove('hide')
+            const res1 = await axios.get('http://127.0.0.1:3000/api/v1/qr/' + QRId)
+            setqrImage(res1.data.data.qr)
+            console.log(res1)
+        }
+        catch (error) {
+            console.log(error)
+        }
+
+    }
+
+    const handleBtnClose = () => {
+        let QRimg = document.querySelector('#div-QRimg')
+        QRimg.classList.add('hide')
     }
 
 
@@ -121,29 +136,32 @@ const CurrentClass = () => {
                     </div>
                 </Link>
             </div>
+
+
+
             <div className='continer'>
-                <div className='hide' id='div-QR'>
 
-                </div>
                 <div className='subject'>
-                    <h3>{course}</h3>
+                    <h1>{course.name}</h1>
+                    <h3>{course.lectureTime} || {course.lectureDuration} Hours</h3>
                 </div>
 
-                <div className='div-QRcode' onClick={handleBtnShowQR}>
+                <div className='hide' id='div-QRimg'>
+                    <img className='qrImg' src={qrImage} alt=''></img>
+                    <button onClick={handleBtnClose} className='btn-Close'>Close</button>
+                </div>
+
+
+                <div className='div-QRcode' onClick={handleDivShowQR}>
                     <h3>QR Code</h3>
-                    <svg xmlns="http://www.w3.org/2000/svg" id='down-arrowQR' width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M11.178 19.569a.998.998 0 0 0 1.644 0l9-13A.999.999 0 0 0 21 5H3a1.002 1.002 0 0 0-.822 1.569z" /></svg></div>
+                </div>
 
                 <div className='hide' id='genratQR'>
-                    <button onClick={genratQR} className='btn-genrat'>Generate QR code</button>
+                    <button onClick={btnGenratQR} className='btn-genrat'>Generate QR code</button>
                 </div>
-
-
-
 
                 <div className='attendList' id='attendList' onClick={handleShowAttendList}>
                     <h3>Attendance List</h3>
-                    <svg xmlns="http://www.w3.org/2000/svg" id='down-arrowAttend' width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor"
-                        d="M11.178 19.569a.998.998 0 0 0 1.644 0l9-13A.999.999 0 0 0 21 5H3a1.002 1.002 0 0 0-.822 1.569z" /></svg>
                 </div>
                 <div className='hide' id='conteiner_attendList'>
                     <input className='input-search' placeholder='Search By Name' type='text'></input>
@@ -162,7 +180,10 @@ const CurrentClass = () => {
                                 <th >STATUS</th>
                             </tr>
                             <tbody>
-
+                                <td>12345</td>
+                                <td>amira hehsam</td>
+                                <td>information</td>
+                                <td>present</td>
                             </tbody>
                         </table>
                     </div>
