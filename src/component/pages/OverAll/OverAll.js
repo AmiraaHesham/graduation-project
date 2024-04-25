@@ -2,8 +2,33 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import './OverAll.css'
 import Header from '../header/header'
+import axios from 'axios'
 const OverAll = () => {
+  const [course, setCourse] = useState([])
 
+  useEffect(() => {
+    getCourses()
+  })
+
+  const getCourses = async () => {
+    // try {
+    //   const res = await axios.get('http://127.0.0.1:3000/api/v1/courses',
+    //     {
+    //       headers: {
+    //         "Access-Control-Allow-Origin": "*",
+    //         "Access-Control-Allow-Credentials": "true",
+    //         "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
+    //         "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+    //         "Authorization": 'Bearer ' + localStorage.token
+    //       }
+    //     })
+    //   setCourse(res.data.data.name)
+
+    // }
+    // catch (error) {
+    //   console.log(error)
+    // }
+  }
 
 
   return (
@@ -58,7 +83,11 @@ const OverAll = () => {
 
 
       </div>
+      <div className='div-chooseSubject'>
+        <div className='div-chooseSubject'>
 
+        </div>
+      </div>
     </div>
   )
 }

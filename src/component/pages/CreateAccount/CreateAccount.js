@@ -24,7 +24,6 @@ const CreateAccount = () => {
                 email: Email,
                 password: password,
                 passwordConfirm: Confirmpassword,
-                programme: programme,
                 profileImage: photo,
             }
 
@@ -77,12 +76,10 @@ const CreateAccount = () => {
                     <input placeholder='Email *' type='text' onChange={(e) => setEmail(e.target.value)}></input>
                     <input placeholder='Password *' type='password' onChange={(e) => setPassword(e.target.value)}></input>
                     <input placeholder='Confirm Password *' type='password' onChange={(e) => setConfirmPassword(e.target.value)}></input>
-                    <input placeholder='programme ' type='text' onChange={(e) => setprogramme(e.target.value)}></input>
                 </div>
                 <Toaster
                     position="bottom-center"
-                    reverseOrder={false}
-                />
+                    reverseOrder={false} />
                 <button className='btn-create' onClick={addNewUser}>Create</button >
                 <div className='div-h4-Registered'>
                     <h4>Already Registered?

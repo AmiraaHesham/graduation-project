@@ -1,29 +1,24 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import './CurrentClass.css'
 import { Link } from 'react-router-dom'
 import Header from '../header/header'
 import axios from 'axios'
+import { toast, Toaster } from 'react-hot-toast';
 
 const CurrentClass = () => {
-    // const [qr, setQr] = useState('')
     const [qrImage, setqrImage] = useState('')
-    const [qrId, setQrId] = useState('')
-    const [courseId, setcourseId] = useState('')
-    const [timeAndDuration, settimeAndDuration] = useState('')
-    const [course, setcourse] = useState([])
+    // const [, setqrImage] = useState('')
     useEffect(() => {
         getCoursePresent()
+
     }, [])
+    const [course, setcourse] = useState([])
+    const subjectSelectRef = useRef()
+
 
     const getCoursePresent = async () => {
-        const date = new Date();
-
-        const showTime = date.getHours() + ':' + date.getMinutes()
-        const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-        [new Date().getDay()]
-
         try {
-            const res = await axios.get('http://127.0.0.1:3000/api/v1/courses', {
+            const res = await axios.get('http://127.0.0.1:3000/api/v1/lecturer/lecturer_courses/' + localStorage.id, {
                 headers: {
                     "Access-Control-Allow-Origin": "*",
                     "Access-Control-Allow-Credentials": "true",
@@ -32,38 +27,14 @@ const CurrentClass = () => {
                     "Authorization": 'Bearer ' + localStorage.token
                 }
             })
-            // const time = new Date();
-            // console.log(time.getHours() + )
-            // console.log(time)
+            setcourse(res.data.data)
+            console.log(res.data.data)
 
-
-            for (let i = 0; i <= res.data.data.length; i++) {
-                const time = new Date();
-
-                let hour = res.data.data[i].lectureDuration
-                // hour = Number(hour)
-                let Duration = time.getHours() + hour
-                console.log(time.getHours() + hour)
-                console.log(res.data.data[i].lectureTime + Duration)
-                if (res.data.data[i].lectureTime <= showTime && weekday === res.data.data[i].lectureDay) {
-
-                    setcourse(res.data.data[i])
-                    settimeAndDuration(res.data.data[i].lectureTime + '  AM  || ' + res.data.data[i].lectureDuration + ' Hours')
-                    setcourseId(res.data.data[i]._id)
-
-
-
-                }
-                else {
-                    setcourse('There is no lecture now')
-                }
-            }
         }
         catch (error) {
             console.log(error)
         }
     }
-
     const handleDivShowQR = () => {
         let divgenrat = document.querySelector('#genratQR')
         let AttendList = document.querySelector('#attendList')
@@ -76,23 +47,21 @@ const CurrentClass = () => {
         AttendList.classList.toggle("attendList-after")
         list.classList.toggle('div-list-after')
         list.classList.toggle('div-list')
-
-
     }
 
     const handleShowAttendList = () => {
         let conteiner_attendList = document.querySelector('#conteiner_attendList')
         conteiner_attendList.classList.toggle("hide")
         conteiner_attendList.classList.toggle("div-attendList")
-
-
     }
 
     const btnGenratQR = async () => {
+        console.log(subjectSelectRef.current.value)
+
         try {
             const res = await axios.post('http://127.0.0.1:3000/api/v1/qr', {
-                title: course,
-                course: courseId,
+                title: course.name,
+                course: subjectSelectRef.current.value,
             })
             let QRId = res.data.data._id
 
@@ -105,7 +74,6 @@ const CurrentClass = () => {
         catch (error) {
             console.log(error)
         }
-
     }
 
     const handleBtnClose = () => {
@@ -152,9 +120,20 @@ const CurrentClass = () => {
             </div>
 
             <div className='continer'>
+                <Toaster
+                    position="bottom-center"
+                    reverseOrder={true}
+                />
                 <div className='subject'>
-                    <h1>{course.name}</h1>
-                    <h3>{timeAndDuration} </h3>
+                    <select ref={subjectSelectRef} name="courses" className='selectSubject'>
+                        <option> Choose Subject ... </option>
+                        {course.map((course, index) => {
+                            return <option key={index} value={course._id}>{course.name}</option>
+                        })
+                        }
+
+                    </select>
+
                 </div>
 
                 <div className='hide' id='div-QRimg'>

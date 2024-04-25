@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import './Profile.css'
 import { FiEdit } from "react-icons/fi";
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import { toast, Toaster } from 'react-hot-toast'
 
@@ -15,6 +15,7 @@ const Profile = () => {
     const inputRef = useRef()
     const inputRefName = useRef()
     const inputRefEmail = useRef()
+    const navigate = useNavigate()
 
     useEffect(() => {
         getInfo()
@@ -188,6 +189,16 @@ const Profile = () => {
             console.log(error)
         }
     }
+    const handleBtnLogout = () => {
+
+        localStorage.token = ''
+        localStorage.name = ''
+        localStorage.email = ''
+        localStorage.profileImage = ''
+        localStorage.id = ''
+
+        navigate('/SignIn')
+    }
 
     const saveEmail = async () => {
         let inputEditName = document.querySelector('#inpEditName')
@@ -254,7 +265,7 @@ const Profile = () => {
                         </div>
                         <div className='div-name' id='name' >
                             <span className='name'>Name:   {name}</span>
-                            <span onClick={btnEditName} style={{ marginLeft: '200px' }}><FiEdit /></span>
+                            <span onClick={btnEditName} style={{ position: 'absolute', left: '420px' }}><FiEdit /></span>
 
                         </div>
                         <div >
@@ -268,7 +279,7 @@ const Profile = () => {
 
                             <div className='div-email' id='email' >
                                 <span className='email'>Email:  {email}</span>
-                                <span onClick={btnEditEmail} style={{ marginLeft: '140px' }}><FiEdit /></span>
+                                <span onClick={btnEditEmail} style={{ position: 'absolute', left: '420px' }}><FiEdit /></span>
 
                             </div>
 
@@ -282,7 +293,7 @@ const Profile = () => {
 
                 </div>
                 <div className='btns-logout-delete'>
-                    <button className='btn-logout'>Logout</button>
+                    <button onClick={handleBtnLogout} className='btn-logout'>Logout</button>
                     <button className='btn-delete'>Delete Acount</button>
                 </div>
 

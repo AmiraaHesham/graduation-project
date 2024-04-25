@@ -16,7 +16,6 @@ const Timetable = () => {
     const [level, setlevel] = useState('')
     const [courses, setcourses] = useState([])
 
-
     const inputRefLecName = useRef()
     const inputRefLecDay = useRef()
     const inputRefLecDuration = useRef()
@@ -26,14 +25,16 @@ const Timetable = () => {
     useEffect(() => {
         getCourses()
     }, [courses])
+
     const createCourse = async () => {
         try {
             const res = await axios.post('http://127.0.0.1:3000/api/v1/courses', {
+                lecturerId: localStorage.id,
                 name: LectureName,
                 lectureDay: LectureDay,
                 lectureDuration: LectureDuration,
                 level: level,
-                lectureTime: LectureTime
+                lectureTime: LectureTime,
             }, {
                 headers: {
                     "Access-Control-Allow-Origin": "*",
@@ -69,17 +70,9 @@ const Timetable = () => {
 
         }
     }
-    const handleBtnDiscard = () => {
-        inputRefLecName.current.value = ''
-        inputRefLecDuration.current.value = ''
-        inputRefLecDay.current.value = ''
-        inputRefLeclevel.current.value = ''
-        inputRefLecTime.current.value = ''
-    }
-
     const getCourses = async () => {
         try {
-            const res = await axios.get('http://127.0.0.1:3000/api/v1/courses', {
+            const res = await axios.get('http://127.0.0.1:3000/api/v1/lecturer/lecturer_courses/' + localStorage.id, {
                 headers: {
                     "Access-Control-Allow-Origin": "*",
                     "Access-Control-Allow-Credentials": "true",
@@ -93,6 +86,14 @@ const Timetable = () => {
         catch (error) {
             console.log(error)
         }
+    }
+
+    const handleBtnDiscard = () => {
+        inputRefLecName.current.value = ''
+        inputRefLecDuration.current.value = ''
+        inputRefLecDay.current.value = ''
+        inputRefLeclevel.current.value = ''
+        inputRefLecTime.current.value = ''
     }
 
     return (
@@ -170,7 +171,7 @@ const Timetable = () => {
                     <div className='list-courses'>
                         {courses.map((course, index) => {
                             return <div key={index} className='div-course' >
-                                <span style={{ position: 'absolute', marginTop: '5px', marginLeft: '390px', fontSize: '25px', fontWeight: '700' }}>
+                                <span style={{ color: '#0f1b49', position: 'absolute', marginTop: '5px', marginLeft: '390px', fontSize: '26px', fontWeight: '900' }}>
                                     <span> <FiEdit /></span>
                                     <span><MdDeleteOutline /></span></span>
                                 <div style={{ margin: '5px 0px 5px 5px ' }}>

@@ -1,9 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import './Assignments.css'
 import { Link } from 'react-router-dom'
 import Header from '../header/header'
+import axios from 'axios'
 
 const Assignments = () => {
+    const [course, setCourse] = useState([])
+
+    useEffect(() => {
+        getCourses()
+    })
+
+    const getCourses = async () => {
+        try {
+            const res = await axios.get('http://127.0.0.1:3000/api/v1/courses', {
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Credentials": "true",
+                    "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
+                    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+                    "Authorization": 'Bearer ' + localStorage.token
+                }
+            })
+            setCourse(res.data.data)
+
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
     return (
         <div>
             <Header />
@@ -48,6 +73,17 @@ const Assignments = () => {
                             d="M17 24c3.867 0 7-3.133 7-7s-3.133-7-7-7s-7 3.133-7 7s3.133 7 7 7m22-3.5c0 3.039-2.461 5.5-5.5 5.5a5.499 5.499 0 0 1-5.5-5.5c0-3.039 2.461-5.5 5.5-5.5s5.5 2.461 5.5 5.5M17 26c2.734 0 7.183.851 10.101 2.545C28.293 29.758 29 31.081 29 32.4V38H4v-5.6c0-4.256 8.661-6.4 13-6.4m27 12H31v-5.6c0-1.416-.511-2.72-1.324-3.883c1.541-.344 3.058-.517 4.217-.517C37.62 28 44 29.787 44 33.333z" /></svg>
                     </div>
                 </Link>
+            </div>
+
+            <div className='div-uploadfile'>
+                <div>
+                    <input placeholder='choose subject' className='input-chooseSubject' list='course' />
+                    <datalist id='course'>
+                        {course.map((index, course) => {
+                            return <option value={course.name} />
+                        })}
+                    </datalist>
+                </div>
             </div>
         </div>
     )

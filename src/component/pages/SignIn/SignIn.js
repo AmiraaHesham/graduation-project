@@ -1,7 +1,7 @@
 import './SignIn.css';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+
 import axios from 'axios';
 import { toast, Toaster } from 'react-hot-toast';
 
@@ -9,7 +9,12 @@ import { toast, Toaster } from 'react-hot-toast';
 const SignIn = () => {
     const [Email, setEmail] = useState("");
     const [Password, setPassword] = useState("");
+    // const [token, setPassword] = useState("");
     const navigate = useNavigate()
+
+    useEffect(() => {
+        cheekToken()
+    },)
 
     const handleSignIn = async () => {
         let email = document.querySelector(".Email")
@@ -38,16 +43,14 @@ const SignIn = () => {
             let token = res.data.token
             let name = res.data.data.name
             let profileImage = res.data.data.profileImage
-            // let email = res.data.data.email
+            let email = res.data.data.email
             let id = res.data.data._id
-
 
             localStorage.setItem('token', token)
             localStorage.setItem('name', name)
             localStorage.setItem('profileImage', profileImage)
-            // localStorage.setItem('email', email)
+            localStorage.setItem('email', email)
             localStorage.setItem('id', id)
-
 
             navigate('/LecturesDates')
 
@@ -57,7 +60,18 @@ const SignIn = () => {
             email.style.border = '2px solid brown'
             pass.style.border = '2px solid brown'
             console.log(error)
-            toast.error(error.response.data.message)
+            // toast.error(error.response.data.message)
+        }
+    }
+
+    const cheekToken = async () => {
+        if (localStorage.token !== '') {
+            navigate('/LecturesDates')
+
+        }
+        else {
+            navigate('/SignIn')
+
         }
     }
 

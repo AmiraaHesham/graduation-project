@@ -81,7 +81,8 @@ hr {
     font-size: 25px;
     font-weight: 600;
     color: #365486;
-    cursor: pointer;
+    cursor: default;
+    padding-left: 15px;
 
 }
 
@@ -134,7 +135,6 @@ hr {
     margin-left: 40px;
     height: 650px;
     font-size: 25px;
-    /* font-family: ; */
     overflow: hidden;
     position: absolute;
     overflow-y: scroll;
@@ -152,8 +152,9 @@ hr {
     margin-left: 0px;
     margin-right: 20px;
     margin-top: 10px;
-    border: 2px solid #0f1b49;
-    color: #DCF2F1;
+    box-shadow: 2px 3px 3px #0f1b49;
+    border: 3px solid #0f1b49;
+    color: #dcf2f1d3;
     font-size: '30px';
     font-weight: 700;
 
