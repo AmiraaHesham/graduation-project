@@ -126,9 +126,10 @@ const CurrentClass = () => {
                 />
                 <div className='subject'>
                     <select ref={subjectSelectRef} name="courses" className='selectSubject'>
-                        <option> Choose Subject ... </option>
+                        <option> Choose Lecture ... </option>
                         {course.map((course, index) => {
-                            return <option key={index} value={course._id}>{course.name}</option>
+                            return <option key={index} value={course._id}>
+                                {course.name} - Level {course.level} - {course.lectureTime}</option>
                         })
                         }
 
@@ -162,7 +163,7 @@ const CurrentClass = () => {
                     </div>
 
                     <div className='div-list' id='list'>
-                        <table className='tab-attend' style={{ width: '100%', position: 'absolute', border: 'none' }}>
+                        <table className='tab-attend' style={{ width: '100%', border: 'none' }}>
                             <tr>
                                 <th >ID</th>
                                 <th >NAME</th>

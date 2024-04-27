@@ -68,28 +68,145 @@
 
 }
 
-.div-uploadfile {
-    width: 1100px;
-    height: 800px;
+.div-Assignment {
+    width: 70%;
+    height: 700px;
     background: rgba(54, 83, 134, 0.105);
     margin-left: 400px;
     margin-top: 40px;
+
 }
 
-.input-chooseSubject {
-    width: 800px;
-    height: 50px;
-    margin-left: 130px;
-    margin-top: 40px;
-    border: none;
+.ChooseSubject {
+    width: 50%;
+    height: 60px;
+    font-size: 30px;
+    font-weight: bold;
+    margin-left: 300px;
+    margin-top: 100px;
+    background: #263658;
     border-radius: 10px;
-    font-size: 20px;
-    font-weight: 700;
-    padding-left: 20px;
     color: #DCF2F1;
-    background: #1d2649;
+    padding-left: 10px;
+
 }
+
+.input-uploadAssignment {
+    width: 80%;
+}
+
 
 .input-chooseSubject::placeholder {
     color: #DCF2F1;
+}
+
+.div-uploadfile {
+    width: 100%;
+}
+
+.fileName {
+    width: 49%;
+    height: 45px;
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: 300px;
+    margin-top: 40px;
+    background: #263658;
+    border-radius: 10px;
+    color: #DCF2F1;
+    padding-left: 10px;
+    padding-top: 15px;
+
+}
+
+.btn-upload {
+    background: none;
+    position: absolute;
+    left: 600px;
+    width: 30px;
+    height: 30px;
+    color: #DCF2F1;
+}
+
+.div-Instructions {
+    width: 49%;
+
+}
+
+.input-instructions {
+    width: 100%;
+    height: 60px;
+    margin-left: 300px;
+    background: #263658;
+    border: none;
+    border-radius: 10px;
+    font-size: 25px;
+    color: #DCF2F1;
+    font-weight: 700;
+    padding-left: 10px;
+    margin-top: 40px;
+
+}
+
+.input-instructions::placeholder,
+.input-deadLine::placeholder {
+    color: #DCF2F1;
+}
+
+.div-deadLine {
+    width: 49%;
+}
+
+.input-deadLine {
+    width: 100%;
+    height: 60px;
+    margin-left: 300px;
+    background: #263658;
+    border: none;
+    border-radius: 10px;
+    font-size: 25px;
+    color: #DCF2F1;
+    font-weight: 700;
+    padding-left: 10px;
+    margin-top: 40px;
+}
+
+.div-btn-cancel-submit {
+    width: 30%;
+    height: 50px;
+    margin-top: 50px;
+    margin-left: 420px;
+}
+
+.div-btn-cancel-submit .btn-cancel {
+    width: 40%;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    background: rgba(165, 42, 42, 0.844);
+    color: #DCF2F1;
+    font-size: 20px;
+    font-weight: 600;
+    margin-right: 20px;
+}
+
+.div-btn-cancel-submit .btn-submit {
+    width: 40%;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    background: #263658c3;
+    color: #DCF2F1;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.div-btn-cancel-submit .btn-submit:hover {
+    background: #263658;
+
+}
+
+.div-btn-cancel-submit .btn-cancel:hover {
+    background: rgb(165, 42, 42);
+
 }

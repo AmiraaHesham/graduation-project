@@ -8,6 +8,7 @@
 
 body {
     height: 1000px;
+    width: auto;
     background: linear-gradient(220deg, #7FC7D9 20%, #365486 100%);
     margin: 0px;
     font-family: 'Inter';

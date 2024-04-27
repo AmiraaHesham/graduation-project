@@ -2,14 +2,18 @@ import React, { useEffect, useState } from 'react'
 import './LecturesDates.css'
 import { Link } from 'react-router-dom';
 import Header from '../header/header'
+import axios from 'axios';
 
 const LecturesDates = () => {
 
     let [date, setDate] = useState()
 
+    const [course, setcourse] = useState([])
     useEffect(() => {
         showDate()
+        getCoursePresent()
     }, [])
+
     const showDate = () => {
         const today = new Date();
         const day = today.getDate()
@@ -21,6 +25,35 @@ const LecturesDates = () => {
         setDate(currentDate)
 
 
+    }
+    const getCoursePresent = async () => {
+
+        const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][new Date().getDay()]
+
+        try {
+            const res = await axios.get('http://127.0.0.1:3000/api/v1/lecturer/lecturer_courses/' + localStorage.id, {
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Credentials": "true",
+                    "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
+                    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+                    "Authorization": 'Bearer ' + localStorage.token
+                }
+            })
+
+            // for (let i = 0; i <= res.data.data.length; i++) {
+            //     if (res.data.data[i].lectureDay === weekday) {
+            //         setcourse(res.data.data[i].name)
+            //         console.log(res.data.data[i])
+            //     }
+            //     else {
+            //         setcourse('dont have courses today')
+            //     }
+            setcourse(res.data.data)
+        }
+        catch (error) {
+            console.log(error)
+        }
     }
 
     return (
@@ -64,11 +97,22 @@ const LecturesDates = () => {
                 <div className='header-timetable' >
                     <h2> {date} </h2>
                 </div>
-                <div className='div-summary'>
-                    <div className='header-summary'>
-                        <h3>Summary</h3>
+                <div className='div-Courses'>
+                    {
+                        course.map((course, index) => {
+                            return <div className='showCourses' >
+                                {course.name} {course.level}
+                            </div>
 
-                    </div>
+                        })
+                    }</div>
+
+
+            </div>
+            <div className='div-summary'>
+                <div className='header-summary'>
+                    <h3>Summary</h3>
+                    <h2>You have {course.length} course</h2>
                 </div>
             </div>
         </div >

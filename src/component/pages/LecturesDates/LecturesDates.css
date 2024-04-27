@@ -17,102 +17,6 @@
     position: absolute;
 }
 
-/* .Current-Class {
-    display: flex;
-    width: 350px;
-    height: 100px;
-    top: 150px;
-    left: -20px;
-    position: absolute;
-    justify-content: space-between;
-    margin: 20px 20px;
-}
-
-.Current-Class h2 {
-    width: 200px;
-    left: 100px;
-    top: 20px;
-    position: absolute;
-}
-
-.Timetable {
-    display: flex;
-    width: 350px;
-    height: 100px;
-    top: 260px;
-    left: -20px;
-    position: absolute;
-    justify-content: space-between;
-    margin: 20px 20px;
-}
-
-.Assignments {
-    display: flex;
-    width: 350px;
-    height: 100px;
-    top: 370px;
-    left: -20px;
-    position: absolute;
-    justify-content: space-between;
-    margin: 20px 20px;
-}
-
-.Assignments h2 {
-    width: 200px;
-    left: 100px;
-    top: 20px;
-    position: absolute;
-}
-
-.Students-Attendance {
-    display: flex;
-    width: 350px;
-    height: 100px;
-    top: 480px;
-    left: -20px;
-    position: absolute;
-    justify-content: space-between;
-    margin: 20px 20px;
-
-}
-
-
-.Students-Attendance h2 {
-    width: 250px;
-    left: 100px;
-    top: 20px;
-    position: absolute;
-}
-
-.Students-Attendance:hover {
-    background: rgba(54, 83, 134, 0.105);
-
-}
-
-.Timetable:hover {
-    background: rgba(54, 83, 134, 0.105);
-
-}
-
-.Current-Class:hover {
-    background: rgba(54, 83, 134, 0.105);
-
-}
-
-.Assignments:hover {
-    background: rgba(54, 83, 134, 0.105);
-
-}
-
-.Timetable h2 {
-    width: 200px;
-    left: 100px;
-    top: 20px;
-    position: absolute;
-} */
-
-
-
 .div-timetable {
     width: 820px;
     height: 910px;
@@ -145,15 +49,16 @@
     width: 239px;
     height: 220px;
     position: absolute;
-    left: 850px;
+    left: 1300px;
+    top: 100px;
     background: #9FBECF
 }
 
 .header-summary {
     width: 239px;
     height: 54px;
-    position: absolute;
     color: #DCF2F1;
+    position: absolute;
     background: #273758
 }
 
@@ -168,4 +73,37 @@
     font-family: Inter;
     font-weight: 800;
     word-wrap: break-word
+}
+
+.header-summary h2 {
+    width: 200px;
+    height: 23px;
+    color: #0f1b49;
+    position: absolute;
+    left: 20px;
+    top: 70px;
+    font-size: 24px;
+
+    font-weight: 800;
+    word-wrap: break-word
+}
+
+.div-timetable .div-Courses {
+    margin-top: 150px;
+    margin-left: 30px;
+}
+
+.showCourses {
+    width: 90%;
+    height: 100px;
+    background: #DCF2F1;
+    border-radius: 15px;
+    padding-left: 20px;
+    padding-top: 20px;
+    color: #273758;
+    box-shadow: 3px 3px #0f1b49;
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    margin-left: 10px;
 }

@@ -5,15 +5,18 @@ import Header from '../header/header'
 import axios from 'axios'
 
 const Assignments = () => {
-    const [course, setCourse] = useState([])
-
     useEffect(() => {
-        getCourses()
-    })
+        getCoursePresent()
 
-    const getCourses = async () => {
+    }, [])
+    const [course, setcourse] = useState([])
+    const subjectSelectRef = useRef()
+    const fileAssignmentRef = useRef()
+
+
+    const getCoursePresent = async () => {
         try {
-            const res = await axios.get('http://127.0.0.1:3000/api/v1/courses', {
+            const res = await axios.get('http://127.0.0.1:3000/api/v1/lecturer/lecturer_courses/' + localStorage.id, {
                 headers: {
                     "Access-Control-Allow-Origin": "*",
                     "Access-Control-Allow-Credentials": "true",
@@ -22,12 +25,16 @@ const Assignments = () => {
                     "Authorization": 'Bearer ' + localStorage.token
                 }
             })
-            setCourse(res.data.data)
+            setcourse(res.data.data)
+            console.log(res.data.data)
 
         }
         catch (error) {
             console.log(error)
         }
+    }
+    const handleInputFileAssignment = () => {
+        fileAssignmentRef.current.click()
     }
     return (
         <div>
@@ -75,17 +82,39 @@ const Assignments = () => {
                 </Link>
             </div>
 
-            <div className='div-uploadfile'>
-                <div>
-                    <input placeholder='choose subject' className='input-chooseSubject' list='course' />
-                    <datalist id='course'>
-                        {course.map((index, course) => {
-                            return <option value={course.name} />
-                        })}
-                    </datalist>
+            <div className='div-Assignment'>
+
+                <select ref={subjectSelectRef} name="courses" className='ChooseSubject'>
+                    <option> Choose Lecture ... </option>
+                    {course.map((course, index) => {
+                        return <option key={index} value={course._id}>
+                            {course.name} - Level {course.level} </option>
+                    })
+                    }
+
+                </select>
+                <div className='fileName' onClick={handleInputFileAssignment}>
+                    <span> Upload File</span>
+                    <span className='btn-upload'><svg className='btn-upload' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16"><path fill="currentColor" d="M2.75 14A1.75 1.75 0 0 1 1 12.25v-2.5a.75.75 0 0 1 1.5 0v2.5c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25v-2.5a.75.75 0 0 1 1.5 0v2.5A1.75 1.75 0 0 1 13.25 14Z" /><path fill="currentColor" d="M11.78 4.72a.749.749 0 1 1-1.06 1.06L8.75 3.811V9.5a.75.75 0 0 1-1.5 0V3.811L5.28 5.78a.749.749 0 1 1-1.06-1.06l3.25-3.25a.75.75 0 0 1 1.06 0z" /></svg></span>
+                    <input type='file' style={{ display: 'none' }} ref={fileAssignmentRef} /></div>
+                <div className='div-Instructions'>
+                    <input type='text' placeholder='Instructions' className='input-instructions'></input>
                 </div>
+                <div className='div-deadLine'>
+                    <input type='text' placeholder='Deadline' className='input-deadLine'></input>
+                </div>
+
+                <div className='div-btn-cancel-submit'>
+                    <button className='btn-cancel'>Cancel</button>
+                    <button className='btn-submit'>Submit</button>
+                </div>
+
             </div>
-        </div>
+
+
+
+
+        </div >
     )
 }
 

@@ -148,12 +148,12 @@ hr {
 .div-course {
     background: #365386be;
     border-radius: 7px;
-    width: 450px;
+    width: 440px;
     margin-left: 0px;
     margin-right: 20px;
     margin-top: 10px;
     box-shadow: 2px 3px 3px #0f1b49;
-    border: 3px solid #0f1b49;
+    padding: 10px;
     color: #dcf2f1d3;
     font-size: '30px';
     font-weight: 700;
