@@ -70,20 +70,20 @@ const CreateAccount = () => {
                     <h5>Add Photo</h5>
 
                 </div>
-                {/* <div className='div-inputs'>
+                <div className='div-inputs'>
                     <input placeholder='Name *' type='text' onChange={(e) => setFullName(e.target.value)}></input>
                     <input placeholder='Email *' type='text' onChange={(e) => setEmail(e.target.value)}></input>
                     <input placeholder='Password *' type='password' onChange={(e) => setPassword(e.target.value)}></input>
                     <input placeholder='Confirm Password *' type='password' onChange={(e) => setConfirmPassword(e.target.value)}></input>
-                </div> */}
-                {/* <Toaster
+                </div>
+                <Toaster
                     position="bottom-center"
                     reverseOrder={false} />
                 <button className='btn-create' onClick={addNewUser}>Create</button >
                 <div className='div-h4-Registered'>
                     <h4>Already Registered?
                         <Link style={{ textDecoration: 'none', color: '#0F1035', fontWeight: '600', fontSize: '17px' }} to={'/SignIn'}>SignIn</Link>
-                    </h4></div> */}
+                    </h4></div>
             </div>
         </div>
     )
