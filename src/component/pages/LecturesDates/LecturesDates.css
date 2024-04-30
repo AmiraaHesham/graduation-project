@@ -18,39 +18,34 @@
 }
 
 .div-timetable {
-    width: 820px;
-    height: 910px;
-    position: absolute;
-    left: 390px;
-    top: 90px;
-    background: #9FBECF
+    width: 55%;
+    height: 900px;
+    margin-left: 400px;
+    background: #9FBECF;
+    margin-bottom: 5px;
 }
 
 .header-timetable {
-    width: 820px;
+    width: 100%;
     height: 80px;
-    position: absolute;
     background: #273758;
 }
 
 .header-timetable h2 {
-    width: 653px;
+    width: 70%;
     height: 51px;
-    left: 30px;
-    position: absolute;
     color: #DCF2F1;
-    font-size: 27px;
-    font-family: Inter;
-    font-weight: 800;
-    word-wrap: break-word
+    font-size: 30px;
+    font-weight: bold;
+    margin-left: 50px;
+    padding-top: 20px;
 }
 
 .div-summary {
     width: 239px;
     height: 220px;
-    position: absolute;
-    left: 1300px;
-    top: 100px;
+    margin-left: 930px;
+
     background: #9FBECF
 }
 
@@ -83,18 +78,14 @@
     left: 20px;
     top: 70px;
     font-size: 24px;
-
     font-weight: 800;
     word-wrap: break-word
 }
 
-.div-timetable .div-Courses {
-    margin-top: 150px;
-    margin-left: 30px;
-}
+
 
 .showCourses {
-    width: 90%;
+    width: 60%;
     height: 100px;
     background: #DCF2F1;
     border-radius: 15px;
@@ -105,5 +96,15 @@
     font-size: 25px;
     font-weight: 700;
     margin-bottom: 20px;
-    margin-left: 10px;
+    margin-left: 120px;
+}
+
+.div-continer-Courses {
+    width: 90%;
+    height: 800px;
+    margin-top: 90px;
+    margin-left: 45px;
+    overflow: hidden;
+    overflow-y: scroll;
+    position: absolute;
 }

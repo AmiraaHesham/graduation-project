@@ -1,33 +1,24 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import './OverAll.css'
 import Header from '../header/header'
 import axios from 'axios'
 const OverAll = () => {
-  const [course, setCourse] = useState([])
+  const [course, setcourse] = useState([])
 
   useEffect(() => {
     getCourses()
   })
+  const subjectSelectRef = useRef()
 
   const getCourses = async () => {
-    // try {
-    //   const res = await axios.get('http://127.0.0.1:3000/api/v1/courses',
-    //     {
-    //       headers: {
-    //         "Access-Control-Allow-Origin": "*",
-    //         "Access-Control-Allow-Credentials": "true",
-    //         "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
-    //         "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization",
-    //         "Authorization": 'Bearer ' + localStorage.token
-    //       }
-    //     })
-    //   setCourse(res.data.data.name)
-
-    // }
-    // catch (error) {
-    //   console.log(error)
-    // }
+    try {
+      const res = await axios.get('http://127.0.0.1:3000/api/v1/lecturer/lecturer_courses/' + localStorage.id)
+      setcourse(res.data.data)
+    }
+    catch (error) {
+      console.log(error)
+    }
   }
 
 
@@ -83,8 +74,18 @@ const OverAll = () => {
 
 
       </div>
-      <div className='div-chooseSubject'>
-        <div className='div-chooseSubject'>
+      <div className='div-overallAttendance'>
+        <div className='div-chooselecture'>
+          <select ref={subjectSelectRef} name="courses" className=''>
+            <option> Choose Lecture ... </option>
+            {course.map((course, index) => {
+              return <option key={index} value={course._id}>
+                {course.name} - Semster Year {course.level} </option>
+            })
+            }
+          </select>
+        </div>
+        <div className='div-tableOverAllAttendance'>
 
         </div>
       </div>

@@ -18,18 +18,8 @@ const CurrentClass = () => {
 
     const getCoursePresent = async () => {
         try {
-            const res = await axios.get('http://127.0.0.1:3000/api/v1/lecturer/lecturer_courses/' + localStorage.id, {
-                headers: {
-                    "Access-Control-Allow-Origin": "*",
-                    "Access-Control-Allow-Credentials": "true",
-                    "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
-                    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization",
-                    "Authorization": 'Bearer ' + localStorage.token
-                }
-            })
+            const res = await axios.get('http://127.0.0.1:3000/api/v1/lecturer/lecturer_courses/' + localStorage.id)
             setcourse(res.data.data)
-            console.log(res.data.data)
-
         }
         catch (error) {
             console.log(error)
@@ -69,7 +59,7 @@ const CurrentClass = () => {
             QRimg.classList.remove('hide')
             const res1 = await axios.get('http://127.0.0.1:3000/api/v1/qr/' + QRId)
             setqrImage(res1.data.data.qr)
-            console.log(res1)
+
         }
         catch (error) {
             console.log(error)
@@ -119,22 +109,25 @@ const CurrentClass = () => {
                 </Link>
             </div>
 
-            <div className='continer'>
+            <div className='div-continer-currentclass'>
+
                 <Toaster
                     position="bottom-center"
                     reverseOrder={true}
                 />
-                <div className='subject'>
-                    <select ref={subjectSelectRef} name="courses" className='selectSubject'>
-                        <option> Choose Lecture ... </option>
-                        {course.map((course, index) => {
-                            return <option key={index} value={course._id}>
-                                {course.name} - Level {course.level} - {course.lectureTime}</option>
-                        })
-                        }
 
-                    </select>
+                <select ref={subjectSelectRef} className='selectSubject'>
+                    <option> Choose Lecture ... </option>
+                    {course.map((course, index) => {
+                        return <option key={index} value={course._id}>
+                            {course.name} - Semster Year {course.level} - {course.lectureTime}</option>
+                    })
+                    }
+                </select>
 
+
+                <div className='div-QRcode' onClick={handleDivShowQR}>
+                    <h3>QR Code</h3>
                 </div>
 
                 <div className='hide' id='div-QRimg'>
@@ -142,9 +135,7 @@ const CurrentClass = () => {
                     <button onClick={handleBtnClose} className='btn-Close'>Close</button>
                 </div>
 
-                <div className='div-QRcode' onClick={handleDivShowQR}>
-                    <h3>QR Code</h3>
-                </div>
+
 
                 <div className='hide' id='genratQR'>
                     <button onClick={btnGenratQR} className='btn-genrat'>Generate QR code</button>
@@ -180,7 +171,8 @@ const CurrentClass = () => {
                     </div>
                 </div>
             </div>
-        </div >
+        </div>
+
     )
 }
 

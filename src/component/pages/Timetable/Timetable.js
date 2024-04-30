@@ -13,13 +13,13 @@ const Timetable = () => {
     const [LectureDay, setLectureDay] = useState('')
     const [LectureTime, setLectureTime] = useState('')
     const [LectureDuration, setLectureDuration] = useState('')
-    const [level, setlevel] = useState('')
+    const [Semsteryear, setSemsteryear] = useState('')
     const [courses, setcourses] = useState([])
 
     const inputRefLecName = useRef()
     const inputRefLecDay = useRef()
     const inputRefLecDuration = useRef()
-    const inputRefLeclevel = useRef()
+    const inputRefSemsteryear = useRef()
     const inputRefLecTime = useRef()
 
     useEffect(() => {
@@ -28,12 +28,12 @@ const Timetable = () => {
 
     const createCourse = async () => {
         try {
-            const res = await axios.post('http://127.0.0.1:3000/api/v1/courses', {
+            await axios.post('http://127.0.0.1:3000/api/v1/courses', {
                 lecturerId: localStorage.id,
                 name: LectureName,
                 lectureDay: LectureDay,
                 lectureDuration: LectureDuration,
-                level: level,
+                level: Semsteryear,
                 lectureTime: LectureTime,
             }, {
                 headers: {
@@ -48,8 +48,8 @@ const Timetable = () => {
             inputRefLecDuration.current.value = ''
             inputRefLecName.current.value = ''
             inputRefLecTime.current.value = ''
-            inputRefLeclevel.current.value = ''
-            console.log(res)
+            inputRefSemsteryear.current.value = ''
+
         }
         catch (error) {
             if (inputRefLecName.current.value === '') {
@@ -64,7 +64,7 @@ const Timetable = () => {
             else if (inputRefLecTime.current.value === '') {
                 toast.error(error.response.data.error.errors.lectureTime.message)
             }
-            else if (inputRefLeclevel.current.value === '') {
+            else if (inputRefSemsteryear.current.value === '') {
                 toast.error(error.response.data.error.errors.level.message)
             }
 
@@ -72,15 +72,7 @@ const Timetable = () => {
     }
     const getCourses = async () => {
         try {
-            const res = await axios.get('http://127.0.0.1:3000/api/v1/lecturer/lecturer_courses/' + localStorage.id, {
-                headers: {
-                    "Access-Control-Allow-Origin": "*",
-                    "Access-Control-Allow-Credentials": "true",
-                    "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
-                    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization",
-                    "Authorization": 'Bearer ' + localStorage.token
-                }
-            })
+            const res = await axios.get('http://127.0.0.1:3000/api/v1/lecturer/lecturer_courses/' + localStorage.id,)
             setcourses(res.data.data)
         }
         catch (error) {
@@ -92,7 +84,7 @@ const Timetable = () => {
         inputRefLecName.current.value = ''
         inputRefLecDuration.current.value = ''
         inputRefLecDay.current.value = ''
-        inputRefLeclevel.current.value = ''
+        inputRefSemsteryear.current.value = ''
         inputRefLecTime.current.value = ''
     }
 
@@ -153,7 +145,7 @@ const Timetable = () => {
 
                         <input ref={inputRefLecTime} placeholder='Lecture Time' onChange={(e) => { setLectureTime(e.target.value) }} type='time' />
                         <input ref={inputRefLecDuration} placeholder='Lecture Duration' onChange={(e) => { setLectureDuration(e.target.value) }} />
-                        <input ref={inputRefLeclevel} placeholder='level' list='levels' onChange={(e) => { setlevel(e.target.value) }} />
+                        <input ref={inputRefSemsteryear} placeholder='Semster Year' list='levels' onChange={(e) => { setSemsteryear(e.target.value) }} />
                         <datalist id='levels'>
                             <option value='First' />
                             <option value='Second' />
@@ -183,7 +175,7 @@ const Timetable = () => {
                                     <br></br>
                                     <span>Time: {course.lectureTime}</span>
                                     <br></br>
-                                    <span>Level:   {course.level}</span>
+                                    <span>Semster Year:   {course.level}</span>
                                 </div>
                             </div>
                         })}

@@ -1,15 +1,12 @@
 import './SignIn.css';
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
 import axios from 'axios';
 import { toast, Toaster } from 'react-hot-toast';
-
 
 const SignIn = () => {
     const [Email, setEmail] = useState("");
     const [Password, setPassword] = useState("");
-    // const [token, setPassword] = useState("");
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -61,18 +58,16 @@ const SignIn = () => {
             pass.style.border = '2px solid brown'
             console.log(error)
             // toast.error(error.response.data.message)
+
         }
     }
 
-    const cheekToken = async () => {
+    const cheekToken = () => {
         if (localStorage.token !== '') {
             navigate('/LecturesDates')
 
         }
-        else {
-            navigate('/SignIn')
 
-        }
     }
 
     return (
@@ -86,7 +81,6 @@ const SignIn = () => {
             />
             <div className='sign-in-contener'>
                 <h3>Sign In</h3>
-                {/* <img src='logoProject.jpg' alt='' /> */}
                 <div className='input-Email-pass'>
                     <input className='Email' placeholder='Email' type='email' value={Email} onChange={(e) => { setEmail(e.target.value) }}></input>
                     <input className='password' type='password' placeholder='Password' value={Password} onChange={(e) => { setPassword(e.target.value) }}></input>

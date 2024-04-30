@@ -57,6 +57,21 @@ const Weekly = () => {
                     </div>
                 </div>
             </div>
+            <div className='div-overallAttendance'>
+        <div className='div-chooselecture'>
+                    {/* <select  name="courses" className=''>
+            <option> Choose Lecture ... </option>
+            {course.map((course, index) => {
+              return <option key={index} value={course._id}>
+                {course.name} - Semster Year {course.level} </option>
+            })
+            }
+          </select> */}
+        </div>
+        <div className='div-tableOverAllAttendance'>
+
+        </div>
+      </div>
         </div>
 
     )

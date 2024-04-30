@@ -3,11 +3,11 @@ import './LecturesDates.css'
 import { Link } from 'react-router-dom';
 import Header from '../header/header'
 import axios from 'axios';
-
+import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
 const LecturesDates = () => {
 
     let [date, setDate] = useState()
-
+    let Courses = ''
     const [course, setcourse] = useState([])
     useEffect(() => {
         showDate()
@@ -31,25 +31,24 @@ const LecturesDates = () => {
         const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][new Date().getDay()]
 
         try {
-            const res = await axios.get('http://127.0.0.1:3000/api/v1/lecturer/lecturer_courses/' + localStorage.id, {
-                headers: {
-                    "Access-Control-Allow-Origin": "*",
-                    "Access-Control-Allow-Credentials": "true",
-                    "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
-                    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization",
-                    "Authorization": 'Bearer ' + localStorage.token
-                }
-            })
+            const res = await axios.get('http://127.0.0.1:3000/api/v1/lecturer/lecturer_courses/' + localStorage.id)
+
 
             // for (let i = 0; i <= res.data.data.length; i++) {
-            //     if (res.data.data[i].lectureDay === weekday) {
-            //         setcourse(res.data.data[i].name)
-            //         console.log(res.data.data[i])
-            //     }
-            //     else {
-            //         setcourse('dont have courses today')
-            //     }
+            //     if (weekday === res.data.data[i].lectureDay) {
+            //         Courses = {
+            //             name: res.data.data[i].name
+
+            //         }
+            //         setcourse(res.data.data[i])
+            //         //     console.log(res.data.data[i])
+            //         // }
+
             setcourse(res.data.data)
+            // }
+
+            console.log(course)
+
         }
         catch (error) {
             console.log(error)
@@ -94,29 +93,30 @@ const LecturesDates = () => {
             </div>
 
             <div className='div-timetable'>
+
                 <div className='header-timetable' >
                     <h2> {date} </h2>
                 </div>
-                <div className='div-Courses'>
+                {/* <div className='div-continer-Courses'>
                     {
                         course.map((course, index) => {
-                            return <div className='showCourses' >
-                                {course.name} {course.level}
+                            return <div>
+                                <div key={index} className='showCourses' >
+                                    {course.name}</div>
+                                <div style={{ fontSize: '50px', marginLeft: '350px', color: '#273758' }}>          <PiDotsThreeOutlineVerticalFill />
+                                </div>
                             </div>
-
                         })
-                    }</div>
-
-
-            </div>
-            <div className='div-summary'>
-                <div className='header-summary'>
-                    <h3>Summary</h3>
-                    <h2>You have {course.length} course</h2>
+                    }
                 </div>
-            </div>
-        </div >
+                <div className='div-summary'>
+                    <div className='header-summary'>
+                        <h3>Summary</h3>
+                        <h2>You have {course.length} course</h2>
+                    </div>
+                </div> */}
+            </div >
+        </div>
     )
 }
-
 export default LecturesDates

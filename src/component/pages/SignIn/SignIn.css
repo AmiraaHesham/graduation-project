@@ -1,13 +1,13 @@
 .sign-in-contener {
-    width: 700px;
+    width: 45%;
     height: 550px;
-    left: 400px;
-    top: 150px;
-    position: absolute;
     background: linear-gradient(200deg, #365486 0%, rgba(54, 84, 134, 0) 100%);
     border-radius: 30px;
     align-items: center;
-
+    margin-left: 450px;
+    margin-top: 100px;
+    margin-bottom: 150px;
+    padding-top: 10px;
 }
 
 * {
@@ -28,33 +28,29 @@
 
 }
 
-.sign-in-contener img {
-    width: 90px;
-    height: 100px;
-}
+
 
 .input-Email-pass {
     width: 609px;
-    height: 486px;
+    height: 200px;
     margin-left: 120px;
     margin-top: 100px;
-
-
 }
 
 .Email,
 .password {
-    width: 450px;
+    width: 70%;
     height: 60px;
     background: #DCF2F1;
     border-radius: 20px;
     margin-bottom: 15px;
     align-content: center;
+    padding-left: 20px;
     border: none;
     font-size: 25px;
     color: #365486;
     font-weight: 800;
-    cursor: pointer;
+    cursor: default;
 
 
 }
@@ -69,23 +65,12 @@
 }
 
 .input-Email-pass input::placeholder {
-    width: 200px;
-    height: 40px;
     color: rgba(54, 84, 134, 0.72);
     font-size: 20px;
-    font-family: Inter;
-    font-weight: 400;
-    word-wrap: break-word;
-    position: absolute;
-    left: 20px;
-    top: 20px;
 }
 
 .btn-h5-login {
-    position: absolute;
-    top: 400px;
-    left: 180px;
-
+    margin-left: 170px;
 }
 
 .btn-login {
@@ -96,9 +81,7 @@
     color: #365486;
     font-size: 32px;
     font-weight: 700;
-    word-wrap: break-word;
     border: none;
-    margin-left: -5px;
     cursor: pointer;
 
 }
@@ -116,13 +99,6 @@ h5 {
     font-size: 17px;
     font-weight: 500;
     word-wrap: break-word;
-    position: absolute;
-    top: 40px;
-    left: 60px;
+    margin-left: 50px;
     text-decoration: none;
-}
-
-Link {
-    text-decoration: none;
-
 }

@@ -48,7 +48,7 @@
     font-size: 20px;
     font-weight: 600;
     background: #dcf2f1b0;
-    cursor: pointer;
+    cursor: default;
 }
 
 .div-email {
@@ -62,7 +62,7 @@
     font-size: 20px;
     font-weight: 600;
     background: #dcf2f1b0;
-    cursor: pointer;
+    cursor: default;
 }
 
 
@@ -104,8 +104,37 @@
     border-radius: 20px;
 }
 
-.btns-edit-changpass {
-    margin-top: 50px;
+#div-inputs-changepasword {
+    width: 100%;
+    height: 230px;
+    padding-top: 20px;
+}
+
+#div-inputs-changepasword input {
+    width: 80%;
+    height: 50px;
+    margin-bottom: 20px;
+    margin-left: 45px;
+    color: #022f5c;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    background: #dcf2f1b0;
+    border: none;
+    padding-left: 10px;
+}
+
+#div-inputs-changepasword input::placeholder {
+    color: #365486;
+}
+
+.btns-save-cancel-Changepassword {
+    margin-left: 150px;
+
+}
+
+.btn-changpass {
+    margin-top: 40px;
     margin-left: 155px;
 }
 
@@ -122,6 +151,10 @@
 
 }
 
+.btn-Changepassword:hover {
+    background: #022f5c;
+
+}
 
 
 #btns-save-cancel-Name {
@@ -159,35 +192,47 @@
 }
 
 .btns-logout-delete {
-    width: 310px;
+    width: 410px;
     height: 30px;
     position: absolute;
     margin-top: 570px;
-    margin-left: 250px;
+    margin-left: 240px;
 }
 
 .btn-logout {
     width: 120px;
-    height: 30px;
+    height: 35px;
     margin-right: 50px;
-    background: #47709A;
+    background: #011e3a7c;
     border-radius: 10px;
-    border: 1px solid #DCF2F1;
     color: #DCF2F1;
-    font-size: medium;
-    font-weight: 600;
+    font-size: large;
+    font-weight: bold;
+    border: none;
+}
+
+.btn-logout:hover {
+    background: #011e3a;
+
+
 }
 
 .btn-delete {
-    width: 120px;
-    height: 30px;
+    width: 150px;
+    height: 35px;
     margin-left: 20px;
-    background: #47709A;
+    background: rgba(165, 42, 42, 0.595);
     border-radius: 10px;
-    border: 1px solid brown;
-    color: brown;
-    font-size: medium;
-    font-weight: 600;
+    /* border: 1px solid brown; */
+    color: #DCF2F1;
+    border: none;
+    font-size: large;
+    font-weight: bold;
+
+}
+
+.btn-delete:hover {
+    background: rgb(177, 33, 33);
 
 }
 

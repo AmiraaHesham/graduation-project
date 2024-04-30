@@ -50,7 +50,8 @@ const StudentSolution = () => {
           </div>
         </Link>
       </div>
-    </div >
+      <div className='div-Assignment'>
+      </div>      </div >
   )
 }
 

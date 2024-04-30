@@ -16,18 +16,8 @@ const Assignments = () => {
 
     const getCoursePresent = async () => {
         try {
-            const res = await axios.get('http://127.0.0.1:3000/api/v1/lecturer/lecturer_courses/' + localStorage.id, {
-                headers: {
-                    "Access-Control-Allow-Origin": "*",
-                    "Access-Control-Allow-Credentials": "true",
-                    "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
-                    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization",
-                    "Authorization": 'Bearer ' + localStorage.token
-                }
-            })
+            const res = await axios.get('http://127.0.0.1:3000/api/v1/lecturer/lecturer_courses/' + localStorage.id)
             setcourse(res.data.data)
-            console.log(res.data.data)
-
         }
         catch (error) {
             console.log(error)
@@ -88,7 +78,7 @@ const Assignments = () => {
                     <option> Choose Lecture ... </option>
                     {course.map((course, index) => {
                         return <option key={index} value={course._id}>
-                            {course.name} - Level {course.level} </option>
+                            {course.name} - Semster Year {course.level} </option>
                     })
                     }
 

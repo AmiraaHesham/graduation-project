@@ -19,64 +19,36 @@
 }
 
 
-.continer {
-    width: 1000px;
-    height: 830px;
-    position: absolute;
+.div-continer-currentclass {
+    width: 73%;
+    height: 900px;
+    margin-bottom: 10px;
     margin-left: 400px;
     cursor: pointer;
+    padding-top: 20px;
 }
 
-.subject h3 {
-    width: 300px;
-    height: 55px;
-    color: #1D2649;
-    font-size: 27px;
-    font-weight: 800;
-    margin-top: -30px;
-    margin-left: 10px;
-}
 
-.subject h1 {
-    text-transform: uppercase;
-    width: 500px;
-    height: 55px;
-    color: #1D2649;
-    font-size: 30px;
-    font-weight: 800;
-    word-wrap: break-word;
-    margin-top: 30px;
-
-}
 
 .selectSubject {
-    width: 1036px;
+    width: 90%;
     height: 60px;
     font-size: 30px;
     font-weight: bold;
-    margin-bottom: 40px;
+
     background: #263658;
     border-radius: 10px;
     color: #DCF2F1;
     box-shadow: 2px 3px 3px #0f1b49;
     padding-left: 10px;
-    margin-left: -17px;
-    margin-bottom: 20px;
-}
-
-
-
-.subject {
-    margin-top: 20px;
-    margin-left: 20px;
 }
 
 .div-QRcode {
-    width: 1036px;
+    width: 90%;
     height: 70px;
     background: #47709A;
     border-radius: 10px;
-    margin-top: -30px;
+
 }
 
 .div-QRcode h3,
@@ -93,40 +65,23 @@
 }
 
 .attendList {
-    width: 1036px;
+    width: 90%;
     height: 70px;
     background: #47709A;
-    margin-top: -10px;
     border-radius: 10px;
 }
 
 .attendList-after {
-    width: 1036px;
+    width: 90%;
     height: 70px;
     margin-top: -15px;
     background: #47709A;
     border-radius: 10px;
 }
 
-/* #down-arrowQR,
-#down-arrowAttend {
-    color: #DCF2F1;
-    /* position: absolute; */
-/* margin-top: -0px;
-    margin-left: 950px; */
-/* } */
-
-/* .up-arrow {
-    color: #DCF2F1;
-    margin-left: 950px;
-    margin-top: 20px;
-    position: relative;
-    transform: rotate(-180deg);
-
-} */
 
 .generQR {
-    width: 1035px;
+    width: 90%;
     height: 150px;
     margin-top: 0px;
     background: rgba(220, 242, 241, 0.57);
@@ -179,6 +134,7 @@
     font-size: 28px;
     font-weight: 700;
     cursor: pointer;
+    border: none;
     font-family: initial;
 }
 
@@ -193,7 +149,7 @@
 }
 
 .div-attendList {
-    width: 1036px;
+    width: 90%;
     height: 640px;
     margin-left: 0px;
     margin-top: 0px;
@@ -204,8 +160,8 @@
 }
 
 .div-attendList-after {
-    width: 1036px;
-    height: 490px;
+    width: 90%;
+    height: 510px;
     background: rgba(220, 242, 241, 0.50);
     border-radius: 10px;
     cursor: pointer;
@@ -260,35 +216,33 @@
     background: #DCF2F1;
     border-radius: 5px;
     font-size: 25px;
-    font-family: 'Inter';
-    text-align: right;
+    padding-left: 10px;
+
 }
 
 .input-search::placeholder {
     font-size: 20px;
     color: #47709A;
-    position: absolute;
 
 }
 
 .div-list {
     margin-left: 10px;
     margin-top: 15px;
-    width: 1020px;
+    width: 98%;
     height: 550px;
     overflow: hidden;
-    /* position: absolute; */
     overflow-y: scroll;
 }
 
 .div-list-after {
     margin-left: 8px;
     margin-top: 15px;
-    width: 1020px;
+    width: 98%;
     height: 400px;
     overflow: hidden;
     overflow-y: scroll;
-    /* position: absolute; */
+
 }
 
 .tab-attend th {
@@ -308,7 +262,7 @@
     height: 35px;
     font-size: 24px;
     font-weight: 800;
-    color: #263658;
+    color: #205487;
     text-align: center;
 
 

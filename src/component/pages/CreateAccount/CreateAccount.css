@@ -1,39 +1,66 @@
 .createaccount-continer {
-    width: 742px;
-    height: 750px;
-    left: 380px;
-    top: 150px;
-    position: absolute;
+    width: 50%;
+    height: 700px;
     background: linear-gradient(200deg, #365486 0%, rgba(54, 84, 134, 0) 100%);
     border-radius: 30px;
-    cursor: pointer;
+    margin-left: 400px;
+    margin-top: 100px;
+    margin-bottom: 100px;
 
 }
-
-
 
 .createaccount-continer h3 {
     width: 294px;
     height: 42px;
     color: #DCF2F1;
-    font-size: 40px;
-    font-family: 'Inter';
-    font-weight: 800;
-    position: absolute;
-    margin-left: 230px;
-    margin-top: 30px;
+    font-size: 38px;
+    font-weight: bold;
+    margin-left: 260px;
+    padding-top: 20px;
 }
 
-.div-inputs {
+.div-addPhoto {
+    width: 100px;
+    height: 100px;
+    border: 2px solid #DCF2F1;
+    border-radius: 50px;
+    color: #365486;
+    margin-left: 330px;
+}
+
+.div-addPhoto svg {
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+
+}
+
+.div-addPhoto h5 {
+    margin-left: 15px;
+    margin-top: 10px;
+}
+
+.iupt-photo {
+    display: none;
+}
+
+.div-addPhoto img {
+    width: 100px;
+    height: 100px;
+    /* margin-top: -70px; */
+    border-radius: 50px;
+
+}
+
+/* .div-inputs {
     width: 609px;
     height: 350px;
-    position: absolute;
-    margin-top: 260px;
-    margin-left: 135px;
+    margin-top: 360px;
+    margin-left: 135px; */
 
-}
+/* /} */
 
-.div-inputs input {
+/* .div-inputs input {
     width: 450px;
     height: 55px;
     background: #DCF2F1;
@@ -47,7 +74,7 @@
     cursor: pointer;
 
 
-}
+} */
 
 .div-inputs input::placeholder {
     color: #365386b6;
@@ -89,41 +116,7 @@
     display: none;
 }
 
-.div-addPhoto {
-    width: 100px;
-    height: 100px;
-    position: absolute;
-    left: 310px;
-    top: 100px;
-    border: 2px solid #DCF2F1;
-    border-radius: 50px;
-    color: #365486;
-}
 
-.div-addPhoto svg {
-    position: absolute;
-    left: 20px;
-    top: 20px;
-
-}
-
-.div-addPhoto h5 {
-    position: absolute;
-    top: 80px;
-    left: 15px;
-
-}
-
-.iupt-photo {
-    display: none;
-}
-
-.div-addPhoto img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50px;
-
-}
 
 .div-h4-Registered h4 {
     color: #dcf2f1ca;
