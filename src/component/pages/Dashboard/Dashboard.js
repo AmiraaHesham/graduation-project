@@ -3,16 +3,14 @@ import './Dashboard.css'
 import { Link } from 'react-router-dom';
 import Header from '../header/header'
 import axios from 'axios';
-import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
 const Dashboard = () => {
 
     let [date, setDate] = useState()
-    let Courses = ''
     const [course, setcourse] = useState([])
     useEffect(() => {
         showDate()
         getCoursePresent()
-    }, [])
+    },)
 
     const showDate = () => {
         const today = new Date();
@@ -28,7 +26,6 @@ const Dashboard = () => {
     }
     const getCoursePresent = async () => {
 
-        const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][new Date().getDay()]
 
         try {
             const res = await axios.get('http://127.0.0.1:3000/api/v1/lecturer/lecturer_courses/' + localStorage.id)
