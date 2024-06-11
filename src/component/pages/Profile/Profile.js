@@ -117,18 +117,25 @@ const Profile = () => {
     const btnEditEmail = () => {
         let inputEditName = document.querySelector('#inpEditName')
         inputEditName.classList.add('hide')
+
         let name = document.querySelector('#name')
         name.classList.add('hide')
+
         let inputEditEmail = document.querySelector('#EditEmail')
         inputEditEmail.classList.remove('hide')
+
         let email = document.querySelector('#email')
         email.classList.add('hide')
+
         let Changepassword = document.querySelector('.btn-Changepassword')
         Changepassword.classList.add('hide')
+
         let btnssavecancelEmail = document.querySelector('#btns-save-cancel-Email')
         btnssavecancelEmail.classList.remove('hide')
+
         let divbtnlogoutDelete = document.querySelector('.btns-logout-delete')
         divbtnlogoutDelete.classList.add('hide')
+
         inputRefEmail.current.value = localStorage.email
     }
 
@@ -270,14 +277,26 @@ const Profile = () => {
         btnssavecancelChangepassword.classList.remove('hide')
     }
     const saveChangePassword = async () => {
-        let CurrentPass = inputRefCurrentPass.current.value
-        let ConfirmPass = inputRefConfirmPass.current.value
-        let NewPass = inputRefNewPass.current.value
+        let name = document.querySelector('#name')
+        name.classList.remove('hide')
+        let email = document.querySelector('#email')
+        email.classList.remove('hide')
+        let BtnChangepassword = document.querySelector('.btn-Changepassword')
+        BtnChangepassword.classList.remove('hide')
+        let divbtnlogoutDelete = document.querySelector('.btns-logout-delete')
+        divbtnlogoutDelete.classList.remove('hide')
+        let divInputsChangepass = document.querySelector('#div-inputs-changepasword')
+        divInputsChangepass.classList.add('hide')
+        let btnssavecancelChangepassword = document.querySelector('.btns-save-cancel-Changepassword')
+        btnssavecancelChangepassword.classList.add('hide')
+        let btnChangepassword = document.querySelector('.btn-Changepassword')
+        btnChangepassword.classList.remove('hide')
+
         try {
             const res = await axios.put('http://127.0.0.1:3000/api/v1/lecturer/changeMyPassword', {
-                currentPassword: CurrentPass,
-                password: NewPass,
-                confirmPassword: ConfirmPass,
+                currentPassword: currentPassword,
+                password: newPassword,
+                confirmPassword: confirmPassword,
             },
                 {
                     headers: {
@@ -305,6 +324,8 @@ const Profile = () => {
 
         navigate('/SignIn')
     }
+
+
     return (
         <div>
             <Toaster

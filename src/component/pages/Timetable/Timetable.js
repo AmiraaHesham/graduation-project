@@ -24,7 +24,7 @@ const Timetable = () => {
 
     useEffect(() => {
         getCourses()
-    }, [courses])
+    }, [])
 
     const createCourse = async () => {
         try {
@@ -49,7 +49,7 @@ const Timetable = () => {
             inputRefLecName.current.value = ''
             inputRefLecTime.current.value = ''
             inputRefSemsteryear.current.value = ''
-
+            getCourses()
         }
         catch (error) {
             if (inputRefLecName.current.value === '') {
@@ -153,8 +153,8 @@ const Timetable = () => {
                             <option value='Fourth' />
                         </datalist>
                         <div className='div-btn-dis-conf'>
-                            <button onClick={handleBtnDiscard} className='btn-discard'>DISCARD</button>
-                            <button onClick={createCourse} className='btn-confirm'>CONFIRM</button></div>
+                            <button onClick={createCourse} className='btn-confirm'>CONFIRM</button>
+                            <button onClick={handleBtnDiscard} className='btn-discard'>DISCARD</button></div>
                     </div >
                 </div >
                 <div className='edit-course'>
@@ -163,10 +163,10 @@ const Timetable = () => {
                     <div className='list-courses'>
                         {courses.map((course, index) => {
                             return <div key={index} className='div-course' >
-                                <span style={{ color: '#0f1b49', position: 'absolute', marginTop: '5px', marginLeft: '390px', fontSize: '26px', fontWeight: '900' }}>
+                                <span style={{ color: '#0f1b49', marginLeft: '370px', fontSize: '26px', fontWeight: '900' }}>
                                     <span> <FiEdit /></span>
                                     <span><MdDeleteOutline /></span></span>
-                                <div style={{ margin: '5px 0px 5px 5px ' }}>
+                                <div style={{ margin: '-35px 0px 5px 5px ' }}>
                                     <span>Name: {course.name}</span>
                                     <br></br>
                                     <span> Day: {course.lectureDay}</span>

@@ -9,7 +9,6 @@ const CreateAccount = () => {
     const [Email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [Confirmpassword, setConfirmPassword] = useState();
-    const [programme, setprogramme] = useState();
     const [photo, setPhoto] = useState();
     const inputRef = useRef()
     const navigate = useNavigate();

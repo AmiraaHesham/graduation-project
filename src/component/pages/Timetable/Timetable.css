@@ -137,7 +137,6 @@ hr {
     height: 650px;
     font-size: 25px;
     overflow: hidden;
-    position: absolute;
     overflow-y: scroll;
 
 }

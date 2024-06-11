@@ -41,6 +41,16 @@ body {
     font-size: 20px;
 }
 
+.div-infoProfile {
+    width: 40%;
+    height: 400px;
+    margin-left: 900px;
+    background: #1d2649b6;
+    position: absolute;
+    display: none;
+    border-radius: 10px;
+}
+
 .profile {
     width: 120px;
     height: 70px;

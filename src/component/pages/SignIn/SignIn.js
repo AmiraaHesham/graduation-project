@@ -50,7 +50,6 @@ const SignIn = () => {
             localStorage.setItem('id', id)
 
             navigate('/LecturesDates')
-
         }
 
         catch (error) {
@@ -58,41 +57,42 @@ const SignIn = () => {
             pass.style.border = '2px solid brown'
             console.log(error)
             // toast.error(error.response.data.message)
-
         }
     }
 
     const cheekToken = () => {
         if (localStorage.token !== '') {
             navigate('/LecturesDates')
-
         }
-
     }
+
 
     return (
         <div>
-            <div className='header' >
-                <h4>Smart Attendance System</h4>
-            </div>
-            <Toaster
-                position="bottom-center"
-                reverseOrder={true}
-            />
-            <div className='sign-in-contener'>
-                <h3>Sign In</h3>
-                <div className='input-Email-pass'>
-                    <input className='Email' placeholder='Email' type='email' value={Email} onChange={(e) => { setEmail(e.target.value) }}></input>
-                    <input className='password' type='password' placeholder='Password' value={Password} onChange={(e) => { setPassword(e.target.value) }}></input>
-                    <h4>Forget Password</h4>
+
+            <div className=''>
+                <div className='header'>
+                    <h4>Smart Attendance System</h4>
                 </div>
-                <div className='btn-h5-login'>
+                <Toaster
+                    position="bottom-center"
+                    reverseOrder={true}
+                />
+                <div className='sign-in-contener'>
+                    <h3>Sign In</h3>
+                    <div className='input-Email-pass'>
+                        <input className='Email' placeholder='Email' type='email' value={Email} onChange={(e) => { setEmail(e.target.value) }}></input>
+                        <input className='password' type='password' placeholder='Password' value={Password} onChange={(e) => { setPassword(e.target.value) }}></input>
+                        <h4>Forget Password</h4>
+                    </div>
+                    <div className='btn-h5-login'>
 
-                    <button className='btn-login' onClick={handleSignIn}>login</button>
+                        <button className='btn-login' onClick={handleSignIn}>login</button>
 
-                    <h5>Not Have Account?
-                        <Link style={{ textDecoration: 'none', color: '#0F1035', fontWeight: '600', fontSize: '15px' }} to="/CreateAccount">Create account</Link>
-                    </h5>
+                        <h5>Not Have Account?
+                            <Link style={{ textDecoration: 'none', color: '#0F1035', fontWeight: '600', fontSize: '15px' }} to="/CreateAccount">Create account</Link>
+                        </h5>
+                    </div>
                 </div>
             </div>
         </div>

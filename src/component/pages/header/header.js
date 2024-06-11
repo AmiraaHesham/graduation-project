@@ -37,6 +37,12 @@ const Header = () => {
                     {name}
                 </div>
             </div></Link>
+
+            <div className='div-infoProfile'>
+                {/* <div className='cheld-infoProfile'>
+
+                </div> */}
+            </div>
         </div>
     )
 }

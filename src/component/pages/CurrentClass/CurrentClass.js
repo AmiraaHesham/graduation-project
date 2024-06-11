@@ -4,22 +4,26 @@ import { Link } from 'react-router-dom'
 import Header from '../header/header'
 import axios from 'axios'
 import { toast, Toaster } from 'react-hot-toast';
+import QRCode from "react-qr-code";
 
 const CurrentClass = () => {
-    const [qrImage, setqrImage] = useState('')
-    // const [, setqrImage] = useState('')
+
     useEffect(() => {
         getCoursePresent()
-
     }, [])
     const [course, setcourse] = useState([])
+    const [lecturerId, setlecturerId] = useState()
+    const [courseId, setcourseId] = useState()
+
     const subjectSelectRef = useRef()
 
 
     const getCoursePresent = async () => {
         try {
+
             const res = await axios.get('http://127.0.0.1:3000/api/v1/lecturer/lecturer_courses/' + localStorage.id)
             setcourse(res.data.data)
+
         }
         catch (error) {
             console.log(error)
@@ -46,20 +50,17 @@ const CurrentClass = () => {
     }
 
     const btnGenratQR = async () => {
-        console.log(subjectSelectRef.current.value)
 
         try {
-            const res = await axios.post('http://127.0.0.1:3000/api/v1/qr', {
-                title: course.name,
-                course: subjectSelectRef.current.value,
-            })
-            let QRId = res.data.data._id
-
-            let QRimg = document.querySelector('#div-QRimg')
-            QRimg.classList.remove('hide')
-            const res1 = await axios.get('http://127.0.0.1:3000/api/v1/qr/' + QRId)
-            setqrImage(res1.data.data.qr)
-
+            if (subjectSelectRef.current.value !== "Choose Lecture ...") {
+                setcourseId(subjectSelectRef.current.value)
+                setlecturerId(localStorage.id)
+                let QRimg = document.querySelector('#div-QRimg')
+                QRimg.classList.remove('hide')
+            }
+            else (
+                toast.error("Choose Lecture")
+            )
         }
         catch (error) {
             console.log(error)
@@ -73,6 +74,10 @@ const CurrentClass = () => {
 
     return (
         <div>
+            <Toaster
+                position="bottom-center"
+                reverseOrder={true}
+            />
             <Header />
             <div className='side-bar'>
                 <Link to={"/LecturesDates"} style={{ textDecoration: 'none', color: '#1D2649' }}>
@@ -120,7 +125,7 @@ const CurrentClass = () => {
                     <option> Choose Lecture ... </option>
                     {course.map((course, index) => {
                         return <option key={index} value={course._id}>
-                            {course.name} - Semster Year {course.level} - {course.lectureTime}</option>
+                            {course.name} - "{course.level}" - {course.lectureDay} - {course.lectureTime}</option>
                     })
                     }
                 </select>
@@ -131,11 +136,17 @@ const CurrentClass = () => {
                 </div>
 
                 <div className='hide' id='div-QRimg'>
-                    <img className='qrImg' src={qrImage} alt=''></img>
+
+                    <QRCode
+                        size={256}
+                        fgColor={'#1D2649'}
+                        style={{ marginLeft: "190px", marginTop: "40px", height: "auto", width: "65%", border: "10px solid #ffffff" }}
+                        value={`CourseID: ${courseId}
+LecturerID: ${lecturerId}`}
+                        viewBox={`0 0 256 256`}
+                    />
                     <button onClick={handleBtnClose} className='btn-Close'>Close</button>
                 </div>
-
-
 
                 <div className='hide' id='genratQR'>
                     <button onClick={btnGenratQR} className='btn-genrat'>Generate QR code</button>
@@ -156,17 +167,18 @@ const CurrentClass = () => {
                     <div className='div-list' id='list'>
                         <table className='tab-attend' style={{ width: '100%', border: 'none' }}>
                             <tr>
-                                <th >ID</th>
+                                <th ></th>
                                 <th >NAME</th>
-                                <th >PROGRAMME</th>
                                 <th >STATUS</th>
                             </tr>
                             <tbody>
-                                <td>12345</td>
-                                <td>amira hehsam</td>
-                                <td>information</td>
+                                <td>1</td>
+                                <td>amira hehsam mohamed</td>
                                 <td>present</td>
                             </tbody>
+                            <td>2</td>
+                            <td>amira hehsam </td>
+                            <td>present</td>
                         </table>
                     </div>
                 </div>
