@@ -1,4 +1,4 @@
-.Lecture-Dates-page {
+.Dashboard-page {
     display: flex;
     width: 350px;
     height: 100px;
@@ -10,7 +10,7 @@
     background: rgba(54, 84, 134, 0.22);
 }
 
-.Lecture-Dates-page h2 {
+.Dashboard-page h2 {
     width: 200px;
     left: 100px;
     top: 20px;

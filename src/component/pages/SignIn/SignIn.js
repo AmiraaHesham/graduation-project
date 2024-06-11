@@ -49,7 +49,7 @@ const SignIn = () => {
             localStorage.setItem('email', email)
             localStorage.setItem('id', id)
 
-            navigate('/LecturesDates')
+            navigate('/Dashboard')
         }
 
         catch (error) {
@@ -62,7 +62,7 @@ const SignIn = () => {
 
     const cheekToken = () => {
         if (localStorage.token !== '') {
-            navigate('/LecturesDates')
+            navigate('/Dashboard')
         }
     }
 

@@ -3,7 +3,7 @@ import SignIn from './component/pages/SignIn/SignIn.js';
 import './component/pages/SignIn/SignIn.js'
 import { Routes, Route } from 'react-router-dom';
 import CreateAccount from "./component/pages/CreateAccount/CreateAccount.js";
-import LecturesDates from './component/pages/LecturesDates/LecturesDates.js';
+import Dashboard from './component/pages/Dashboard/Dashboard.js';
 import CurrentClass from './component/pages/CurrentClass/CurrentClass.js'
 import Timetable from './component/pages/Timetable/Timetable.js';
 import OverAll from './component/pages/OverAll/OverAll.js';
@@ -22,7 +22,7 @@ function App() {
         <Route path='/' element={<SignIn />} />
         <Route path='/Profile' element={<Profile />} />
         <Route path='/SignIn' element={<SignIn />} />
-        <Route path='/LecturesDates' element={<LecturesDates />} />
+        <Route path='/Dashboard' element={<Dashboard />} />
         <Route path='/CurrentClass' element={<CurrentClass />} />
         <Route path='/Timetable' element={<Timetable />} />
         <Route path='/OverAll' element={<OverAll />} />

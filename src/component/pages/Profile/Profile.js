@@ -200,6 +200,8 @@ const Profile = () => {
         let btnChangepassword = document.querySelector('.btn-Changepassword')
         btnChangepassword.classList.remove('hide')
 
+        let divbtnlogoutDelete = document.querySelector('.btns-logout-delete')
+        divbtnlogoutDelete.classList.remove('hide')
         const newName = inputRefName.current.value
 
         try {
@@ -237,7 +239,8 @@ const Profile = () => {
         let btnChangepassword = document.querySelector('.btn-Changepassword')
         btnChangepassword.classList.remove('hide')
         const newEmail = inputRefEmail.current.value
-
+        let divbtnlogoutDelete = document.querySelector('.btns-logout-delete')
+        divbtnlogoutDelete.classList.remove('hide')
         try {
             await axios.put('http://127.0.0.1:3000/api/v1/lecturer/updateMe',
                 {
@@ -333,7 +336,7 @@ const Profile = () => {
                 reverseOrder={false}
             />
             <div className='header' >
-                <Link to={'/LecturesDates'}><svg id='time' xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 1200 1200" ><path fill="currentColor"
+                <Link to={'/Dashboard'}><svg id='time' xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 1200 1200" ><path fill="currentColor"
                     d="M0 0v240h1200V0zm0 480v240h1200V480zm0 480v240h1200V960z" /></svg></Link>
                 <h4>Smart Attendance System</h4>
             </div>
