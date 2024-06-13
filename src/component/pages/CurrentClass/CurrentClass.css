@@ -28,8 +28,8 @@
     padding-top: 20px;
 }
 
-.selectSubject {
-    width: 90%;
+.selectCourse {
+    width: 68%;
     height: 60px;
     font-size: 35px;
     font-weight: bold;
@@ -38,6 +38,62 @@
     color: #DCF2F1;
     box-shadow: 2px 3px 3px #0f1b49;
     padding-left: 10px;
+    margin-right: 20px;
+}
+
+.btn-Create-Lecture {
+    width: 20%;
+    height: 60px;
+    font-size: 30px;
+    font-weight: bold;
+    background: #263658;
+    border-radius: 10px;
+    color: #DCF2F1;
+    box-shadow: 2px 3px 3px #0f1b49;
+    padding-left: 10px;
+}
+
+.selectCourse:hover,
+.btn-Create-Lecture:hover {
+    background: #263658ed;
+
+}
+
+#div-create-lecture {
+    width: 35%;
+    height: 350px;
+    margin-left: 250px;
+    margin-top: 60px;
+    background: #365386e4;
+    border-radius: 10px;
+    position: absolute;
+    padding-top: 70px;
+
+}
+
+#div-create-lecture input {
+    width: 70%;
+    height: 50px;
+    background: #DCF2F1;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    margin-left: 70px;
+    border: none;
+    font-size: 25px;
+    color: #365486;
+    margin-bottom: 20px;
+    font-weight: 700;
+    cursor: default;
+    padding-left: 10px;
+}
+
+#div-create-lecture div {
+    margin-left: 120px;
+    margin-top: 80px;
+}
+
+#div-create-lecture input::placeholder {
+    color: #365486;
 }
 
 .div-QRcode {
@@ -45,6 +101,13 @@
     height: 70px;
     background: #47709A;
     border-radius: 10px;
+
+}
+
+.div-QRcode:hover,
+.attendList:hover,
+.attendList-after:hover {
+    background: #47719ad6;
 
 }
 

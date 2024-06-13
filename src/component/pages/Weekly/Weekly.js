@@ -1,9 +1,26 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import './weekly.css'
 import Header from '../header/header'
+import axios from 'axios'
 
 const Weekly = () => {
+    const [course, setcourse] = useState([])
+
+    useEffect(() => {
+        getCourses()
+    })
+    const subjectSelectRef = useRef
+
+    const getCourses = async () => {
+        try {
+            const res = await axios.get('http://127.0.0.1:3000/api/v1/lecturer/lecturer_courses/' + localStorage.id)
+            setcourse(res.data.data)
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
 
     return (
         <div>
@@ -57,18 +74,31 @@ const Weekly = () => {
                     </div>
                 </div>
             </div>
-            <div className='div-overallAttendance'>
-                <div className='div-chooselecture'>
-                    {/* <select  name="courses" className=''>
-            <option> Choose Lecture ... </option>
-            {course.map((course, index) => {
-              return <option key={index} value={course._id}>
-                {course.name} - Semster Year {course.level} </option>
-            })
-            }
-          </select> */}
+            <div className='div-weeklyAttendance'>
+                <div className='div-chooseCourse'>
+                    <select name="courses" className='selectCourse'>
+                        <option> Choose Course ... </option>
+                        {course.map((course, index) => {
+                            return <option key={index} value={course._id}>
+                                {course.name} - Semster Year {course.level} </option>
+                        })
+                        }
+                    </select>
+                    <select className='selectLecture'>
+                        <option> Choose Lecture... </option>
+                        <option value={1}>1</option>
+                        <option value={2}>2</option>
+                        <option value={3}>3</option>
+                        <option value={4}>4</option>
+                        <option value={5}>5</option>
+                        <option value={6}>6</option>
+                        <option value={7}>7</option>
+                        <option value={8}>8</option>
+                        <option value={9}>9</option>
+                        <option value={10}>10</option>
+                    </select>
                 </div>
-                <div className='div-tableOverAllAttendance'>
+                <div className='div-tableWeeklyAttendance'>
 
                 </div>
             </div>

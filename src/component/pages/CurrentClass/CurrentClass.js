@@ -12,10 +12,13 @@ const CurrentClass = () => {
         getCoursePresent()
     }, [])
     const [course, setcourse] = useState([])
-    const [lecturerId, setlecturerId] = useState()
+    const [lectureId, setlectureId] = useState()
     const [courseId, setcourseId] = useState()
+    const [LectureTitle, setLectureTitle] = useState()
+    const [LectureNum, setLectureNum] = useState()
 
     const subjectSelectRef = useRef()
+    const lecturerSelectRef = useRef()
 
 
     const getCoursePresent = async () => {
@@ -52,14 +55,15 @@ const CurrentClass = () => {
     const btnGenratQR = async () => {
 
         try {
-            if (subjectSelectRef.current.value !== "Choose Lecture ...") {
+            if (subjectSelectRef.current.value !== "Choose Course...") {
                 setcourseId(subjectSelectRef.current.value)
-                setlecturerId(localStorage.id)
+                // setlectureId(lecturerSelectRef.current.value)
+
                 let QRimg = document.querySelector('#div-QRimg')
                 QRimg.classList.remove('hide')
             }
             else (
-                toast.error("Choose Lecture")
+                toast.error("Choose Course or Create Lecture")
             )
         }
         catch (error) {
@@ -71,6 +75,21 @@ const CurrentClass = () => {
         let QRimg = document.querySelector('#div-QRimg')
         QRimg.classList.add('hide')
     }
+    const handelBtnCreateLecture = () => {
+        let divCreateLecture = document.querySelector('#div-create-lecture')
+        divCreateLecture.classList.remove('hide')
+    }
+
+    const handelBtnDiscard = () => {
+        let divCreateLecture = document.querySelector('#div-create-lecture')
+        divCreateLecture.classList.add('hide')
+    }
+
+    const handelBtnCreate = () => {
+
+    }
+
+
 
     return (
         <div>
@@ -115,22 +134,29 @@ const CurrentClass = () => {
             </div>
 
             <div className='div-continer-currentclass'>
-
                 <Toaster
                     position="bottom-center"
                     reverseOrder={true}
                 />
-
-                <select ref={subjectSelectRef} className='selectSubject'>
-                    <option> Choose Lecture ... </option>
-                    {course.map((course, index) => {
-                        return <option key={index} value={course._id}>
-                            {course.name} - "{course.level}" - {course.lectureDay} - {course.lectureTime}</option>
-                    })
-                    }
-                </select>
-
-
+                <div className='div-selectCourse-btn-Create-Lecture'>
+                    <select ref={subjectSelectRef} className='selectCourse'>
+                        <option> Choose Course... </option>
+                        {course.map((course, index) => {
+                            return <option key={index} value={course._id}>
+                                {course.name} - "{course.level}" </option>
+                        })
+                        }
+                    </select>
+                    <button onClick={handelBtnCreateLecture} className='btn-Create-Lecture'>Create Lecture</button>
+                </div>
+                <div className='hide' id='div-create-lecture'>
+                    <input placeholder='Lecture Title' type='text' onChange={(e) => setLectureTitle(e.target.value)}></input>
+                    <input placeholder='Lecture Number' type='text' onChange={(e) => setLectureNum(e.target.value)}></input>
+                    <div>
+                        <button onClick={handelBtnCreate} className='btn-confirm'>CREATE</button>
+                        <button onClick={handelBtnDiscard} className='btn-discard'>DISCARD</button>
+                    </div>
+                </div>
                 <div className='div-QRcode' onClick={handleDivShowQR}>
                     <h3>QR Code</h3>
                 </div>
@@ -141,8 +167,8 @@ const CurrentClass = () => {
                         size={256}
                         fgColor={'#1D2649'}
                         style={{ marginLeft: "190px", marginTop: "40px", height: "auto", width: "65%", border: "10px solid #ffffff" }}
-                        value={`CourseID: ${courseId}
-LecturerID: ${lecturerId}`}
+                        value={`CourseID: ${courseId} 
+lectureId: ${lectureId}`}
                         viewBox={`0 0 256 256`}
                     />
                     <button onClick={handleBtnClose} className='btn-Close'>Close</button>
@@ -183,8 +209,7 @@ LecturerID: ${lecturerId}`}
                     </div>
                 </div>
             </div>
-        </div>
-
+        </div >
     )
 }
 

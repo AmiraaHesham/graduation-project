@@ -58,3 +58,36 @@
     background: rgba(54, 83, 134, 0.105);
 
 }
+
+.div-tableWeeklyAttendance {
+    width: 70%;
+    height: 800px;
+    background: #dcf2f16e;
+    margin-left: 420px;
+    border-radius: 10px;
+}
+
+.div-chooseCourse {
+    width: 70%;
+    height: 100px;
+    margin-top: 30px;
+    margin-left: 450px;
+}
+
+.div-chooseCourse select {
+    width: 45%;
+    height: 50px;
+    font-size: 30px;
+    font-weight: bold;
+    background: #263658;
+    border-radius: 10px;
+    color: #DCF2F1;
+    box-shadow: 2px 3px 3px #0f1b49;
+    padding-left: 10px;
+    margin-right: 50px;
+}
+
+.div-chooseCourse select:hover {
+    background: #263658ed;
+
+}

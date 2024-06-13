@@ -5,12 +5,12 @@ import Header from '../header/header'
 import axios from 'axios';
 const Dashboard = () => {
 
-    let [date, setDate] = useState()
+    const [date, setDate] = useState()
     const [course, setcourse] = useState([])
     useEffect(() => {
         showDate()
         getCoursePresent()
-    },)
+    }, [])
 
     const showDate = () => {
         const today = new Date();
@@ -30,20 +30,18 @@ const Dashboard = () => {
         try {
             const res = await axios.get('http://127.0.0.1:3000/api/v1/lecturer/lecturer_courses/' + localStorage.id)
 
+            const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][new Date().getDay()]
 
-            // for (let i = 0; i <= res.data.data.length; i++) {
-            //     if (weekday === res.data.data[i].lectureDay) {
-            //         Courses = {
-            //             name: res.data.data[i].name
+            for (let i = 0; i <= res.data.data.length; i++) {
+                // console.log(weekday)
+                if (res.data.data[i].lectureDay === weekday) {
+                    let course = res.data.data[i]
+                    setcourse(course)
+                    // }
 
-            //         }
-            //         setcourse(res.data.data[i])
-            //         //     console.log(res.data.data[i])
-            //         // }
-
-            setcourse(res.data.data)
-            // }
-
+                    // setcourse(res.data.data)
+                }
+            }
             console.log(course)
 
         }
@@ -94,19 +92,17 @@ const Dashboard = () => {
                 <div className='header-timetable' >
                     <h2> {date} </h2>
                 </div>
-                {/* <div className='div-continer-Courses'>
+                <div className='div-continer-Courses'>
                     {
-                        course.map((course, index) => {
+                        Array.isArray(course) && course?.map((course, index) => {
                             return <div>
                                 <div key={index} className='showCourses' >
-                                    {course.name}</div>
-                                <div style={{ fontSize: '50px', marginLeft: '350px', color: '#273758' }}>          <PiDotsThreeOutlineVerticalFill />
-                                </div>
+                                    {course.lectureDay} - {course.lectureName}</div>
                             </div>
                         })
                     }
                 </div>
-                <div className='div-summary'>
+                {/* <div className='div-summary'>
                     <div className='header-summary'>
                         <h3>Summary</h3>
                         <h2>You have {course.length} course</h2>

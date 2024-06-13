@@ -9,6 +9,7 @@ const CreateAccount = () => {
     const [Email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [Confirmpassword, setConfirmPassword] = useState();
+    const [Programming, setProgramming] = useState();
     const [photo, setPhoto] = useState();
     const inputRef = useRef()
     const navigate = useNavigate();
@@ -22,6 +23,7 @@ const CreateAccount = () => {
                 password: password,
                 passwordConfirm: Confirmpassword,
                 profileImage: photo,
+                programme: Programming
             }
 
             )
@@ -74,6 +76,7 @@ const CreateAccount = () => {
                     <input placeholder='Email *' type='text' onChange={(e) => setEmail(e.target.value)}></input>
                     <input placeholder='Password *' type='password' onChange={(e) => setPassword(e.target.value)}></input>
                     <input placeholder='Confirm Password *' type='password' onChange={(e) => setConfirmPassword(e.target.value)}></input>
+                    <input placeholder='Programming *' type='text' onChange={(e) => setProgramming(e.target.value)}></input>
                 </div>
                 <Toaster
                     position="bottom-center"

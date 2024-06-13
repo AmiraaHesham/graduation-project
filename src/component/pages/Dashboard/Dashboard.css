@@ -44,8 +44,7 @@
 .div-summary {
     width: 239px;
     height: 220px;
-    margin-left: 930px;
-
+    margin-left: 850px;
     background: #9FBECF
 }
 
@@ -53,7 +52,7 @@
     width: 239px;
     height: 54px;
     color: #DCF2F1;
-    position: absolute;
+    align-content: center;
     background: #273758
 }
 
@@ -61,27 +60,17 @@
     width: 132px;
     height: 23px;
     color: #DCF2F1;
-    position: absolute;
-    left: 70px;
-    bottom: 1px;
     font-size: 24px;
-    font-family: Inter;
     font-weight: 800;
-    word-wrap: break-word
 }
 
 .header-summary h2 {
     width: 200px;
     height: 23px;
     color: #0f1b49;
-    position: absolute;
-    left: 20px;
-    top: 70px;
     font-size: 24px;
     font-weight: 800;
-    word-wrap: break-word
 }
-
 
 
 .showCourses {
@@ -101,10 +90,9 @@
 
 .div-continer-Courses {
     width: 90%;
-    height: 800px;
+    height: 700px;
     margin-top: 90px;
-    margin-left: 45px;
+    margin-left: 4px;
     overflow: hidden;
     overflow-y: scroll;
-    position: absolute;
 }
