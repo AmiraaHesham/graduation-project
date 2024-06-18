@@ -1,24 +1,19 @@
-.div-StudentSolution-page {
+.CreateStudent-page {
     display: flex;
     width: 350px;
     height: 100px;
-    top: 480px;
+    top: 150px;
     left: -20px;
     position: absolute;
     justify-content: space-between;
     margin: 20px 20px;
     background: rgba(54, 84, 134, 0.22);
+
 }
 
-
-.StudentSolution-page {
-    position: absolute;
-    left: 50px
-}
-
-.StudentSolution-page h2 {
+.CreateStudent-page h2 {
     width: 200px;
-    left: 80px;
+    left: 100px;
     top: 20px;
     position: absolute;
 }

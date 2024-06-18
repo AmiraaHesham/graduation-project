@@ -31,7 +31,8 @@ const SignIn = () => {
                         "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization",
                     }
 
-                },)
+                },
+            )
             console.log(res)
             // console.log(res.data.token)
             // console.log(res.data.data.name)
@@ -42,21 +43,26 @@ const SignIn = () => {
             let profileImage = res.data.data.profileImage
             let email = res.data.data.email
             let id = res.data.data._id
-
             localStorage.setItem('token', token)
             localStorage.setItem('name', name)
             localStorage.setItem('profileImage', profileImage)
             localStorage.setItem('email', email)
             localStorage.setItem('id', id)
+            if (name === 'admin') {
+                navigate('/CreateLecturer')
 
-            navigate('/Dashboard')
+            }
+            else (
+                navigate('/Dashboard')
+
+            )
         }
 
         catch (error) {
             email.style.border = '2px solid brown'
             pass.style.border = '2px solid brown'
             console.log(error)
-            // toast.error(error.response.data.message)
+            // toast.promise(error.response.data.message)
         }
     }
 

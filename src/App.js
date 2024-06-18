@@ -9,10 +9,9 @@ import Timetable from './component/pages/Timetable/Timetable.js';
 import OverAll from './component/pages/OverAll/OverAll.js';
 import Weekly from './component/pages/Weekly/Weekly.js';
 import Profile from './component/pages/Profile/Profile.js';
-import Assignments from './component/pages/Assignments/Assignments.js'
-import StudentSolution from './component/pages/StudentSolution/StudentSolution.js'
-
-
+import AddCourses from './component/admin/AddCourses/AddCourses.js';
+import CreateStu from './component/admin/CreateStu/CreateStu.js';
+import CreateLec from './component/admin/CreateLec/CreateLec.js';
 function App() {
   return (
     <div className="App">
@@ -27,8 +26,10 @@ function App() {
         <Route path='/Timetable' element={<Timetable />} />
         <Route path='/OverAll' element={<OverAll />} />
         <Route path='/Weekly' element={<Weekly />} />
-        <Route path='/Assignments' element={<Assignments />} />
-        <Route path='/StudentSolution' element={<StudentSolution />} />
+        <Route path='/CreateLecturer' element={<CreateLec />} />
+        <Route path='/CreateStudent' element={<CreateStu />} />
+        <Route path='/AddCourses' element={<AddCourses />} />
+
       </Routes>
     </div>
   );

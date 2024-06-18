@@ -2,25 +2,20 @@
     display: flex;
     width: 350px;
     height: 100px;
-    top: 480px;
+    top: 370px;
     left: -20px;
     position: absolute;
     justify-content: space-between;
     margin: 20px 20px;
 }
 
-.Students-Attendance-page h2 {
-    width: 250px;
-    left: 100px;
-    top: 20px;
-    position: absolute;
-}
+
 
 .div-OverAll-Weekly {
     display: flex;
     width: 350px;
     height: 100px;
-    top: 590px;
+    top: 490px;
     left: -20px;
     position: absolute;
     justify-content: space-between;
@@ -45,7 +40,7 @@
     display: flex;
     width: 350px;
     height: 100px;
-    top: 700px;
+    top: 600px;
     left: -20px;
     position: absolute;
     justify-content: space-between;
@@ -61,21 +56,22 @@
 
 .div-tableWeeklyAttendance {
     width: 70%;
-    height: 800px;
+    height: 820px;
     background: #dcf2f16e;
     margin-left: 420px;
     border-radius: 10px;
 }
 
 .div-chooseCourse {
-    width: 70%;
-    height: 100px;
+    width: 71%;
+    height: 60px;
     margin-top: 30px;
-    margin-left: 450px;
+    margin-left: 420px;
+    margin-bottom: 20px;
 }
 
 .div-chooseCourse select {
-    width: 45%;
+    width: 48%;
     height: 50px;
     font-size: 30px;
     font-weight: bold;
@@ -84,7 +80,7 @@
     color: #DCF2F1;
     box-shadow: 2px 3px 3px #0f1b49;
     padding-left: 10px;
-    margin-right: 50px;
+
 }
 
 .div-chooseCourse select:hover {
