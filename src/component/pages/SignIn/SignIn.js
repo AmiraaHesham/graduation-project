@@ -43,12 +43,13 @@ const SignIn = () => {
             let profileImage = res.data.data.profileImage
             let email = res.data.data.email
             let id = res.data.data._id
+            let role = res.data.data.role
             localStorage.setItem('token', token)
             localStorage.setItem('name', name)
             localStorage.setItem('profileImage', profileImage)
             localStorage.setItem('email', email)
             localStorage.setItem('id', id)
-            if (name === 'admin') {
+            if (role === 'admin') {
                 navigate('/CreateLecturer')
 
             }

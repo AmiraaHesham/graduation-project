@@ -73,7 +73,19 @@ const Timetable = () => {
     }
     const getCourses = async () => {
         try {
-            const res = await axios.get('http://127.0.0.1:3000/api/v1/lecturer/lecturer_courses/' + localStorage.id,)
+            const res = await axios.get('http://127.0.0.1:3000/api/v1/lecturer/lecturer_courses/' + localStorage.id,
+                {
+
+                    headers: {
+                        "Access-Control-Allow-Origin": "*",
+                        "Access-Control-Allow-Credentials": "true",
+                        "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
+                        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+                        "Authorization": 'Bearer ' + localStorage.token
+                    }
+
+                },
+            )
             setcourses(res.data.data)
         }
         catch (error) {

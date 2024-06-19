@@ -12,19 +12,30 @@ const CurrentClass = () => {
         getCoursePresent()
     }, [])
     const [course, setcourse] = useState([])
-    const [lectureId, setlectureId] = useState()
     const [courseId, setcourseId] = useState()
     const [LectureTitle, setLectureTitle] = useState()
     const [LectureNum, setLectureNum] = useState()
+    const [lectureId, setlectureId] = useState()
 
     const subjectSelectRef = useRef()
-    const lecturerSelectRef = useRef()
 
 
     const getCoursePresent = async () => {
         try {
 
-            const res = await axios.get('http://127.0.0.1:3000/api/v1/lecturer/lecturer_courses/' + localStorage.id)
+            const res = await axios.get('http://127.0.0.1:3000/api/v1/lecturer/lecturer_courses/' + localStorage.id
+                , {
+
+                    headers: {
+                        "Access-Control-Allow-Origin": "*",
+                        "Access-Control-Allow-Credentials": "true",
+                        "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
+                        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+                        "Authorization": 'Bearer ' + localStorage.token
+                    }
+
+                },
+            )
             setcourse(res.data.data)
 
         }
@@ -61,6 +72,8 @@ const CurrentClass = () => {
 
                 let QRimg = document.querySelector('#div-QRimg')
                 QRimg.classList.remove('hide')
+                console.log(subjectSelectRef.current)
+
             }
             else (
                 toast.error("Choose Course or Create Lecture")
@@ -78,6 +91,8 @@ const CurrentClass = () => {
     const handelBtnCreateLecture = () => {
         let divCreateLecture = document.querySelector('#div-create-lecture')
         divCreateLecture.classList.remove('hide')
+        console.log(subjectSelectRef.current.value)
+
     }
 
     const handelBtnDiscard = () => {
@@ -85,7 +100,33 @@ const CurrentClass = () => {
         divCreateLecture.classList.add('hide')
     }
 
-    const handelBtnCreate = () => {
+    const handelBtnCreate = async () => {
+        try {
+            const res = await axios.post('http://127.0.0.1:3000/api/v1/lecture',
+                {
+                    lectureTitle: LectureTitle,
+                    lectureNumber: LectureNum,
+                    course: subjectSelectRef.current.value
+                },
+                {
+                    headers: {
+                        "Access-Control-Allow-Origin": "*",
+                        "Access-Control-Allow-Credentials": "true",
+                        "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
+                        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+                        "Authorization": 'Bearer ' + localStorage.token
+                    }
+                }
+
+            )
+            setlectureId(res.data.data.lecture._id)
+
+            let divCreateLecture = document.querySelector('#div-create-lecture')
+            divCreateLecture.classList.add('hide')
+        }
+        catch (error) {
+            toast.error("Enter lectureTitle || lectureNumber || course")
+        }
 
     }
 
@@ -138,7 +179,7 @@ const CurrentClass = () => {
                         <option> Choose Course... </option>
                         {course.map((course, index) => {
                             return <option key={index} value={course._id}>
-                                {course.name} - "{course.level}" </option>
+                                {course.name} </option>
                         })
                         }
                     </select>
