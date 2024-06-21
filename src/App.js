@@ -1,14 +1,14 @@
 import './App.css';
-import SignIn from './component/pages/SignIn/SignIn.js';
-import './component/pages/SignIn/SignIn.js'
+import SignIn from './component/manager/SignIn/SignIn.js';
+import './component/manager/SignIn/SignIn.js'
 import { Routes, Route } from 'react-router-dom';
-import CreateAccount from "./component/pages/CreateAccount/CreateAccount.js";
-import Dashboard from './component/pages/Dashboard/Dashboard.js';
-import CurrentClass from './component/pages/CurrentClass/CurrentClass.js'
-import Timetable from './component/pages/Timetable/Timetable.js';
-import OverAll from './component/pages/OverAll/OverAll.js';
-import Weekly from './component/pages/Weekly/Weekly.js';
-import Profile from './component/pages/Profile/Profile.js';
+import CreateAccount from "./component/manager/CreateAccount/CreateAccount.js";
+import Dashboard from './component/manager/Dashboard/Dashboard.js';
+import CurrentClass from './component/manager/CurrentClass/CurrentClass.js'
+import Timetable from './component/manager/Timetable/Timetable.js';
+import OverAll from './component/manager/OverAll/OverAll.js';
+import Weekly from './component/manager/Weekly/Weekly.js';
+import Profile from './component/manager/Profile/Profile.js';
 import AddCourses from './component/admin/AddCourses/AddCourses.js';
 import CreateStu from './component/admin/CreateStu/CreateStu.js';
 import CreateLec from './component/admin/CreateLec/CreateLec.js';
