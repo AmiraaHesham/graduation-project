@@ -73,20 +73,24 @@ const Timetable = () => {
     }
     const getCourses = async () => {
         try {
-            const res = await axios.get('http://127.0.0.1:3000/api/v1/lecturer/lecturer_courses/' + localStorage.id,
-                {
+
+
+            const res = await axios.get(`http://127.0.0.1:3000/api/v1/lecturer/lecturer_courses/${localStorage.id}`
+                , {
 
                     headers: {
+                        'Content-Type': 'application/json',
                         "Access-Control-Allow-Origin": "*",
                         "Access-Control-Allow-Credentials": "true",
                         "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
                         "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization",
-                        "Authorization": 'Bearer ' + localStorage.token
+                        "Authorization": `Bearer ${localStorage.token}`
                     }
 
                 },
             )
             setcourses(res.data.data)
+
         }
         catch (error) {
             console.log(error)
@@ -155,10 +159,10 @@ const Timetable = () => {
                         <input ref={inputRefLecDuration} placeholder='Lecture Duration' onChange={(e) => { setLectureDuration(e.target.value) }} />
                         <input ref={inputRefSemsteryear} placeholder='Semster Year' list='levels' onChange={(e) => { setSemsteryear(e.target.value) }} />
                         <datalist id='levels'>
-                            <option value='First' />
-                            <option value='Second' />
-                            <option value='Third' />
-                            <option value='Fourth' />
+                            <option value='1' />
+                            <option value='2' />
+                            <option value='3' />
+                            <option value='4' />
                         </datalist>
                         <div className='div-btn-dis-conf'>
                             <button onClick={createCourse} className='btn-confirm'>CONFIRM</button>

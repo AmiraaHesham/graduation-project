@@ -5,13 +5,18 @@ import Header from '../header/header'
 import axios from 'axios'
 import { toast, Toaster } from 'react-hot-toast';
 import QRCode from "react-qr-code";
+import { FaArrowsRotate } from "react-icons/fa6";
 
 const CurrentClass = () => {
 
     useEffect(() => {
         getCoursePresent()
     }, [])
+    // useEffect(() => {
+    //     viewLectureAttendance()
+    // }, [LectureAtten])
     const [course, setcourse] = useState([])
+    const [LectureAtten, setLectureAtten] = useState([])
     const [courseId, setcourseId] = useState()
     const [LectureTitle, setLectureTitle] = useState()
     const [LectureNum, setLectureNum] = useState()
@@ -21,17 +26,12 @@ const CurrentClass = () => {
 
 
     const getCoursePresent = async () => {
-        try {
 
+        try {
             const res = await axios.get('http://127.0.0.1:3000/api/v1/lecturer/lecturer_courses/' + localStorage.id
                 , {
-
                     headers: {
-                        "Access-Control-Allow-Origin": "*",
-                        "Access-Control-Allow-Credentials": "true",
-                        "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
-                        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization",
-                        "Authorization": 'Bearer ' + localStorage.token
+                        "authorization": 'Bearer ' + localStorage.token
                     }
 
                 },
@@ -39,6 +39,8 @@ const CurrentClass = () => {
             setcourse(res.data.data)
 
         }
+
+
         catch (error) {
             console.log(error)
         }
@@ -61,18 +63,25 @@ const CurrentClass = () => {
         let conteiner_attendList = document.querySelector('#conteiner_attendList')
         conteiner_attendList.classList.toggle("hide")
         conteiner_attendList.classList.toggle("div-attendList")
+        viewLectureAttendance()
     }
 
     const btnGenratQR = async () => {
 
         try {
+
             if (subjectSelectRef.current.value !== "Choose Course...") {
                 setcourseId(subjectSelectRef.current.value)
-                // setlectureId(lecturerSelectRef.current.value)
+                const res = await axios.post(`http://127.0.0.1:3000/api/v1/attendance/takeAttendance/${courseId}/${lectureId}`, {},
+                    {
+                        headers: {
+                            "Authorization": "Bearer " + localStorage.token
+                        }
+                    })
 
                 let QRimg = document.querySelector('#div-QRimg')
                 QRimg.classList.remove('hide')
-                console.log(subjectSelectRef.current)
+                console.log(res)
 
             }
             else (
@@ -110,17 +119,13 @@ const CurrentClass = () => {
                 },
                 {
                     headers: {
-                        "Access-Control-Allow-Origin": "*",
-                        "Access-Control-Allow-Credentials": "true",
-                        "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
-                        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization",
                         "Authorization": 'Bearer ' + localStorage.token
                     }
                 }
 
             )
             setlectureId(res.data.data.lecture._id)
-
+            viewLectureAttendance()
             let divCreateLecture = document.querySelector('#div-create-lecture')
             divCreateLecture.classList.add('hide')
         }
@@ -128,6 +133,25 @@ const CurrentClass = () => {
             toast.error("Enter lectureTitle || lectureNumber || course")
         }
 
+    }
+
+    const viewLectureAttendance = async () => {
+        try {
+            const res = await axios.post('http://127.0.0.1:3000/api/v1/attendance/viewLectureAttendance/' + lectureId, {},
+                {
+                    headers: {
+                        "Authorization": "Bearer " + localStorage.token
+                    }
+                }
+            )
+            setLectureAtten(res.data.data.attendances)
+            // console.log(res.data.data.attendances)
+
+        }
+        catch (error) {
+            console.log(error)
+
+        }
     }
 
 
@@ -219,28 +243,28 @@ lectureId: ${lectureId}`}
                 </div>
 
                 <div className='hide' id='conteiner_attendList'>
-                    <input className='input-search' placeholder='Search By Name' type='text'></input>
-
                     <div className='btns-prs-aps'>
                         <button className='btn-present'>Present</button>
                         <button className='btn-absent'>Absent</button>
+                        <button className='btn-refresh' onClick={viewLectureAttendance} ><FaArrowsRotate />                        </button>
+
                     </div>
 
                     <div className='div-list' id='list'>
                         <table className='tab-attend' style={{ width: '100%', border: 'none' }}>
                             <tr>
-                                <th ></th>
-                                <th >NAME</th>
-                                <th >STATUS</th>
+                                <th>#</th>
+                                <th>NAME</th>
+                                <th>STATUS</th>
                             </tr>
-                            <tbody>
-                                <td>1</td>
-                                <td>amira hehsam mohamed</td>
-                                <td>present</td>
-                            </tbody>
-                            <td>2</td>
-                            <td>amira hehsam </td>
-                            <td>present</td>
+                            {LectureAtten.map((LectureAtten, index) => {
+                                return <tr>
+                                    <td>{index + 1}</td>
+                                    <td>{LectureAtten.studentName}</td>
+                                    <td>{LectureAtten.status}</td>
+                                </tr>
+                            })
+                            }
                         </table>
                     </div>
                 </div>

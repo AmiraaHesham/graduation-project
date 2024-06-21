@@ -3,18 +3,41 @@ import { Link } from 'react-router-dom'
 import './weekly.css'
 import Header from '../header/header'
 import axios from 'axios'
+import toast, { Toaster } from 'react-hot-toast'
+import { FaArrowsRotate } from "react-icons/fa6";
 
 const Weekly = () => {
     const [course, setcourse] = useState([])
+    const [lecture, setLecture] = useState([])
+    const [LectureAtten, setLectureAtten] = useState([])
 
     useEffect(() => {
         getCourses()
+
     }, [])
     const subjectSelectRef = useRef()
-
+    const lectureSelectRef = useRef()
     const getCourses = async () => {
         try {
             const res = await axios.get('http://127.0.0.1:3000/api/v1/lecturer/lecturer_courses/' + localStorage.id,
+                {
+                    headers: {
+                        "Authorization": 'Bearer ' + localStorage.token
+                    }
+
+                },
+            )
+            setcourse(res.data.data)
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+    const getLecture = async () => {
+        try {
+            const selectCourse = subjectSelectRef.current.value
+
+            const res = await axios.get('http://127.0.0.1:3000/api/v1/courses/' + selectCourse,
                 {
 
                     headers: {
@@ -27,17 +50,43 @@ const Weekly = () => {
 
                 },
             )
-            setcourse(res.data.data)
+            setLecture(res.data.data.lectures)
+        }
+        catch (error) {
+            toast.error("Pleeas Choose Course")
+
+        }
+    }
+    const viewLectureAttendance = async () => {
+        try {
+            const res = await axios.post('http://127.0.0.1:3000/api/v1/attendance/viewLectureAttendance/666b59dc83c778bef2c11815', {},
+                {
+                    headers: {
+                        "Authorization": "Bearer " + localStorage.token
+                    }
+                }
+            )
+            // let status = document.querySelector('#status')
+            // if (res.data.data.attendances.status === 'present') {
+            //     status.style.color = '#0B6E3E'
+            // }
+            setLectureAtten(res.data.data.attendances)
+
+            console.log(LectureAtten.studentName)
+
         }
         catch (error) {
             console.log(error)
+
         }
     }
-
     return (
         <div>
             <Header />
-
+            <Toaster
+                position="bottom-center"
+                reverseOrder={true}
+            />
             <div className='side-bar'>
                 <Link to={"/Dashboard"} style={{ textDecoration: 'none', color: '#1D2649' }}>
                     <div className='Dashboard'>
@@ -83,7 +132,7 @@ const Weekly = () => {
             </div>
             <div className='div-weeklyAttendance'>
                 <div className='div-chooseCourse'>
-                    <select name="courses" className='selectCourse'>
+                    <select ref={subjectSelectRef} name="courses" className='selectCourse'>
                         <option> Choose Course ... </option>
                         {course.map((course, index) => {
                             return <option key={index} value={course._id}>
@@ -91,22 +140,41 @@ const Weekly = () => {
                         })
                         }
                     </select>
-                    <select className='selectLecture'>
+                    <select ref={lectureSelectRef} onClick={getLecture} className='selectLecture'>
                         <option> Choose Lecture... </option>
-                        <option value={1}>1</option>
-                        <option value={2}>2</option>
-                        <option value={3}>3</option>
-                        <option value={4}>4</option>
-                        <option value={5}>5</option>
-                        <option value={6}>6</option>
-                        <option value={7}>7</option>
-                        <option value={8}>8</option>
-                        <option value={9}>9</option>
-                        <option value={10}>10</option>
+                        {lecture.map((lecture, index) => {
+                            return <option key={index} value={lecture._id}>
+                                Lecture Number: {lecture.lectureNumber} </option>
+                        })
+                        }
                     </select>
                 </div>
                 <div className='div-tableWeeklyAttendance'>
+                    <div className='btns-prs-aps'>
+                        <button className='btn-present'>Present</button>
+                        <button className='btn-absent'>Absent</button>
+                        <button className='btn-refresh' onClick={viewLectureAttendance} ><FaArrowsRotate />                        </button>
 
+                    </div>
+
+                    <div className='div-list-weekly' id='list'>
+                        <table className='tab-attend' style={{ width: '100%', border: 'none', }}>
+                            <tr>
+                                <th>#</th>
+                                <th>NAME</th>
+                                <th>STATUS</th>
+                            </tr>
+                            {LectureAtten.map((LectureAtten, index) => {
+                                return <tr>
+                                    <td>{index + 1}</td>
+                                    <td>{LectureAtten.studentName}</td>
+                                    <td id="status">{LectureAtten.status}</td>
+                                </tr>
+                            })
+                            }
+
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

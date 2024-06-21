@@ -3,12 +3,18 @@ import { Link } from 'react-router-dom'
 import './OverAll.css'
 import Header from '../header/header'
 import axios from 'axios'
+import { FaArrowsRotate } from "react-icons/fa6";
+
+
 const OverAll = () => {
   const [course, setcourse] = useState([])
+  const [CourseAtten, setCourseAtten] = useState([])
 
   useEffect(() => {
     getCourses()
+
   }, [])
+
   const subjectSelectRef = useRef()
 
   const getCourses = async () => {
@@ -17,10 +23,6 @@ const OverAll = () => {
         {
 
           headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Credentials": "true",
-            "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
-            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization",
             "Authorization": 'Bearer ' + localStorage.token
           }
 
@@ -33,7 +35,24 @@ const OverAll = () => {
     }
   }
 
+  const viewCourseAttendance = async () => {
+    try {
+      const res = await axios.post('http://127.0.0.1:3000/api/v1/attendance/viewCourseAttendance/666b53be9b1c5216182e809c', {},
+        {
+          headers: {
+            "Authorization": "Bearer " + localStorage.token
+          }
+        }
+      )
+      setCourseAtten(res.data.data)
 
+
+    }
+    catch (error) {
+      console.log(error)
+
+    }
+  }
   return (
     <div>
       <Header />
@@ -83,17 +102,37 @@ const OverAll = () => {
       </div>
       <div className='div-overallAttendance'>
         <div className='div-chooselecture'>
+
           <select ref={subjectSelectRef} name="courses" className=''>
-            <option> Choose Lecture ... </option>
+            <option > Choose Lecture ... </option>
             {course.map((course, index) => {
-              return <option key={index} value={course._id}>
+              return < option key={index} value={course._id}>
                 {course.name} - Semster Year {course.level} </option>
             })
             }
           </select>
         </div>
         <div className='div-tableOverAllAttendance'>
-
+          <button className='btn-refresh' onClick={viewCourseAttendance}><FaArrowsRotate /></button>
+          <div className='div-list-overall' id='list'>
+            <table className='tab-attend' style={{ width: '100%', border: 'none' }}>
+              <tr>
+                <th>#</th>
+                <th>NAME</th>
+                <th>Total-Attendance</th>
+                <th>Attendance-Percentage</th>
+              </tr>
+              {CourseAtten.map((CourseAtten, index) => {
+                return <tr>
+                  <td>{index + 1}</td>
+                  <td>{CourseAtten.studentName}</td>
+                  <td>{CourseAtten.attendedLectures} / {CourseAtten.totalLectures}</td>
+                  <td>{CourseAtten.attendancePercentage}</td>
+                </tr>
+              })
+              }
+            </table>
+          </div>
         </div>
       </div>
     </div>

@@ -11,11 +11,14 @@
 
 }
 
+
+
 .Current-Class-page h2 {
     width: 200px;
     left: 100px;
     top: 20px;
     position: absolute;
+
 }
 
 
@@ -24,7 +27,6 @@
     height: 900px;
     margin-bottom: 10px;
     margin-left: 400px;
-    cursor: pointer;
     padding-top: 20px;
 }
 
@@ -123,7 +125,8 @@
     color: #DCF2F1;
     font-size: 30px;
     font-weight: 800;
-    word-wrap: break-word
+    cursor: default;
+
 }
 
 .attendList {
@@ -213,7 +216,7 @@
     width: 90%;
     height: 640px;
     margin-left: 0px;
-    margin-top: 0px;
+    margin-top: 65px;
     background: rgba(220, 242, 241, 0.50);
     border-radius: 10px;
 
@@ -228,8 +231,8 @@
 }
 
 .btns-prs-aps {
-    width: 300px;
-    margin-left: 700px;
+    width: 350px;
+    margin-left: 30px;
     margin-top: -65px;
     margin-bottom: 10px;
 }
@@ -259,6 +262,21 @@
     border: none;
     margin-right: 20px;
 
+}
+
+.btn-refresh {
+    background: none;
+    border: none;
+    font-Size: 25px;
+    font-Weight: bold;
+    margin-Right: 10px;
+    padding-top: 5px;
+    color: #263658;
+}
+
+.btn-refresh:hover {
+    background-color: #dcf2f181;
+    border-radius: 30px;
 }
 
 .input-search {
@@ -307,6 +325,8 @@
     color: #1D2649;
     font-size: 24px;
     font-weight: 800;
+    cursor: default;
+
 
 }
 
@@ -319,6 +339,7 @@
     font-weight: 800;
     color: #205487;
     text-align: center;
+    cursor: default;
 
 
 }

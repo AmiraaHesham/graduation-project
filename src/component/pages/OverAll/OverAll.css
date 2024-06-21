@@ -94,3 +94,12 @@
     border-radius: 10px;
 
 }
+
+.div-list-overall {
+    margin-left: 10px;
+    margin-top: 15px;
+    width: 98%;
+    height: 750px;
+    overflow: hidden;
+    overflow-y: scroll;
+}

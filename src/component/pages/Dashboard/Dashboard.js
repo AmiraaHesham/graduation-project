@@ -9,7 +9,7 @@ const Dashboard = () => {
     const [course, setcourse] = useState([])
     useEffect(() => {
         showDate()
-        getCoursePresent()
+        // getCoursePresent()
     }, [])
 
     const showDate = () => {
