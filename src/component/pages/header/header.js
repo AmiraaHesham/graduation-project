@@ -13,7 +13,7 @@ const Header = () => {
         const name = localStorage.name;
         const profileImage = localStorage.profileImage;
         setName(name)
-        if (profileImage !== 'undefined' || profileImage !== '') {
+        if (profileImage !== 'undefined') {
             setprofileImage(profileImage);
         }
         else {

@@ -9,7 +9,7 @@ const Dashboard = () => {
     const [course, setcourse] = useState([])
     useEffect(() => {
         showDate()
-        // getCoursePresent()
+        getCoursePresent()
     }, [])
 
     const showDate = () => {
@@ -26,37 +26,18 @@ const Dashboard = () => {
     }
     const getCoursePresent = async () => {
 
-
         try {
-            const res = await axios.get('http://127.0.0.1:3000/api/v1/lecturer/lecturer_courses/' + localStorage.id
-                , {
-
-                    headers: {
-                        "Access-Control-Allow-Origin": "*",
-                        "Access-Control-Allow-Credentials": "true",
-                        "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
-                        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization",
-                        "Authorization": 'Bearer ' + localStorage.token
-                    }
-
-                }
-            )
-
             const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][new Date().getDay()]
 
-            for (let i = 0; i <= res.data.data.length; i++) {
-                // console.log(weekday)
-                if (res.data.data[i].lectureDay === weekday) {
-                    let course = res.data.data[i]
-                    setcourse(course)
-                    // }
-
-                    // setcourse(res.data.data)
+            const res = await axios.get(`http://127.0.0.1:3000/api/v1/courses/${localStorage.id}/${weekday}`
+                , {
+                    headers: {
+                        "Authorization": 'Bearer ' + localStorage.token
+                    }
                 }
-
-            }
-            console.log(course)
-
+            )
+            setcourse(res.data.data)
+            console.log(res.data.data)
         }
         catch (error) {
             console.log(error)
@@ -64,7 +45,7 @@ const Dashboard = () => {
     }
 
     return (
-        <div className='body'>
+        <div>
             <Header />
             <div className='side-bar'>
                 <div className='Dashboard-page '>
@@ -94,29 +75,37 @@ const Dashboard = () => {
                     </div>
                 </Link>
             </div>
+            <div className='div-dashboard'>
+                <div className='div-timetable'>
 
-            <div className='div-timetable'>
-
-                <div className='header-timetable' >
-                    <h2> {date} </h2>
-                </div>
-                <div className='div-continer-Courses'>
-                    {
-                        Array.isArray(course) && course?.map((course, index) => {
-                            return <div>
-                                <div key={index} className='showCourses' >
-                                    {course.lectureDay} - {course.lectureName}</div>
-                            </div>
-                        })
-                    }
-                </div>
-                {/* <div className='div-summary'>
+                    <div className='header-day' >
+                        <h2> {date} </h2>
+                    </div>
+                    <div className='div-continer-Courses'>
+                        {
+                            course.map((course, index) => {
+                                return <div key={index} className='showCourses' >
+                                    <span>Name: {course.name}</span>
+                                    <br></br>
+                                    <span> Day: {course.lectureDay}</span>
+                                    <br></br>
+                                    <span> Duration: {course.lectureDuration}</span>
+                                    <br></br>
+                                    <span>Time: {course.lectureTime}</span>
+                                    <br></br>
+                                    <span>Semster Year:   {course.level}</span>
+                                </div>
+                            })
+                        }
+                    </div>  </div >
+                <div className='div-summary'>
                     <div className='header-summary'>
                         <h3>Summary</h3>
                         <h2>You have {course.length} course</h2>
                     </div>
-                </div> */}
-            </div >
+                </div>
+
+            </div>
         </div>
     )
 }

@@ -97,3 +97,26 @@
     overflow: hidden;
     overflow-y: scroll;
 }
+
+.status-absent {
+    color: #C80B0B;
+    font-weight: bold;
+}
+
+.status-present {
+    color: #0B6E3E;
+
+}
+
+.btn-all {
+    width: 90px;
+    height: 40px;
+    background: #1d2649e4;
+    border-radius: 30px;
+    color: #DCF2F1;
+    font-size: 24px;
+    font-weight: 800;
+    margin-top: 20px;
+    border: none;
+    margin-right: 20px;
+}

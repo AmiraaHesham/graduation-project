@@ -88,10 +88,11 @@
 
 .div-tableOverAllAttendance {
     width: 70%;
-    height: 820px;
+    height: 800px;
     background: #dcf2f16e;
     margin-left: 420px;
     border-radius: 10px;
+    padding-top: 20px;
 
 }
 

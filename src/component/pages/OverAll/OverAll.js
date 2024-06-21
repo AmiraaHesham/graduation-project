@@ -4,6 +4,7 @@ import './OverAll.css'
 import Header from '../header/header'
 import axios from 'axios'
 import { FaArrowsRotate } from "react-icons/fa6";
+import toast, { Toaster } from 'react-hot-toast'
 
 
 const OverAll = () => {
@@ -50,11 +51,16 @@ const OverAll = () => {
     }
     catch (error) {
       console.log(error)
+      toast.error("No attendance recorded for this course")
 
     }
   }
   return (
     <div>
+      <Toaster
+        position="bottom-center"
+        reverseOrder={true}
+      />
       <Header />
       <div className='side-bar'>
         <Link to={"/Dashboard"} style={{ textDecoration: 'none', color: '#1D2649' }}>
@@ -103,7 +109,7 @@ const OverAll = () => {
       <div className='div-overallAttendance'>
         <div className='div-chooselecture'>
 
-          <select ref={subjectSelectRef} name="courses" className=''>
+          <select onChange={viewCourseAttendance} ref={subjectSelectRef} name="courses" className=''>
             <option > Choose Lecture ... </option>
             {course.map((course, index) => {
               return < option key={index} value={course._id}>
@@ -113,7 +119,6 @@ const OverAll = () => {
           </select>
         </div>
         <div className='div-tableOverAllAttendance'>
-          <button className='btn-refresh' onClick={viewCourseAttendance}><FaArrowsRotate /></button>
           <div className='div-list-overall' id='list'>
             <table className='tab-attend' style={{ width: '100%', border: 'none' }}>
               <tr>
@@ -127,7 +132,7 @@ const OverAll = () => {
                   <td>{index + 1}</td>
                   <td>{CourseAtten.studentName}</td>
                   <td>{CourseAtten.attendedLectures} / {CourseAtten.totalLectures}</td>
-                  <td>{CourseAtten.attendancePercentage}</td>
+                  <td class={CourseAtten.attendancePercentage === '0.00' ? 'status-absent' : 'status-present'} > {CourseAtten.attendancePercentage}</td>
                 </tr>
               })
               }
@@ -135,7 +140,7 @@ const OverAll = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   )
 }
 

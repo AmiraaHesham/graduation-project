@@ -59,6 +59,7 @@ const Weekly = () => {
     }
     const viewLectureAttendance = async () => {
         try {
+            // if (lectureSelectRef.current.value !== 'Choose Lecture...') {
             const res = await axios.post('http://127.0.0.1:3000/api/v1/attendance/viewLectureAttendance/666b59dc83c778bef2c11815', {},
                 {
                     headers: {
@@ -66,20 +67,77 @@ const Weekly = () => {
                     }
                 }
             )
-            // let status = document.querySelector('#status')
-            // if (res.data.data.attendances.status === 'present') {
-            //     status.style.color = '#0B6E3E'
-            // }
+
+
+            // if (res.data.data.attendances.length !== 0) {
             setLectureAtten(res.data.data.attendances)
 
-            console.log(LectureAtten.studentName)
+            // for (let i = 0; i < LectureAtten.length; i++) {
+            //     let status = document.querySelector('#status-' + i)
+            //     // console.log('status>>>>>   ' + LectureAtten[i].status)
+            //     if (LectureAtten[i].status === 'absent') {
+            //         status.classList.add('status-absent')
 
+            //     }
+            //     else {
+            //         status.classList.add('status-present')
+
+            //     }
+
+            // }
+            console.log(LectureAtten.length)
+
+            // }
+            // }
+            // else {
+            //     toast.error("No attendance recorded for this lecture")
+
+            // }
         }
+        // else {
+        //     toast.error("Choose Lecture")
+
+        // }
+
         catch (error) {
             console.log(error)
 
         }
     }
+
+    const handleBtnPreasent = () => {
+        let absentRows = document.querySelectorAll('.row-absent')
+        Array.from(absentRows).forEach(element => {
+            element.classList.add('hide')
+        });
+
+        let prsentRows = document.querySelectorAll('.row-present')
+        Array.from(prsentRows).forEach(element => {
+            element.classList.remove('hide')
+        });
+    }
+
+    const handleBtnAbsent = () => {
+        let presentRows = document.querySelectorAll('.row-present')
+        Array.from(presentRows).forEach(element => {
+            element.classList.add('hide')
+        });
+
+        let absentRows = document.querySelectorAll('.row-absent')
+        Array.from(absentRows).forEach(element => {
+            element.classList.remove('hide')
+        });
+    }
+
+    const handleBtnAll = () => {
+        let absentRows = document.querySelectorAll('.row-status')
+        Array.from(absentRows).forEach(element => {
+            element.classList.remove('hide')
+        });
+
+
+    }
+
     return (
         <div>
             <Header />
@@ -140,7 +198,7 @@ const Weekly = () => {
                         })
                         }
                     </select>
-                    <select ref={lectureSelectRef} onClick={getLecture} className='selectLecture'>
+                    <select onChange={viewLectureAttendance} ref={lectureSelectRef} onClick={getLecture} className='selectLecture'>
                         <option> Choose Lecture... </option>
                         {lecture.map((lecture, index) => {
                             return <option key={index} value={lecture._id}>
@@ -151,28 +209,30 @@ const Weekly = () => {
                 </div>
                 <div className='div-tableWeeklyAttendance'>
                     <div className='btns-prs-aps'>
-                        <button className='btn-present'>Present</button>
-                        <button className='btn-absent'>Absent</button>
-                        <button className='btn-refresh' onClick={viewLectureAttendance} ><FaArrowsRotate />                        </button>
+                        <button onClick={handleBtnAll} className='btn-all'>All</button>
+                        <button onClick={handleBtnPreasent} className='btn-present'>Present</button>
+                        <button onClick={handleBtnAbsent} className='btn-absent'>Absent</button>
 
                     </div>
 
                     <div className='div-list-weekly' id='list'>
                         <table className='tab-attend' style={{ width: '100%', border: 'none', }}>
-                            <tr>
-                                <th>#</th>
-                                <th>NAME</th>
-                                <th>STATUS</th>
-                            </tr>
-                            {LectureAtten.map((LectureAtten, index) => {
-                                return <tr>
-                                    <td>{index + 1}</td>
-                                    <td>{LectureAtten.studentName}</td>
-                                    <td id="status">{LectureAtten.status}</td>
-                                </tr>
-                            })
-                            }
-
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>NAME</th>
+                                    <th>STATUS</th>
+                                </tr></thead>
+                            <tbody>
+                                {LectureAtten.map((LectureAtten, index) => {
+                                    return <tr class={'row-status ' + (LectureAtten.status === 'absent' ? 'row-absent' : 'row-present')} key={index}>
+                                        <td>{index + 1}</td>
+                                        <td>{LectureAtten.studentName}</td>
+                                        <td class={LectureAtten.status === 'absent' ? 'status-absent' : 'status-present'}>{LectureAtten.status}</td>
+                                    </tr>
+                                })
+                                }
+                            </tbody>
                         </table>
                     </div>
                 </div>

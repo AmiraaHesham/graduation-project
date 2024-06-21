@@ -17,21 +17,27 @@
     position: absolute;
 }
 
-.div-timetable {
-    width: 55%;
-    height: 900px;
+.div-dashboard {
+    width: 70%;
+    height: 930px;
     margin-left: 400px;
+}
+
+.div-timetable {
+    width: 70%;
+    height: 900px;
+    margin-left: 20px;
     background: #9FBECF;
     margin-bottom: 5px;
 }
 
-.header-timetable {
+.header-day {
     width: 100%;
     height: 80px;
     background: #273758;
 }
 
-.header-timetable h2 {
+.header-day h2 {
     width: 70%;
     height: 51px;
     color: #DCF2F1;
@@ -42,14 +48,15 @@
 }
 
 .div-summary {
-    width: 239px;
+    width: 20%;
     height: 220px;
-    margin-left: 850px;
-    background: #9FBECF
+    margin-left: 400px;
+    background: #9FBECF;
+    position: absolute;
 }
 
 .header-summary {
-    width: 239px;
+    width: 20%px;
     height: 54px;
     color: #DCF2F1;
     align-content: center;
@@ -75,17 +82,17 @@
 
 .showCourses {
     width: 60%;
-    height: 100px;
-    background: #DCF2F1;
+    height: 170px;
+    background: #365386be;
     border-radius: 15px;
-    padding-left: 20px;
+    padding-left: 50px;
     padding-top: 20px;
-    color: #273758;
+    color: #DCF2F1;
     box-shadow: 3px 3px #0f1b49;
-    font-size: 25px;
-    font-weight: 700;
-    margin-bottom: 20px;
-    margin-left: 120px;
+    font-size: x-large;
+    font-weight: bold;
+    margin-bottom: 30px;
+    margin-left: 150px;
 }
 
 .div-continer-Courses {

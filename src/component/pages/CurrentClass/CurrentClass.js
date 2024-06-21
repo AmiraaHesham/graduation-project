@@ -137,7 +137,7 @@ const CurrentClass = () => {
 
     const viewLectureAttendance = async () => {
         try {
-            const res = await axios.post('http://127.0.0.1:3000/api/v1/attendance/viewLectureAttendance/' + lectureId, {},
+            const res = await axios.post('http://127.0.0.1:3000/api/v1/attendance/viewLectureAttendance/666b59dc83c778bef2c11815', {},
                 {
                     headers: {
                         "Authorization": "Bearer " + localStorage.token
@@ -153,8 +153,37 @@ const CurrentClass = () => {
 
         }
     }
+    const handleBtnPreasent = () => {
+        let absentRows = document.querySelectorAll('.row-absent')
+        Array.from(absentRows).forEach(element => {
+            element.classList.add('hide')
+        });
+
+        let prsentRows = document.querySelectorAll('.row-present')
+        Array.from(prsentRows).forEach(element => {
+            element.classList.remove('hide')
+        });
+    }
+    const handleBtnAbsent = () => {
+        let presentRows = document.querySelectorAll('.row-present')
+        Array.from(presentRows).forEach(element => {
+            element.classList.add('hide')
+        });
+
+        let absentRows = document.querySelectorAll('.row-absent')
+        Array.from(absentRows).forEach(element => {
+            element.classList.remove('hide')
+        });
+    }
+
+    const handleBtnAll = () => {
+        let absentRows = document.querySelectorAll('.row-status')
+        Array.from(absentRows).forEach(element => {
+            element.classList.remove('hide')
+        });
 
 
+    }
 
     return (
         <div>
@@ -243,13 +272,14 @@ lectureId: ${lectureId}`}
                 </div>
 
                 <div className='hide' id='conteiner_attendList'>
+
                     <div className='btns-prs-aps'>
-                        <button className='btn-present'>Present</button>
-                        <button className='btn-absent'>Absent</button>
+                        <button onClick={handleBtnAll} className='btn-all'>All</button>
+                        <button onClick={handleBtnPreasent} className='btn-present'>Present</button>
+                        <button onClick={handleBtnAbsent} className='btn-absent'>Absent</button>
                         <button className='btn-refresh' onClick={viewLectureAttendance} ><FaArrowsRotate />                        </button>
 
                     </div>
-
                     <div className='div-list' id='list'>
                         <table className='tab-attend' style={{ width: '100%', border: 'none' }}>
                             <tr>
@@ -258,10 +288,10 @@ lectureId: ${lectureId}`}
                                 <th>STATUS</th>
                             </tr>
                             {LectureAtten.map((LectureAtten, index) => {
-                                return <tr>
+                                return <tr class={'row-status ' + (LectureAtten.status === 'absent' ? 'row-absent' : 'row-present')} key={index}>
                                     <td>{index + 1}</td>
                                     <td>{LectureAtten.studentName}</td>
-                                    <td>{LectureAtten.status}</td>
+                                    <td class={LectureAtten.status === 'absent' ? 'status-absent' : 'status-present'}>{LectureAtten.status}</td>
                                 </tr>
                             })
                             }
