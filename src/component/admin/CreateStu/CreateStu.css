@@ -2,7 +2,7 @@
     display: flex;
     width: 350px;
     height: 100px;
-    top: 150px;
+    top: 260px;
     left: -20px;
     position: absolute;
     justify-content: space-between;
@@ -11,9 +11,50 @@
 
 }
 
-.CreateStudent-page h2 {
-    width: 200px;
-    left: 100px;
-    top: 20px;
+.createAccountStudent-continer {
+    width: 50%;
+    height: 790px;
+    background: linear-gradient(200deg, #365486 0%, rgba(54, 84, 134, 0) 100%);
+    border-radius: 30px;
+    margin-left: 550px;
+    margin-top: 100px;
+    margin-bottom: 40px;
+}
+
+.createAccountStudent-continer h3 {
+    width: 400px;
+    height: 42px;
+    color: #DCF2F1;
+    font-size: 38px;
+    font-weight: bold;
+    margin-left: 200px;
+    padding-top: 30px;
+}
+
+.createAccountStudent-continer button {
+    width: 350px;
+    height: 50px;
+    background: #7FC7D9;
+    border-radius: 20px;
+    color: #365486;
+    font-size: 32px;
+    font-weight: 700;
+    word-wrap: break-word;
+    border: none;
+    margin-top: 120px;
+    margin-left: 200px;
+    cursor: pointer;
+}
+
+.div-cheekbox {
+    background: #365486;
+    width: 450px;
+    height: 200px;
+    /* position: ; */
+    overflow: hidden;
+    overflow-y: scroll;
+    font-size: 25px;
     position: absolute;
+    color: #DCF2F1;
+
 }

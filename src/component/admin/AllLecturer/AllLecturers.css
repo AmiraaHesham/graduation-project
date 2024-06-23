@@ -1,0 +1,37 @@
+.AllLecturers-page {
+    display: flex;
+    width: 350px;
+    height: 100px;
+    top: 150px;
+    left: -20px;
+    position: absolute;
+    justify-content: space-between;
+    margin: 20px 20px;
+    background: rgba(54, 84, 134, 0.22);
+
+}
+
+.div-All-Lectrer-Student {
+    width: 70%;
+    height: 830px;
+    background: #dcf2f16e;
+    margin-left: 420px;
+    border-radius: 10px;
+    margin-top: 60px;
+    padding-top: 20px;
+    margin-bottom: 20px;
+}
+
+.btn-deleteLecturer {
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: brown;
+}
+
+.btn-editLecturer {
+    font-size: 25px;
+    background: none;
+    border: none;
+    color: #365386b6;
+}

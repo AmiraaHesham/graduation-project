@@ -12,6 +12,7 @@ const Profile = () => {
     const [currentPassword, setCurrentPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const [newPassword, setNewPassword] = useState('')
+    const [userRole, setUserRole] = useState('')
 
     const inputRef = useRef()
     const inputRefName = useRef()
@@ -30,17 +31,13 @@ const Profile = () => {
             const res = await axios.get('http://127.0.0.1:3000/api/v1/lecturer/getme',
                 {
                     headers: {
-                        "Access-Control-Allow-Origin": "*",
-                        "Access-Control-Allow-Credentials": "true",
-                        "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
-                        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization",
                         "Authorization": 'Bearer ' + localStorage.token
                     }
                 },
             )
             setEmail(res.data.data.email)
             setName(res.data.data.name)
-
+            setUserRole(res.data.data.role)
             const profileImage = localStorage.profileImage;
             if (profileImage !== 'undefined') {
                 setPhoto(profileImage);
@@ -303,10 +300,7 @@ const Profile = () => {
             },
                 {
                     headers: {
-                        "Access-Control-Allow-Origin": "*",
-                        "Access-Control-Allow-Credentials": "true",
-                        "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
-                        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+
                         "Authorization": 'Bearer ' + localStorage.token
                     }
                 })
@@ -327,7 +321,17 @@ const Profile = () => {
 
         navigate('/SignIn')
     }
+    const toBackHome = () => {
+        if (userRole === 'admin') {
+            navigate('/CreateLecturer')
 
+        }
+        else {
+            navigate('/Dashboard')
+
+        }
+        // console.log({ userRole })
+    }
 
     return (
         <div>
@@ -336,8 +340,8 @@ const Profile = () => {
                 reverseOrder={false}
             />
             <div className='header' >
-                <Link to={'/Dashboard'}><svg id='time' xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 1200 1200" ><path fill="currentColor"
-                    d="M0 0v240h1200V0zm0 480v240h1200V480zm0 480v240h1200V960z" /></svg></Link>
+                <svg onClick={toBackHome} id='time' xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 1200 1200" ><path fill="currentColor"
+                    d="M0 0v240h1200V0zm0 480v240h1200V480zm0 480v240h1200V960z" /></svg>
                 <h4>Smart Attendance System</h4>
             </div>
 

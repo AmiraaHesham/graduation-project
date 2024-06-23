@@ -12,6 +12,9 @@ import Profile from './component/manager/Profile/Profile.js';
 import AddCourses from './component/admin/AddCourses/AddCourses.js';
 import CreateStu from './component/admin/CreateStu/CreateStu.js';
 import CreateLec from './component/admin/CreateLec/CreateLec.js';
+import AllStudents from './component/admin/AllStudents/AllStudents.js';
+import AllLecturers from './component/admin/AllLecturer/AllLecturers.js';
+import AllCourses from './component/admin/AllCourses/AllCourses.js';
 function App() {
   return (
     <div className="App">
@@ -29,6 +32,9 @@ function App() {
         <Route path='/CreateLecturer' element={<CreateLec />} />
         <Route path='/CreateStudent' element={<CreateStu />} />
         <Route path='/AddCourses' element={<AddCourses />} />
+        <Route path='/AllStudents' element={<AllStudents />} />
+        <Route path='/AllLecturers' element={<AllLecturers />} />
+        <Route path='/AllCourses' element={<AllCourses />} />
 
       </Routes>
     </div>

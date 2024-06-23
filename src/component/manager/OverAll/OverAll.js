@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import './OverAll.css'
-import Header from '../header/header'
+import Header from '../headerManager/headerManager'
 import axios from 'axios'
 import { FaArrowsRotate } from "react-icons/fa6";
 import toast, { Toaster } from 'react-hot-toast'
@@ -130,9 +130,9 @@ const OverAll = () => {
               {CourseAtten.map((CourseAtten, index) => {
                 return <tr>
                   <td>{index + 1}</td>
-                  <td>{CourseAtten.studentName}</td>
+                  <td style={{ color: '#1D2649' }}>{CourseAtten.studentName}</td>
                   <td>{CourseAtten.attendedLectures} / {CourseAtten.totalLectures}</td>
-                  <td class={CourseAtten.attendancePercentage === '0.00' ? 'status-absent' : 'status-present'} > {CourseAtten.attendancePercentage}</td>
+                  <td class={CourseAtten.attendancePercentage === '0.00' ? 'status-absent' : ''} > {CourseAtten.attendancePercentage}</td>
                 </tr>
               })
               }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import './weekly.css'
-import Header from '../header/header'
+import Header from '../headerManager/headerManager'
 import axios from 'axios'
 import toast, { Toaster } from 'react-hot-toast'
 import { FaArrowsRotate } from "react-icons/fa6";

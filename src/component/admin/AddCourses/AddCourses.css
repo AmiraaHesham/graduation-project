@@ -2,7 +2,7 @@
     display: flex;
     width: 350px;
     height: 100px;
-    top: 260px;
+    top: 480px;
     left: -20px;
     position: absolute;
     justify-content: space-between;
@@ -11,9 +11,18 @@
 
 }
 
-.AddCourses-page h2 {
-    width: 200px;
-    left: 100px;
-    top: 20px;
-    position: absolute;
+
+
+.selectLecturer {
+    width: 370px;
+    height: 50px;
+    margin-bottom: 20px;
+    background: #dcf2f1ba;
+    border: none;
+    border-radius: 10px;
+    font-size: 25px;
+    font-weight: 600;
+    color: #365486;
+    cursor: default;
+    padding-left: 15px;
 }

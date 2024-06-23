@@ -1,6 +1,6 @@
 .createaccount-continer {
     width: 50%;
-    height: 700px;
+    height: 790px;
     background: linear-gradient(200deg, #365486 0%, rgba(54, 84, 134, 0) 100%);
     border-radius: 30px;
     margin-left: 400px;
@@ -16,7 +16,7 @@
     color: #DCF2F1;
     font-size: 38px;
     font-weight: bold;
-    margin-left: 260px;
+    margin-left: 280px;
     padding-top: 30px;
 }
 
@@ -37,8 +37,9 @@
 }
 
 .div-addPhoto h5 {
-    margin-left: 15px;
+    margin-left: 18px;
     margin-top: 10px;
+    color: #DCF2F1;
 }
 
 .iupt-photo {
@@ -100,7 +101,7 @@
     word-wrap: break-word;
     border: none;
     margin-top: 100px;
-    margin-left: 200px;
+    margin-left: 235px;
     cursor: pointer;
 }
 
@@ -115,9 +116,9 @@
 
 
 
-.div-h4-Registered h4 {
+.div-h4-Registered {
     color: #dcf2f1ca;
     font-size: 15px;
     font-family: 700;
-    margin-left: 280px;
+    margin-left: 330px;
 }

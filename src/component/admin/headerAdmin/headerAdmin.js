@@ -24,7 +24,7 @@ const Header = () => {
     return (
         <div>
             <div className='header' >
-                <Link to={'/Dashboard'}><svg id='time' xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 1200 1200" ><path fill="currentColor"
+                <Link to={'/CreateLecturer'}><svg id='time' xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 1200 1200" ><path fill="currentColor"
                     d="M0 0v240h1200V0zm0 480v240h1200V480zm0 480v240h1200V960z" /></svg></Link>
                 <h4>Smart Attendance System</h4>
             </div>
@@ -39,9 +39,7 @@ const Header = () => {
             </div></Link>
 
             <div className='div-infoProfile'>
-                {/* <div className='cheld-infoProfile'>
 
-                </div> */}
             </div>
         </div>
     )

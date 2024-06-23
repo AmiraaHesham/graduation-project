@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import './CurrentClass.css'
 import { Link } from 'react-router-dom'
-import Header from '../header/header'
+import Header from '../headerManager/headerManager'
 import axios from 'axios'
 import { toast, Toaster } from 'react-hot-toast';
 import QRCode from "react-qr-code";
@@ -71,7 +71,7 @@ const CurrentClass = () => {
         try {
 
             if (subjectSelectRef.current.value !== "Choose Course...") {
-                setcourseId(subjectSelectRef.current.value)
+                const courseId = subjectSelectRef.current.value
                 const res = await axios.post(`http://127.0.0.1:3000/api/v1/attendance/takeAttendance/${courseId}/${lectureId}`, {},
                     {
                         headers: {

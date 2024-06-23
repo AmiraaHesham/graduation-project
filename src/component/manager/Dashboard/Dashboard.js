@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './Dashboard.css'
 import { Link } from 'react-router-dom';
-import Header from '../header/header'
+import Header from '../headerManager/headerManager'
 import axios from 'axios';
 const Dashboard = () => {
 
@@ -76,6 +76,13 @@ const Dashboard = () => {
                 </Link>
             </div>
             <div className='div-dashboard'>
+                <div className='div-summary'>
+                    <div className='header-summary'>
+                        <h3>Summary</h3>
+                    </div>
+                    <h2>You have {course.length} course</h2>
+
+                </div>
                 <div className='div-timetable'>
 
                     <div className='header-day' >
@@ -85,25 +92,22 @@ const Dashboard = () => {
                         {
                             course.map((course, index) => {
                                 return <div key={index} className='showCourses' >
-                                    <span>Name: {course.name}</span>
-                                    <br></br>
-                                    <span> Day: {course.lectureDay}</span>
-                                    <br></br>
-                                    <span> Duration: {course.lectureDuration}</span>
-                                    <br></br>
-                                    <span>Time: {course.lectureTime}</span>
-                                    <br></br>
-                                    <span>Semster Year:   {course.level}</span>
+                                    <span> Name Lecture:  {course.name}</span>
+                                    <hr></hr>
+                                    <span> Day:  {course.lectureDay}</span>
+                                    <hr></hr>
+                                    <span> Duration:  {course.lectureDuration}</span>
+                                    <hr></hr>
+                                    <span>Time:  {course.lectureTime}</span>
+                                    <hr></hr>
+                                    <span>Semster Year:    {course.level}</span>
+                                    <h6>*************************************</h6>
                                 </div>
                             })
                         }
-                    </div>  </div >
-                <div className='div-summary'>
-                    <div className='header-summary'>
-                        <h3>Summary</h3>
-                        <h2>You have {course.length} course</h2>
                     </div>
-                </div>
+                </div >
+
 
             </div>
         </div>

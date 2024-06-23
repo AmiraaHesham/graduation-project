@@ -1,0 +1,12 @@
+.AllStudents-page {
+    display: flex;
+    width: 350px;
+    height: 100px;
+    top: 370px;
+    left: -20px;
+    position: absolute;
+    justify-content: space-between;
+    margin: 20px 20px;
+    background: rgba(54, 84, 134, 0.22);
+
+}

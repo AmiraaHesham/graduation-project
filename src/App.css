@@ -19,7 +19,13 @@ body {
     cursor: pointer;
 }
 
+.side-bar h2 {
+    width: 220px;
+    left: 100px;
+    top: 20px;
+    position: absolute;
 
+}
 
 
 
@@ -47,12 +53,7 @@ body {
     font-family: 'Inter';
 }
 
-.Dashboard h2 {
-    width: 200px;
-    left: 100px;
-    top: 20px;
-    position: absolute;
-}
+
 
 .Current-Class {
     display: flex;
@@ -65,12 +66,7 @@ body {
     margin: 20px 20px;
 }
 
-.Current-Class h2 {
-    width: 200px;
-    left: 100px;
-    top: 20px;
-    position: absolute;
-}
+
 
 .Students-Attendance:hover {
     background: rgba(54, 83, 134, 0.105);
@@ -81,7 +77,10 @@ body {
 .Current-Class:hover,
 .Timetable:hover,
 .AddCourses:hover,
-.CreateLecturer:hover {
+.CreateLecturer:hover,
+.CreateStudent:hover,
+.AllLecturers:hover,
+.AllStudents:hover {
     background: rgba(54, 83, 134, 0.105);
 
 }
@@ -98,12 +97,6 @@ body {
     margin: 20px 20px;
 }
 
-.Timetable h2 {
-    width: 200px;
-    left: 100px;
-    top: 20px;
-    position: absolute;
-}
 
 .Students-Attendance {
     display: flex;
@@ -116,12 +109,7 @@ body {
     margin: 20px 20px;
 }
 
-.Students-Attendance h2 {
-    width: 250px;
-    left: 100px;
-    top: 20px;
-    position: absolute;
-}
+
 
 
 .CreateLecturer {
@@ -135,14 +123,7 @@ body {
     margin: 20px 20px;
 }
 
-.CreateLecturer h2 {
-    width: 200px;
-    left: 100px;
-    top: 20px;
-    position: absolute;
-}
-
-.CreateStudent {
+.AllLecturers {
     display: flex;
     width: 350px;
     height: 100px;
@@ -153,14 +134,8 @@ body {
     margin: 20px 20px;
 }
 
-.CreateStudent h2 {
-    width: 200px;
-    left: 100px;
-    top: 20px;
-    position: absolute;
-}
 
-.AddCourses {
+.CreateStudent {
     display: flex;
     width: 350px;
     height: 100px;
@@ -171,9 +146,35 @@ body {
     margin: 20px 20px;
 }
 
-.AddCourses h2 {
-    width: 200px;
-    left: 100px;
-    top: 20px;
+.AllStudents {
+    display: flex;
+    width: 350px;
+    height: 100px;
+    top: 370px;
+    left: -20px;
     position: absolute;
+    justify-content: space-between;
+    margin: 20px 20px;
+}
+
+.AddCourses {
+    display: flex;
+    width: 350px;
+    height: 100px;
+    top: 480px;
+    left: -20px;
+    position: absolute;
+    justify-content: space-between;
+    margin: 20px 20px;
+}
+
+.AllCourses {
+    display: flex;
+    width: 350px;
+    height: 100px;
+    top: 590px;
+    left: -20px;
+    position: absolute;
+    justify-content: space-between;
+    margin: 20px 20px;
 }
