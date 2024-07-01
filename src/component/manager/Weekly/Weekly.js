@@ -59,46 +59,36 @@ const Weekly = () => {
     }
     const viewLectureAttendance = async () => {
         try {
-            // if (lectureSelectRef.current.value !== 'Choose Lecture...') {
-            const res = await axios.post('http://127.0.0.1:3000/api/v1/attendance/viewLectureAttendance/666b59dc83c778bef2c11815', {},
-                {
-                    headers: {
-                        "Authorization": "Bearer " + localStorage.token
+            const lectureId = lectureSelectRef.current.value
+            if (lectureId !== 'Choose Lecture...') {
+                const res = await axios.post('http://127.0.0.1:3000/api/v1/attendance/viewLectureAttendance/' + lectureId, {},
+                    {
+                        headers: {
+                            "Authorization": "Bearer " + localStorage.token
+                        }
                     }
+                )
+
+
+                if (res.data.data.attendances.length !== 0) {
+                    setLectureAtten(res.data.data.attendances)
+
+
+                    console.log(LectureAtten.length)
+
                 }
-            )
 
+                else {
+                    toast.error("No attendance recorded for this lecture")
 
-            // if (res.data.data.attendances.length !== 0) {
-            setLectureAtten(res.data.data.attendances)
+                }
+            }
 
-            // for (let i = 0; i < LectureAtten.length; i++) {
-            //     let status = document.querySelector('#status-' + i)
-            //     // console.log('status>>>>>   ' + LectureAtten[i].status)
-            //     if (LectureAtten[i].status === 'absent') {
-            //         status.classList.add('status-absent')
+            else {
+                toast.error("Choose Lecture")
 
-            //     }
-            //     else {
-            //         status.classList.add('status-present')
-
-            //     }
-
-            // }
-            console.log(LectureAtten.length)
-
-            // }
-            // }
-            // else {
-            //     toast.error("No attendance recorded for this lecture")
-
-            // }
+            }
         }
-        // else {
-        //     toast.error("Choose Lecture")
-
-        // }
-
         catch (error) {
             console.log(error)
 
@@ -215,7 +205,7 @@ const Weekly = () => {
 
                     </div>
 
-                    <div className='div-list-weekly' id='list'>
+                    <div className='div-list-weekly'>
                         <table className='tab-attend' style={{ width: '100%', border: 'none', }}>
                             <thead>
                                 <tr>

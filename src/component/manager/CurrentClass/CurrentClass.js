@@ -33,7 +33,6 @@ const CurrentClass = () => {
                     headers: {
                         "authorization": 'Bearer ' + localStorage.token
                     }
-
                 },
             )
             setcourse(res.data.data)
@@ -71,7 +70,6 @@ const CurrentClass = () => {
         try {
 
             if (subjectSelectRef.current.value !== "Choose Course...") {
-                const courseId = subjectSelectRef.current.value
                 const res = await axios.post(`http://127.0.0.1:3000/api/v1/attendance/takeAttendance/${courseId}/${lectureId}`, {},
                     {
                         headers: {
@@ -100,7 +98,8 @@ const CurrentClass = () => {
     const handelBtnCreateLecture = () => {
         let divCreateLecture = document.querySelector('#div-create-lecture')
         divCreateLecture.classList.remove('hide')
-        console.log(subjectSelectRef.current.value)
+        setcourseId(subjectSelectRef.current.value)
+
 
     }
 
@@ -125,7 +124,6 @@ const CurrentClass = () => {
 
             )
             setlectureId(res.data.data.lecture._id)
-            viewLectureAttendance()
             let divCreateLecture = document.querySelector('#div-create-lecture')
             divCreateLecture.classList.add('hide')
         }
@@ -137,7 +135,7 @@ const CurrentClass = () => {
 
     const viewLectureAttendance = async () => {
         try {
-            const res = await axios.post('http://127.0.0.1:3000/api/v1/attendance/viewLectureAttendance/666b59dc83c778bef2c11815', {},
+            const res = await axios.post('http://127.0.0.1:3000/api/v1/attendance/viewLectureAttendance/' + lectureId, {},
                 {
                     headers: {
                         "Authorization": "Bearer " + localStorage.token

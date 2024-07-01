@@ -11,6 +11,41 @@
 
 }
 
+.div-list-lecturer {
+    margin-left: 10px;
+    margin-top: 15px;
+    width: 98%;
+    height: 740px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.tab-Lecturer th {
+    height: 35px;
+    margin-bottom: 100px;
+    background: rgba(71, 112, 154, 0.40);
+    color: #1D2649;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: default;
+
+
+}
+
+
+.tab-Lecturer td {
+    background: rgba(220, 242, 241, 0.434);
+    margin-top: 50px;
+    height: 35px;
+    font-size: 24px;
+    font-weight: 800;
+    /* color: #205487; */
+    text-align: center;
+    cursor: default;
+
+
+}
+
 .div-All-Lectrer-Student {
     width: 70%;
     height: 830px;
@@ -34,4 +69,167 @@
     background: none;
     border: none;
     color: #365386b6;
+}
+
+.div-EditLecturer {
+    background: #365486;
+    width: 500px;
+    height: 450px;
+    position: absolute;
+    margin-top: 200px;
+    margin-left: 250px;
+    padding-top: 20px;
+    border-radius: 20px;
+}
+
+.inpEditlevel {
+    width: 70%;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    margin-left: 70px;
+    color: #1D2649;
+    font-size: x-large;
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+.inpEditProgramme {
+    width: 70%;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    margin-left: 70px;
+    color: #1D2649;
+    font-size: x-large;
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+.inpEditEmail {
+    width: 70%;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    margin-left: 70px;
+    color: #1D2649;
+    font-size: x-large;
+    font-weight: bold;
+    padding-left: 10px;
+
+}
+
+.inpEditName {
+    width: 70%;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    margin-left: 70px;
+    color: #1D2649;
+    font-size: x-large;
+    font-weight: bold;
+    padding-left: 10px;
+
+}
+
+.inpConfirmPassword {
+    width: 70%;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    margin-left: 70px;
+    color: #1D2649;
+    font-size: x-large;
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+.inpNewPassword {
+    width: 70%;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    margin-left: 70px;
+    color: #1D2649;
+    font-size: x-large;
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+.div-EditLecturer h4 {
+    margin-left: 70px;
+    margin-bottom: 1px;
+    color: #DCF2F1;
+    font-size: large;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.btn-SaveEditLecturer {
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    font-size: 20px;
+    font-family: 800;
+    color: #DCF2F1;
+    margin-left: 100px;
+    background: #0B6E3E;
+}
+
+.btn-SaveNewPass {
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    font-size: 20px;
+    font-family: 800;
+    color: #DCF2F1;
+    margin-left: 100px;
+    background: #0B6E3E;
+}
+
+#div-Password {
+    margin-top: 70px;
+}
+
+.btn-CloseDivEditLecturer {
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    font-size: 20px;
+    font-family: 800;
+    color: #DCF2F1;
+    margin-left: 100px;
+    margin-top: 50px;
+    background: rgba(165, 42, 42, 0.836)
+}
+
+.btn-ChangePasswordLecturer {
+    width: 220px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    font-size: 20px;
+    font-family: 800;
+    color: #DCF2F1;
+    margin-left: 140px;
+    margin-top: 50px;
+    background: #022f5c;
+}
+
+
+.btn-ChangePasswordLecturer:hover {
+    background: #022f5ccf;
+
+}
+
+.btn-SaveEditLecturer:hover {
+    background: #0b6e3ed8;
+
+}
+
+.btn-CloseDivEditLecturer:hover {
+    background: rgba(165, 42, 42, 0.708)
 }

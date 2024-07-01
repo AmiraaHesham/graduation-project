@@ -94,8 +94,6 @@ const Dashboard = () => {
                                 return <div key={index} className='showCourses' >
                                     <span> Name Lecture:  {course.name}</span>
                                     <hr></hr>
-                                    <span> Day:  {course.lectureDay}</span>
-                                    <hr></hr>
                                     <span> Duration:  {course.lectureDuration}</span>
                                     <hr></hr>
                                     <span>Time:  {course.lectureTime}</span>

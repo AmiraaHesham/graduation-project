@@ -78,7 +78,7 @@ const Timetable = () => {
 
                     headers: {
 
-                        "Authorization": `Bearer ${localStorage.token}`
+                        "Authorization": 'Bearer ' + localStorage.token
                     }
 
                 },
@@ -99,22 +99,7 @@ const Timetable = () => {
         inputRefSemsteryear.current.value = ''
         inputRefLecTime.current.value = ''
     }
-    const handleBtnDeleteCourse = async (courseId) => {
-        try {
-            const res = await axios.delete('http://127.0.0.1:3000/api/v1/courses/' + courseId,
-                {
-                    headers: {
-                        "Authorization": 'Bearer ' + localStorage.token
-                    }
-                }
-            )
-            console.log(res.data.data)
-            getCourses()
-        }
-        catch (error) {
-            console.log(error)
-        }
-    }
+
 
     const handleBtnEditCourse = async (course) => {
         let saveEdit = document.querySelector('#saveEdit')
@@ -123,11 +108,12 @@ const Timetable = () => {
         saveEdit.classList.remove('hide')
         saveEdit.classList.add('btn-confirm')
         createCourse.classList.add('hide')
+        console.log(course._id)
         currentIndex = course._id;
-        inputRefLecName.current.value = course.name
+        console.log(currentIndex)
+
         inputRefLecDuration.current.value = course.lectureDuration
         inputRefLecDay.current.value = course.lectureDay
-        inputRefSemsteryear.current.value = course.level
         inputRefLecTime.current.value = course.lectureTime
     }
     const editCourse = async () => {
@@ -135,11 +121,9 @@ const Timetable = () => {
             console.log(currentIndex)
             const res = await axios.put('http://127.0.0.1:3000/api/v1/courses/' + currentIndex,
                 {
-                    name: inputRefLecName.current.value,
                     lectureDuration: inputRefLecDuration.current.value,
                     lectureDay: inputRefLecDay.current.value,
                     lectureTime: inputRefLecTime.current.value,
-                    level: inputRefSemsteryear.current.value,
 
                 },
                 {
@@ -239,9 +223,10 @@ const Timetable = () => {
                     <div className='list-courses'>
                         {courses.map((course, index) => {
                             return <div key={index} className='div-course' >
-                                <span style={{ color: '#0f1b49', marginLeft: '370px', fontSize: '26px', fontWeight: '900' }}>
+                                <span style={{ color: '#0f1b49', marginLeft: '400px', fontSize: '26px', fontWeight: '900' }}>
                                     <span onClick={() => handleBtnEditCourse(course)} > <FiEdit /></span>
-                                    <span onClick={() => handleBtnDeleteCourse(course._id)}><MdDeleteOutline /></span></span>
+                                    {/* <span onClick={() => handleBtnDeleteCourse(course._id)}><MdDeleteOutline /></span> */}
+                                </span>
                                 <div style={{ margin: '-35px 0px 5px 5px ' }}>
                                     <span>Name: {course.name}</span>
                                     <br></br>

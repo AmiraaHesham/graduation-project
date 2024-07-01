@@ -10,3 +10,23 @@
     background: rgba(54, 84, 134, 0.22);
 
 }
+
+.div-EditDataStudent {
+    background: #365486;
+    width: 500px;
+    height: 530px;
+    position: absolute;
+    margin-top: 100px;
+    margin-left: 250px;
+    padding-top: 20px;
+    border-radius: 20px;
+}
+
+.div-EditDataStudent h4 {
+    margin-left: 70px;
+    margin-bottom: 1px;
+    color: #DCF2F1;
+    font-size: large;
+    font-weight: bold;
+    margin-top: 10px;
+}

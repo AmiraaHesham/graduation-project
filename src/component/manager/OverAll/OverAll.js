@@ -38,7 +38,8 @@ const OverAll = () => {
 
   const viewCourseAttendance = async () => {
     try {
-      const res = await axios.post('http://127.0.0.1:3000/api/v1/attendance/viewCourseAttendance/666b53be9b1c5216182e809c', {},
+      const courseId = subjectSelectRef.current.value
+      const res = await axios.post('http://127.0.0.1:3000/api/v1/attendance/viewCourseAttendance/' + courseId, {},
         {
           headers: {
             "Authorization": "Bearer " + localStorage.token
@@ -110,7 +111,7 @@ const OverAll = () => {
         <div className='div-chooselecture'>
 
           <select onChange={viewCourseAttendance} ref={subjectSelectRef} name="courses" className=''>
-            <option > Choose Lecture ... </option>
+            <option > Choose Course ... </option>
             {course.map((course, index) => {
               return < option key={index} value={course._id}>
                 {course.name} - Semster Year {course.level} </option>
@@ -119,7 +120,7 @@ const OverAll = () => {
           </select>
         </div>
         <div className='div-tableOverAllAttendance'>
-          <div className='div-list-overall' id='list'>
+          <div className='div-list-overall'>
             <table className='tab-attend' style={{ width: '100%', border: 'none' }}>
               <tr>
                 <th>#</th>

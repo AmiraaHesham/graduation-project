@@ -22,16 +22,6 @@ const SignIn = () => {
                 email: Email,
                 password: Password
             },
-                {
-
-                    headers: {
-                        "Access-Control-Allow-Origin": "*",
-                        "Access-Control-Allow-Credentials": "true",
-                        "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
-                        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization",
-                    }
-
-                },
             )
             console.log(res)
             // console.log(res.data.token)
@@ -49,7 +39,29 @@ const SignIn = () => {
             localStorage.setItem('profileImage', profileImage)
             localStorage.setItem('email', email)
             localStorage.setItem('id', id)
-            if (role === 'admin') {
+            localStorage.setItem('role', role)
+            if (localStorage.role === 'admin') {
+                navigate('/CreateLecturer')
+
+            }
+            else { navigate('/Dashboard') }
+
+
+
+        }
+
+        catch (error) {
+            email.style.border = '2px solid brown'
+            pass.style.border = '2px solid brown'
+            console.log(error)
+            toast.error(error.response.data.message)
+
+        }
+    }
+
+    const cheekToken = () => {
+        if (localStorage.token !== '') {
+            if (localStorage.role === 'admin') {
                 navigate('/CreateLecturer')
 
             }
@@ -57,19 +69,6 @@ const SignIn = () => {
                 navigate('/Dashboard')
 
             )
-        }
-
-        catch (error) {
-            email.style.border = '2px solid brown'
-            pass.style.border = '2px solid brown'
-            console.log(error)
-            // toast.promise(error.response.data.message)
-        }
-    }
-
-    const cheekToken = () => {
-        if (localStorage.token !== '') {
-            navigate('/Dashboard')
         }
     }
 

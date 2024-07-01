@@ -13,6 +13,10 @@ const CreateStu = () => {
     const [photo, setPhoto] = useState();
     const [courses, setcourse] = useState([]);
     const [coursesSelect, setCoursesSelect] = useState([]);
+    const [coursesLevel1, setcoursesLevel1] = useState([]);
+    const [coursesLevel2, setcoursesLevel2] = useState([]);
+    const [coursesLevel3, setcoursesLevel3] = useState([]);
+    const [coursesLevel4, setcoursesLevel4] = useState([]);
 
     const inputphotoRef = useRef()
     const inputRefSemsteryear = useRef()
@@ -77,12 +81,14 @@ const CreateStu = () => {
                     }
                 }
             )
-            setcourse(res.data.data)
+
+
         }
         catch (error) {
 
         }
     }
+
     const handleSelectCourses = (event) => {
         const { value, checked } = event.target
         if (checked) {
@@ -154,7 +160,7 @@ const CreateStu = () => {
                     <input placeholder='Email *' type='text' onChange={(e) => setEmail(e.target.value)}></input>
                     <input placeholder='Password *' type='password' onChange={(e) => setPassword(e.target.value)}></input>
                     <input placeholder='Confirm Password *' type='password' onChange={(e) => setConfirmPassword[(e.target.value)]}></input>
-                    <input ref={inputRefSemsteryear} placeholder='Semster Year *' list='levels' onChange={setSemsteryear} />
+                    <input ref={inputRefSemsteryear} placeholder='Semster Year *' list='levels' onChange={(e) => setSemsteryear(e.target.value)} />
                     <datalist id='levels'>
                         <option value='1' />
                         <option value='2' />

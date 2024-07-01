@@ -33,7 +33,7 @@ const Header = () => {
                 <div className='profile-picture'>
                     <img src={profileImage} alt='' />
                 </div>
-                <div className='profile-nameLec'>
+                <div className='profile-nameAdmin'>
                     {name}
                 </div>
             </div></Link>

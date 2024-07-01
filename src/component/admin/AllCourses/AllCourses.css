@@ -9,3 +9,90 @@
     margin: 20px 20px;
     background: rgba(54, 84, 134, 0.22);
 }
+
+.input-search {
+    width: 25%;
+    height: 35px;
+    border: none;
+    border-Radius: 7px;
+    font-Size: 20px;
+    color: #263658;
+    font-Weight: 'bold';
+    margin-Left: 550px;
+    margin-Top: 10px;
+    padding-Left: 10px;
+    position: absolute;
+    background: #DCF2F1;
+}
+
+.input-searchCourse::placeholder {
+    color: #263658;
+}
+
+.div-EditDataCourse {
+    background: #365486;
+    width: 500px;
+    height: 550px;
+    position: absolute;
+    margin-top: 200px;
+    margin-left: 250px;
+    padding-top: 10px;
+    border-radius: 20px;
+}
+
+.div-EditDataCourse h4 {
+    margin-left: 70px;
+    margin-bottom: 1px;
+    color: #DCF2F1;
+    font-size: large;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.inpEditDay {
+    width: 70%;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    margin-left: 70px;
+    color: #1D2649;
+    font-size: x-large;
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+.inpEditTime {
+    width: 70%;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    margin-left: 70px;
+    color: #1D2649;
+    font-size: x-large;
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+.inpEditDuration {
+    width: 70%;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    margin-left: 70px;
+    color: #1D2649;
+    font-size: x-large;
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+.div-EditDataCourse button {
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    font-size: 20px;
+    font-family: 800;
+    color: #DCF2F1;
+    margin-top: 40px;
+    margin-left: 100px;
+}

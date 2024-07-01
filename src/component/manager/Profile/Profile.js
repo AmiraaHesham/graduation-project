@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react'
 import './Profile.css'
 import { FiEdit } from "react-icons/fi";
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import { toast, Toaster } from 'react-hot-toast'
+import { BiLogOut } from "react-icons/bi";
 
 const Profile = () => {
     const [photo, setPhoto] = useState('')
@@ -16,7 +17,6 @@ const Profile = () => {
 
     const inputRef = useRef()
     const inputRefName = useRef()
-    const inputRefEmail = useRef()
     const inputRefConfirmPass = useRef()
     const inputRefCurrentPass = useRef()
     const inputRefNewPass = useRef()
@@ -91,17 +91,12 @@ const Profile = () => {
         let name = document.querySelector('#name')
         name.classList.add('hide')
 
-        let inputEditEmail = document.querySelector('#EditEmail')
-        inputEditEmail.classList.add('hide')
-
         let email = document.querySelector('#email')
         email.classList.add('hide')
 
         let btnsSaveCancelName = document.querySelector('#btns-save-cancel-Name')
         btnsSaveCancelName.classList.remove('hide')
 
-        let btnssavecancelEmail = document.querySelector('#btns-save-cancel-Email')
-        btnssavecancelEmail.classList.add('hide')
 
         let Changepassword = document.querySelector('.btn-Changepassword')
         Changepassword.classList.add('hide')
@@ -111,30 +106,7 @@ const Profile = () => {
         inputRefName.current.value = localStorage.name
     }
 
-    const btnEditEmail = () => {
-        let inputEditName = document.querySelector('#inpEditName')
-        inputEditName.classList.add('hide')
 
-        let name = document.querySelector('#name')
-        name.classList.add('hide')
-
-        let inputEditEmail = document.querySelector('#EditEmail')
-        inputEditEmail.classList.remove('hide')
-
-        let email = document.querySelector('#email')
-        email.classList.add('hide')
-
-        let Changepassword = document.querySelector('.btn-Changepassword')
-        Changepassword.classList.add('hide')
-
-        let btnssavecancelEmail = document.querySelector('#btns-save-cancel-Email')
-        btnssavecancelEmail.classList.remove('hide')
-
-        let divbtnlogoutDelete = document.querySelector('.btns-logout-delete')
-        divbtnlogoutDelete.classList.add('hide')
-
-        inputRefEmail.current.value = localStorage.email
-    }
 
     const handleBtnCancel = () => {
         let inputEditName = document.querySelector('#inpEditName')
@@ -143,8 +115,6 @@ const Profile = () => {
         let name = document.querySelector('#name')
         name.classList.remove('hide')
 
-        let inputEditEmail = document.querySelector('#EditEmail')
-        inputEditEmail.classList.add('hide')
 
         let email = document.querySelector('#email')
         email.classList.remove('hide')
@@ -152,21 +122,19 @@ const Profile = () => {
         let btnsSaveCancelName = document.querySelector('#btns-save-cancel-Name')
         btnsSaveCancelName.classList.add('hide')
 
-        let btnssavecancelEmail = document.querySelector('#btns-save-cancel-Email')
-        btnssavecancelEmail.classList.add('hide')
+
 
         let btnChangepassword = document.querySelector('.btn-Changepassword')
         btnChangepassword.classList.remove('hide')
 
-        let divbtnlogoutDelete = document.querySelector('.btns-logout-delete')
-        divbtnlogoutDelete.classList.remove('hide')
 
         let btnssavecancelChangepassword = document.querySelector('.btns-save-cancel-Changepassword')
         btnssavecancelChangepassword.classList.add('hide')
 
         let divInputsChangepass = document.querySelector('#div-inputs-changepasword')
         divInputsChangepass.classList.add('hide')
-
+        let divbtnlogoutDelete = document.querySelector('.btns-logout-delete')
+        divbtnlogoutDelete.classList.remove('hide')
         inputRefCurrentPass.current.value = ''
         inputRefConfirmPass.current.value = ''
         inputRefNewPass.current.value = ''
@@ -182,17 +150,13 @@ const Profile = () => {
         let name = document.querySelector('#name')
         name.classList.remove('hide')
 
-        let inputEditEmail = document.querySelector('#EditEmail')
-        inputEditEmail.classList.add('hide')
+
 
         let email = document.querySelector('#email')
         email.classList.remove('hide')
 
         let btnsSaveCancelName = document.querySelector('#btns-save-cancel-Name')
         btnsSaveCancelName.classList.add('hide')
-
-        let btnssavecancelEmail = document.querySelector('#btns-save-cancel-Email')
-        btnssavecancelEmail.classList.add('hide')
 
         let btnChangepassword = document.querySelector('.btn-Changepassword')
         btnChangepassword.classList.remove('hide')
@@ -224,43 +188,7 @@ const Profile = () => {
         }
     }
 
-    const saveEmail = async () => {
-        let inputEditName = document.querySelector('#inpEditName')
-        inputEditName.classList.add('hide')
-        let name = document.querySelector('#name')
-        name.classList.remove('hide')
-        let inputEditEmail = document.querySelector('#EditEmail')
-        inputEditEmail.classList.add('hide')
-        let email = document.querySelector('#email')
-        email.classList.remove('hide')
-        let btnChangepassword = document.querySelector('.btn-Changepassword')
-        btnChangepassword.classList.remove('hide')
-        const newEmail = inputRefEmail.current.value
-        let divbtnlogoutDelete = document.querySelector('.btns-logout-delete')
-        divbtnlogoutDelete.classList.remove('hide')
-        try {
-            await axios.put('http://127.0.0.1:3000/api/v1/lecturer/updateMe',
-                {
-                    email: newEmail
-                }
-                , {
-                    headers: {
-                        "Access-Control-Allow-Origin": "*",
-                        "Access-Control-Allow-Credentials": "true",
-                        "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
-                        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization",
-                        "Authorization": 'Bearer ' + localStorage.token
-                    }
-                })
-            localStorage.setItem('email', newEmail)
 
-
-
-        }
-        catch (error) {
-            console.log(error)
-        }
-    }
 
     const handleBtnChangepassword = async () => {
         let name = document.querySelector('#name')
@@ -318,7 +246,6 @@ const Profile = () => {
         localStorage.email = ''
         localStorage.profileImage = ''
         localStorage.id = ''
-
         navigate('/SignIn')
     }
     const toBackHome = () => {
@@ -370,16 +297,9 @@ const Profile = () => {
                     <div >
                         <div className='div-email' id='email' >
                             <span className='email'>Email:  {email}</span>
-                            <span onClick={btnEditEmail} style={{ position: 'absolute', left: '420px', cursor: 'pointer' }}><FiEdit /></span>
                         </div>
 
-                        <div className='hide' id='EditEmail'>
-                            <input ref={inputRefEmail} onChange={(e) => setEmail(e.target.value)} id='inpEditEmail' />
-                            <div className='hide' id='btns-save-cancel-Email'>
-                                <button onClick={saveEmail} id='btn-save'>Save</button>
-                                <button onClick={handleBtnCancel} id='btn-cancel'>Cancel</button>
-                            </div>
-                        </div>
+
                     </div>
 
                     <div className='btn-changpass'>
@@ -396,12 +316,10 @@ const Profile = () => {
                         </div>
 
                     </div>
-
                 </div>
 
                 <div className='btns-logout-delete'>
-                    <button onClick={handleBtnLogout} className='btn-logout'>Logout</button>
-                    <button className='btn-delete'>Delete Acount</button>
+                    <button onClick={handleBtnLogout} className='btn-logout'><BiLogOut /> Logout</button>
                 </div>
 
             </div>

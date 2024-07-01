@@ -193,49 +193,29 @@
 }
 
 .btns-logout-delete {
-    width: 410px;
-    height: 30px;
+
     position: absolute;
     margin-top: 570px;
-    margin-left: 240px;
+    margin-left: 190px;
 }
 
 .btn-logout {
-    width: 120px;
+    width: 90px;
     height: 35px;
-    margin-right: 50px;
     background: #011e3a7c;
     border-radius: 10px;
     color: #DCF2F1;
-    font-size: large;
+    font-size: medium;
     font-weight: bold;
     border: none;
 }
 
 .btn-logout:hover {
-    background: #011e3a;
+    background: brown;
 
 
 }
 
-.btn-delete {
-    width: 150px;
-    height: 35px;
-    margin-left: 20px;
-    background: rgba(165, 42, 42, 0.595);
-    border-radius: 10px;
-    /* border: 1px solid brown; */
-    color: #DCF2F1;
-    border: none;
-    font-size: large;
-    font-weight: bold;
-
-}
-
-.btn-delete:hover {
-    background: rgb(177, 33, 33);
-
-}
 
 .hide {
     display: none;
