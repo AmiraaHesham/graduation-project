@@ -21,6 +21,7 @@ const CurrentClass = () => {
     const [LectureTitle, setLectureTitle] = useState()
     const [LectureNum, setLectureNum] = useState()
     const [lectureId, setlectureId] = useState()
+    const [qrCode, setqrCode] = useState()
 
     const subjectSelectRef = useRef()
 
@@ -77,10 +78,9 @@ const CurrentClass = () => {
                         }
                     })
 
-                let QRimg = document.querySelector('#div-QRimg')
-                QRimg.classList.remove('hide')
-                console.log(res)
-
+                let divQRimg = document.querySelector('#div-QRimg')
+                divQRimg.classList.remove('hide')
+                setqrCode(res.data.data.qrCode)
             }
             else (
                 toast.error("Choose Course or Create Lecture")
@@ -185,10 +185,7 @@ const CurrentClass = () => {
 
     return (
         <div>
-            <Toaster
-                position="bottom-center"
-                reverseOrder={true}
-            />
+
             <Header />
             <div className='side-bar'>
                 <Link to={"/Dashboard"} style={{ textDecoration: 'none', color: '#1D2649' }}>
@@ -249,15 +246,8 @@ const CurrentClass = () => {
                 </div>
 
                 <div className='hide' id='div-QRimg'>
+                    <img src={qrCode} alt='' />
 
-                    <QRCode
-                        size={256}
-                        fgColor={'#1D2649'}
-                        style={{ marginLeft: "190px", marginTop: "40px", height: "auto", width: "65%", border: "10px solid #ffffff" }}
-                        value={`CourseID: ${courseId} 
-lectureId: ${lectureId}`}
-                        viewBox={`0 0 256 256`}
-                    />
                     <button onClick={handleBtnClose} className='btn-Close'>Close</button>
                 </div>
 

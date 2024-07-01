@@ -172,7 +172,7 @@
 .btn-Close {
     position: absolute;
     margin-top: 730px;
-    margin-left: -400px;
+    margin-left: -450px;
     width: 120px;
     height: 40px;
     background: #1D2649;
@@ -343,5 +343,9 @@
     text-align: center;
     cursor: default;
 
+}
 
+#div-QRimg img {
+    width: 750px;
+    margin-left: 130px;
 }
