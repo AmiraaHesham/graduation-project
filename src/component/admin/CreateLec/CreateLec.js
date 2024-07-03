@@ -1,45 +1,54 @@
 import React, { useRef, useState } from 'react'
 import "./CreateLec.css"
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Header from '../headerAdmin/headerAdmin'
 import { Toaster, toast } from 'react-hot-toast'
 import axios from 'axios'
 
 const CreateLec = () => {
-    const [fullname, setFullName] = useState();
-    const [Email, setEmail] = useState();
-    const [password, setPassword] = useState();
-    const [Confirmpassword, setConfirmPassword] = useState();
-    const [Programming, setProgramming] = useState();
+
     const [photo, setPhoto] = useState();
     const inputRef = useRef()
+    const inputProgrammeRef = useRef()
+    const inputConfirmPassRef = useRef()
+    const inputPasswordRef = useRef()
+    const inputEmailRef = useRef()
+    const inputNameRef = useRef()
 
 
     const addNewUser = async () => {
         try {
-            await axios.post('http://127.0.0.1:3000/api/v1/authLec/signup', {
-                name: fullname,
-                email: Email,
-                password: password,
-                passwordConfirm: Confirmpassword,
+            await axios.post('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/authLec/signup', {
+                name: inputNameRef.current.value,
+                email: inputEmailRef.current.value,
+                password: inputPasswordRef.current.value,
+                passwordConfirm: inputConfirmPassRef.current.value,
                 profileImage: photo,
-                programme: Programming
+                programme: inputProgrammeRef.current.value
             }
-
             )
 
+            inputNameRef.current.value = ''
+            inputEmailRef.current.value = ''
+            inputPasswordRef.current.value = ''
+            inputConfirmPassRef.current.value = ''
+            inputProgrammeRef.current.value = ''
+            let upload = document.querySelector('#upload')
+            let img = document.querySelector('#img')
+            img.classList.add('hide');
+            upload.classList.remove('hide')
+            setPhoto('')
+            toast.success('success')
         }
         catch (error) {
             console.log(error)
             toast.error(error.response.data.errors[0].msg)
-
         }
     }
 
     const handleImage = () => {
         inputRef.current.click()
     }
-
 
     const handelupload = (e) => {
         var reader = new FileReader();
@@ -53,6 +62,7 @@ const CreateLec = () => {
         img.classList.remove('hide');
         upload.classList.add('hide')
     }
+
     return (
         <div>
             <Header />
@@ -104,15 +114,15 @@ const CreateLec = () => {
 
                 </div>
                 <div className='div-inputs'>
-                    <input placeholder='Name *' type='text' onChange={(e) => setFullName(e.target.value)}></input>
-                    <input placeholder='Email *' type='text' onChange={(e) => setEmail(e.target.value)}></input>
-                    <input placeholder='Password *' type='password' onChange={(e) => setPassword(e.target.value)}></input>
-                    <input placeholder='Confirm Password *' type='password' onChange={(e) => setConfirmPassword(e.target.value)}></input>
-                    <input placeholder='Programming *' type='text' onChange={(e) => setProgramming(e.target.value)}></input>
+                    <input placeholder='Name *' type='text' ref={inputNameRef}></input>
+                    <input placeholder='Email *' type='text' ref={inputEmailRef} ></input>
+                    <input placeholder='Password *' type='password' ref={inputPasswordRef}></input>
+                    <input placeholder='Confirm Password *' type='password' ref={inputConfirmPassRef}></input>
+                    <input placeholder='Programming *' type='text' ref={inputProgrammeRef} ></input>
                 </div>
                 <Toaster
                     position="bottom-center"
-                    reverseOrder={false} />
+                    reverseOrder={true} />
                 <button onClick={addNewUser}>Create</button >
 
             </div>

@@ -27,7 +27,7 @@ const AllLecturers = () => {
     }, [])
     const getAllLecturers = async () => {
 
-        const res = await axios.get('http://127.0.0.1:3000/api/v1/lecturer',
+        const res = await axios.get('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/lecturer',
             {
                 headers: {
                     "Authorization": 'Bearer ' + localStorage.token
@@ -47,7 +47,7 @@ const AllLecturers = () => {
                 showCancelButton: true,
             }).then(async (data) => {
                 if (data.isConfirmed) {
-                    const res = await axios.delete('http://127.0.0.1:3000/api/v1/lecturer/' + lecturer._id,
+                    const res = await axios.delete('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/lecturer/' + lecturer._id,
                         {
                             headers: {
                                 "Authorization": 'Bearer ' + localStorage.token
@@ -64,7 +64,7 @@ const AllLecturers = () => {
     }
     const getInfo = async (lecturer) => {
         try {
-            const res = await axios.get('http://127.0.0.1:3000/api/v1/lecturer/' + lecturer._id,
+            const res = await axios.get('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/lecturer/' + lecturer._id,
                 {
                     headers: {
                         "Authorization": 'Bearer ' + localStorage.token
@@ -112,8 +112,9 @@ const AllLecturers = () => {
             let divEditData = document.querySelector('#div-EditData')
             divEditData.classList.add('hide')
             if (inputRefNewPassword.current.value === '') {
+
                 if (inputRefEmail.current.value !== email) {
-                    const res = await axios.put('http://127.0.0.1:3000/api/v1/lecturer/' + id,
+                    const res = await axios.put('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/lecturer/' + id,
                         {
                             name: inputRefName.current.value,
                             email: inputRefEmail.current.value,
@@ -131,7 +132,7 @@ const AllLecturers = () => {
 
                 }
                 else {
-                    const res = await axios.put('http://127.0.0.1:3000/api/v1/lecturer/' + id,
+                    const res = await axios.put('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/lecturer/' + id,
                         {
                             name: inputRefName.current.value,
                             programme: inputRefprogramme.current.value
@@ -148,7 +149,17 @@ const AllLecturers = () => {
                 }
             }
             else {
-                // const res = await axios.post('http://127.0.0.1:3000/')
+                const res = await axios.put('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/lecturer/changePassword/' + id, {
+                    password: inputRefNewPassword.current.value,
+                    confirmPassword: inputRefConfirmPassword.current.value
+                },
+                    {
+                        headers: {
+                            "Authorization": 'Bearer ' + localStorage.token
+                        }
+                    }
+                )
+                console.log(res)
             }
 
             getAllLecturers()
@@ -185,7 +196,7 @@ const AllLecturers = () => {
                 console.log(searchLecturerRef.current.value)
             }
             else {
-                const res = await axios.get('http://127.0.0.1:3000/api/v1/search/' + searchLecturerRef.current.value,
+                const res = await axios.get('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/lecturer/search/' + searchLecturerRef.current.value,
                     {
                         headers: {
                             "Authorization": 'Bearer ' + localStorage.token

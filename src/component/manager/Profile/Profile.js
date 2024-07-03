@@ -28,7 +28,7 @@ const Profile = () => {
 
     const getInfo = async () => {
         try {
-            const res = await axios.get('http://127.0.0.1:3000/api/v1/lecturer/getme',
+            const res = await axios.get('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/lecturer/getme',
                 {
                     headers: {
                         "Authorization": 'Bearer ' + localStorage.token
@@ -62,7 +62,7 @@ const Profile = () => {
             console.log(reader.result)
             setPhoto(reader.result)
             try {
-                const res = await axios.put('http://127.0.0.1:3000/api/v1/lecturer/updateMe',
+                const res = await axios.put('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/lecturer/updateMe',
                     {
                         profileImage: reader.result
                     },
@@ -105,8 +105,6 @@ const Profile = () => {
         divbtnlogoutDelete.classList.add('hide')
         inputRefName.current.value = localStorage.name
     }
-
-
 
     const handleBtnCancel = () => {
         let inputEditName = document.querySelector('#inpEditName')
@@ -166,7 +164,7 @@ const Profile = () => {
         const newName = inputRefName.current.value
 
         try {
-            await axios.put('http://127.0.0.1:3000/api/v1/lecturer/updateMe',
+            await axios.put('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/lecturer/updateMe',
                 {
                     name: newName,
                 }
@@ -188,8 +186,6 @@ const Profile = () => {
         }
     }
 
-
-
     const handleBtnChangepassword = async () => {
         let name = document.querySelector('#name')
         name.classList.add('hide')
@@ -203,25 +199,17 @@ const Profile = () => {
         divInputsChangepass.classList.remove('hide')
         let btnssavecancelChangepassword = document.querySelector('.btns-save-cancel-Changepassword')
         btnssavecancelChangepassword.classList.remove('hide')
+        inputRefConfirmPass.current.value = ''
+        inputRefNewPass.current.value = ''
+        inputRefCurrentPass.current.value = ''
     }
+
     const saveChangePassword = async () => {
-        let name = document.querySelector('#name')
-        name.classList.remove('hide')
-        let email = document.querySelector('#email')
-        email.classList.remove('hide')
-        let BtnChangepassword = document.querySelector('.btn-Changepassword')
-        BtnChangepassword.classList.remove('hide')
-        let divbtnlogoutDelete = document.querySelector('.btns-logout-delete')
-        divbtnlogoutDelete.classList.remove('hide')
-        let divInputsChangepass = document.querySelector('#div-inputs-changepasword')
-        divInputsChangepass.classList.add('hide')
-        let btnssavecancelChangepassword = document.querySelector('.btns-save-cancel-Changepassword')
-        btnssavecancelChangepassword.classList.add('hide')
-        let btnChangepassword = document.querySelector('.btn-Changepassword')
-        btnChangepassword.classList.remove('hide')
+
 
         try {
-            const res = await axios.put('http://127.0.0.1:3000/api/v1/lecturer/changeMyPassword', {
+
+            const res = await axios.put('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/lecturer/changeMyPassword', {
                 currentPassword: currentPassword,
                 password: newPassword,
                 confirmPassword: confirmPassword,
@@ -232,10 +220,26 @@ const Profile = () => {
                         "Authorization": 'Bearer ' + localStorage.token
                     }
                 })
+            toast.success('The password has been changed')
             console.log(res)
+            let name = document.querySelector('#name')
+            name.classList.remove('hide')
+            let email = document.querySelector('#email')
+            email.classList.remove('hide')
+            let BtnChangepassword = document.querySelector('.btn-Changepassword')
+            BtnChangepassword.classList.remove('hide')
+            let divbtnlogoutDelete = document.querySelector('.btns-logout-delete')
+            divbtnlogoutDelete.classList.remove('hide')
+            let divInputsChangepass = document.querySelector('#div-inputs-changepasword')
+            divInputsChangepass.classList.add('hide')
+            let btnssavecancelChangepassword = document.querySelector('.btns-save-cancel-Changepassword')
+            btnssavecancelChangepassword.classList.add('hide')
+            let btnChangepassword = document.querySelector('.btn-Changepassword')
+            btnChangepassword.classList.remove('hide')
         }
         catch (error) {
             console.log(error)
+            toast.error('Incorrect Current Password')
         }
     }
 

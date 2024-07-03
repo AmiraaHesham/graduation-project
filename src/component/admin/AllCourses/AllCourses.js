@@ -28,17 +28,16 @@ const AllCourses = () => {
 
     const getAllCourses = async () => {
         try {
-            const res = await axios.get('http://127.0.0.1:3000/api/v1/courses',
+            const res = await axios.get('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/courses',
                 {
                     headers: {
                         "Authorization": 'Bearer ' + localStorage.token
                     }
                 }
             )
-
             // if(res.data.data)
             setCourses(res.data.data)
-            console.log(res.data.data)
+            // console.log(res.data.data.lecturerId.name)
         }
         catch (error) {
             console.log(error)
@@ -46,7 +45,6 @@ const AllCourses = () => {
     }
 
     const deleteCourse = async (course) => {
-
         try {
             Swal.fire({
                 title: `${course.name}`,
@@ -54,7 +52,7 @@ const AllCourses = () => {
                 showCancelButton: true,
             }).then(async (data) => {
                 if (data.isConfirmed) {
-                    const res = await axios.delete('http://127.0.0.1:3000/api/v1/courses/' + course._id,
+                    const res = await axios.delete('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/courses/' + course._id,
                         {
                             headers: {
                                 "Authorization": 'Bearer ' + localStorage.token
@@ -65,7 +63,6 @@ const AllCourses = () => {
                     getAllCourses()
                 }
             })
-
         }
         catch (error) {
             console.log(error)
@@ -80,10 +77,9 @@ const AllCourses = () => {
                 tbodyAllCourses.classList.remove('hide')
                 tbodySearchCourse.classList.add('hide')
                 console.log(searchCourseRef.current.value)
-
             }
             else {
-                const res = await axios.get('http://127.0.0.1:3000/api/v1/courses/search/' + searchCourseRef.current.value,
+                const res = await axios.get('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/courses/search/' + searchCourseRef.current.value,
                     {
                         headers: {
                             "Authorization": 'Bearer ' + localStorage.token
@@ -96,8 +92,6 @@ const AllCourses = () => {
                 tbodyAllCourses.classList.add('hide')
                 tbodySearchCourse.classList.remove('hide')
             }
-
-
         }
         catch (error) {
             console.log(error)
@@ -105,12 +99,10 @@ const AllCourses = () => {
     }
     const getInfo = async (course) => {
         try {
-
-            const res = await axios.get('http://127.0.0.1:3000/api/v1/courses/' + course._id,
+            const res = await axios.get('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/courses/' + course._id,
                 {
                     headers: {
                         "Authorization": 'Bearer ' + localStorage.token
-
                     }
                 }
             )
@@ -128,19 +120,19 @@ const AllCourses = () => {
         catch (error) {
             console.log(error)
         }
-
     }
 
     const handleBtnClose = () => {
         let divEditData = document.querySelector('#div-EditDataCourse')
         divEditData.classList.add('hide')
     }
+
     const handleBtnSeveEdit = async () => {
         try {
             let divEditData = document.querySelector('#div-EditDataCourse')
             divEditData.classList.add('hide')
             if (inputRefName.current.value !== name) {
-                const res = await axios.put('http://127.0.0.1:3000/api/v1/courses/' + id,
+                const res = await axios.put('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/courses/' + id,
                     {
                         name: inputRefName.current.value,
                         level: inputRefLevel.current.value,
@@ -153,14 +145,12 @@ const AllCourses = () => {
                             "Authorization": 'Bearer ' + localStorage.token
                         }
                     }
-
                 )
                 console.log(res)
                 toast.success('succsess Edit')
-
             }
             else {
-                const res = await axios.put('http://127.0.0.1:3000/api/v1/courses/' + id,
+                const res = await axios.put('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/courses/' + id,
                     {
                         level: inputRefLevel.current.value,
                         lectureTime: inputRefTime.current.value,
@@ -175,9 +165,7 @@ const AllCourses = () => {
                 )
                 console.log(res)
                 toast.success('succsess Edit')
-
             }
-
             getAllCourses()
         }
         catch (error) {
@@ -185,6 +173,8 @@ const AllCourses = () => {
         }
 
     }
+
+
     return (
         <div>
             <Header />
@@ -273,10 +263,10 @@ const AllCourses = () => {
                         </thead>
                         <tbody id='tbody-AllCourses'>
                             {Courses.map((course, index) => {
-                                return <tr>
+                                return <tr key={index}>
                                     <td >{index + 1}</td>
                                     <td >{course.name}</td>
-                                    {/* <td >{course.lecturerId.name}</td> */}
+                                    {/* <td >{course[index].lecturerId.name}</td> */}
                                     <td>{course.lectureDay}</td>
                                     <td> {course.level}</td>
                                     <td> {course.lectureTime}</td>

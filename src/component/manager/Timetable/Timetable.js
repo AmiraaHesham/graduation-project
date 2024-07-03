@@ -5,8 +5,6 @@ import Header from '../headerManager/headerManager'
 import axios from 'axios'
 import { toast, Toaster } from 'react-hot-toast';
 import { FiEdit } from "react-icons/fi";
-import { MdDeleteOutline } from "react-icons/md";
-let currentIndex = 0;
 
 const Timetable = () => {
 
@@ -15,6 +13,7 @@ const Timetable = () => {
     const [LectureTime, setLectureTime] = useState('')
     const [LectureDuration, setLectureDuration] = useState('')
     const [Semsteryear, setSemsteryear] = useState('')
+    const [currentIndex, setcurrentIndex] = useState('')
     const [courses, setcourses] = useState([])
 
     const inputRefLecName = useRef()
@@ -29,7 +28,7 @@ const Timetable = () => {
 
     const createCourse = async () => {
         try {
-            await axios.post('http://127.0.0.1:3000/api/v1/courses', {
+            await axios.post('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/courses', {
                 lecturerId: localStorage.id,
                 name: LectureName,
                 lectureDay: LectureDay,
@@ -37,9 +36,7 @@ const Timetable = () => {
                 level: Semsteryear,
                 lectureTime: LectureTime,
             }, {
-
                 headers: {
-
                     "Authorization": 'Bearer ' + localStorage.token
                 }
             })
@@ -71,21 +68,15 @@ const Timetable = () => {
     }
     const getCourses = async () => {
         try {
-
-
-            const res = await axios.get(`http://127.0.0.1:3000/api/v1/lecturer/lecturer_courses/${localStorage.id}`
+            const res = await axios.get(`https://attendance-by-qr-code-rrmg.vercel.app/api/v1/lecturer/lecturer_courses/${localStorage.id}`
                 , {
-
                     headers: {
-
                         "Authorization": 'Bearer ' + localStorage.token
                     }
-
                 },
             )
             setcourses(res.data.data)
             console.log(res.data)
-
         }
         catch (error) {
             console.log(error)
@@ -100,7 +91,6 @@ const Timetable = () => {
         inputRefLecTime.current.value = ''
     }
 
-
     const handleBtnEditCourse = async (course) => {
         let saveEdit = document.querySelector('#saveEdit')
         let createCourse = document.querySelector('#createCourse')
@@ -109,7 +99,7 @@ const Timetable = () => {
         saveEdit.classList.add('btn-confirm')
         createCourse.classList.add('hide')
         console.log(course._id)
-        currentIndex = course._id;
+        setcurrentIndex(course._id)
         console.log(currentIndex)
 
         inputRefLecDuration.current.value = course.lectureDuration
@@ -119,17 +109,15 @@ const Timetable = () => {
     const editCourse = async () => {
         try {
             console.log(currentIndex)
-            const res = await axios.put('http://127.0.0.1:3000/api/v1/courses/' + currentIndex,
+            const res = await axios.put('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/courses/' + currentIndex,
                 {
                     lectureDuration: inputRefLecDuration.current.value,
                     lectureDay: inputRefLecDay.current.value,
                     lectureTime: inputRefLecTime.current.value,
-
                 },
                 {
                     headers: {
                         "Authorization": 'Bearer ' + localStorage.token
-
                     }
                 }
             )

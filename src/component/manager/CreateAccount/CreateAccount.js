@@ -17,7 +17,7 @@ const CreateAccount = () => {
 
     const addNewUser = async () => {
         try {
-            const res = await axios.post('http://127.0.0.1:3000/api/v1/authLec/signup', {
+            const res = await axios.post('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/authLec/signup', {
                 name: fullname,
                 email: Email,
                 password: password,

@@ -20,7 +20,7 @@ const OverAll = () => {
 
   const getCourses = async () => {
     try {
-      const res = await axios.get('http://127.0.0.1:3000/api/v1/lecturer/lecturer_courses/' + localStorage.id,
+      const res = await axios.get('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/lecturer/lecturer_courses/' + localStorage.id,
         {
 
           headers: {
@@ -39,7 +39,7 @@ const OverAll = () => {
   const viewCourseAttendance = async () => {
     try {
       const courseId = subjectSelectRef.current.value
-      const res = await axios.post('http://127.0.0.1:3000/api/v1/attendance/viewCourseAttendance/' + courseId, {},
+      const res = await axios.post('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/attendance/viewCourseAttendance/' + courseId, {},
         {
           headers: {
             "Authorization": "Bearer " + localStorage.token

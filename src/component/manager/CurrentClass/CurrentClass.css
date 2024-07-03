@@ -281,25 +281,7 @@
     border-radius: 30px;
 }
 
-.input-search {
-    width: 350px;
-    height: 40px;
-    margin-top: 20px;
-    margin-left: 20px;
-    color: #263658;
-    border: none;
-    background: #DCF2F1;
-    border-radius: 5px;
-    font-size: 25px;
-    padding-left: 10px;
 
-}
-
-.input-search::placeholder {
-    font-size: 20px;
-    color: #47709A;
-
-}
 
 .div-list {
     margin-left: 10px;

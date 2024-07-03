@@ -19,7 +19,7 @@ const Weekly = () => {
     const lectureSelectRef = useRef()
     const getCourses = async () => {
         try {
-            const res = await axios.get('http://127.0.0.1:3000/api/v1/lecturer/lecturer_courses/' + localStorage.id,
+            const res = await axios.get('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/lecturer/lecturer_courses/' + localStorage.id,
                 {
                     headers: {
                         "Authorization": 'Bearer ' + localStorage.token
@@ -37,7 +37,7 @@ const Weekly = () => {
         try {
             const selectCourse = subjectSelectRef.current.value
 
-            const res = await axios.get('http://127.0.0.1:3000/api/v1/courses/' + selectCourse,
+            const res = await axios.get('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/courses/' + selectCourse,
                 {
 
                     headers: {
@@ -61,7 +61,7 @@ const Weekly = () => {
         try {
             const lectureId = lectureSelectRef.current.value
             if (lectureId !== 'Choose Lecture...') {
-                const res = await axios.post('http://127.0.0.1:3000/api/v1/attendance/viewLectureAttendance/' + lectureId, {},
+                const res = await axios.post('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/attendance/viewLectureAttendance/' + lectureId, {},
                     {
                         headers: {
                             "Authorization": "Bearer " + localStorage.token

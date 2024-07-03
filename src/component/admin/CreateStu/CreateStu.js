@@ -5,20 +5,16 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Toaster, toast } from 'react-hot-toast'
 import axios from 'axios'
 const CreateStu = () => {
-    const [fullname, setFullName] = useState();
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
-    const [Confirmpassword, setConfirmPassword] = useState();
-    const [semsteryear, setSemsteryear] = useState();
     const [photo, setPhoto] = useState();
     const [courses, setcourse] = useState([]);
     const [coursesSelect, setCoursesSelect] = useState([]);
-    const [coursesLevel1, setcoursesLevel1] = useState([]);
-    const [coursesLevel2, setcoursesLevel2] = useState([]);
-    const [coursesLevel3, setcoursesLevel3] = useState([]);
-    const [coursesLevel4, setcoursesLevel4] = useState([]);
+
 
     const inputphotoRef = useRef()
+    const inputConfirmPassRef = useRef()
+    const inputPasswordRef = useRef()
+    const inputEmailRef = useRef()
+    const inputNameRef = useRef()
     const inputRefSemsteryear = useRef()
     // const inputRef = useRef()
 
@@ -28,35 +24,36 @@ const CreateStu = () => {
 
     const addNewUser = async () => {
         try {
-            const res = await axios.post('http://127.0.0.1:3000/api/v1/student', {
-                name: fullname,
-                email: email,
-                password: password,
-                passwordConfirm: Confirmpassword,
+            const res = await axios.post('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/student', {
+                name: inputNameRef.current.value,
+                email: inputEmailRef.current.value,
+                password: inputPasswordRef.current.value,
+                passwordConfirm: inputConfirmPassRef.current.value,
                 profileImage: photo,
                 courses: coursesSelect,
                 programme: 'is'
             }, {
                 headers: {
                     "Authorization": 'Bearer ' + localStorage.token
-
                 }
             }
-
             )
+            inputNameRef.current.value = ''
+            inputEmailRef.current.value = ''
+            inputPasswordRef.current.value = ''
+            inputConfirmPassRef.current.value = ''
+            setPhoto('')
             console.log(res)
         }
         catch (error) {
             console.log(error)
             toast.error(error.response.data.errors[0].msg)
-
         }
     }
 
     const handleImage = () => {
         inputphotoRef.current.click()
     }
-
 
     const handelupload = (e) => {
         var reader = new FileReader();
@@ -73,16 +70,14 @@ const CreateStu = () => {
 
     const getAllCourses = async () => {
         try {
-            const res = await axios.get('http://127.0.0.1:3000/api/v1/courses',
+            const res = await axios.get('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/courses',
                 {
                     headers: {
                         "Authorization": 'Bearer ' + localStorage.token
-
                     }
                 }
             )
-
-
+            setcourse(res.data.data)
         }
         catch (error) {
 
@@ -90,19 +85,26 @@ const CreateStu = () => {
     }
 
     const handleSelectCourses = (event) => {
-        const { value, checked } = event.target
-        if (checked) {
-            setCoursesSelect([...coursesSelect, value])
 
-        }
-        else {
-            setCoursesSelect([...coursesSelect, value])
-
+        if (event.target.checked === true) {
+            setCoursesSelect([...coursesSelect, event.target.name])
+            console.log(event.target.checked)
         }
 
 
+
+
+
+
+
+    }
+    const showDivCheakboxeCourses = () => {
+        let divcheekbox = document.querySelector('#div-cheekbox')
+        divcheekbox.classList.add('div-cheekbox')
+        divcheekbox.classList.remove('hide')
+    }
+    const btn = () => {
         console.log({ coursesSelect })
-
 
     }
     return (
@@ -156,35 +158,36 @@ const CreateStu = () => {
 
                 </div>
                 <div className='div-inputs'>
-                    <input placeholder='Name *' type='text' onChange={(e) => setFullName(e.target.value)}></input>
-                    <input placeholder='Email *' type='text' onChange={(e) => setEmail(e.target.value)}></input>
-                    <input placeholder='Password *' type='password' onChange={(e) => setPassword(e.target.value)}></input>
-                    <input placeholder='Confirm Password *' type='password' onChange={(e) => setConfirmPassword[(e.target.value)]}></input>
-                    <input ref={inputRefSemsteryear} placeholder='Semster Year *' list='levels' onChange={(e) => setSemsteryear(e.target.value)} />
+                    <input placeholder='Name *' type='text' ref={inputNameRef}></input>
+                    <input placeholder='Email *' type='text' ref={inputEmailRef} ></input>
+                    <input placeholder='Password *' type='password' ref={inputPasswordRef}></input>
+                    <input placeholder='Confirm Password *' type='password' ref={inputConfirmPassRef}></input>
+                    <input ref={inputRefSemsteryear} placeholder='Semster Year *' list='levels' />
                     <datalist id='levels'>
                         <option value='1' />
                         <option value='2' />
                         <option value='3' />
                         <option value='4' />
                     </datalist>
-                    <input placeholder='Courses *' type='' onChange={(e) => setPassword(e.target.value)}></input>
+                    <input onClick={showDivCheakboxeCourses} placeholder='Courses *' ></input>
 
                 </div>
-                {/* <div className='div-cheekbox'>
+                <div className='hide' id='div-cheekbox'>
                     {
                         courses.map((course, index) => {
-                            return <label>
-                                <input type="checkbox" key={index} value={course._id} onChange={handleSelectCourses} />
+                            return <label key={index} >
+                                <input type="checkbox" name={course.name} value={course._id} onChange={handleSelectCourses} />
                                 {course.name} <br />
                             </label>
 
                         })
                     }
-                </div> */}
+                    <button onClick={btn}>Save</button>
+                </div>
                 <Toaster
                     position="bottom-center"
                     reverseOrder={false} />
-                <button onClick={addNewUser}>Create</button >
+                <button className='btn-createStudent' onClick={addNewUser}>Create</button >
 
             </div>
         </div>

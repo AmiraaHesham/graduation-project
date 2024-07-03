@@ -26,7 +26,7 @@ const AddCourses = () => {
     const createCourse = async () => {
         try {
             console.log(lecturersSelectRef.current.value)
-            await axios.post('http://127.0.0.1:3000/api/v1/courses', {
+            await axios.post('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/courses', {
                 lecturerId: lecturersSelectRef.current.value,
                 name: LectureName,
                 lectureDay: LectureDay,
@@ -84,7 +84,7 @@ const AddCourses = () => {
 
     const getAllLecturers = async () => {
 
-        const res = await axios.get('http://127.0.0.1:3000/api/v1/lecturer',
+        const res = await axios.get('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/lecturer',
             {
                 headers: {
                     "Authorization": 'Bearer ' + localStorage.token

@@ -10,7 +10,7 @@ import { FaArrowsRotate } from "react-icons/fa6";
 const CurrentClass = () => {
 
     useEffect(() => {
-        getCoursePresent()
+        getCourses()
     }, [])
     // useEffect(() => {
     //     viewLectureAttendance()
@@ -26,10 +26,10 @@ const CurrentClass = () => {
     const subjectSelectRef = useRef()
 
 
-    const getCoursePresent = async () => {
+    const getCourses = async () => {
 
         try {
-            const res = await axios.get('http://127.0.0.1:3000/api/v1/lecturer/lecturer_courses/' + localStorage.id
+            const res = await axios.get('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/lecturer/lecturer_courses/' + localStorage.id
                 , {
                     headers: {
                         "authorization": 'Bearer ' + localStorage.token
@@ -37,10 +37,7 @@ const CurrentClass = () => {
                 },
             )
             setcourse(res.data.data)
-
         }
-
-
         catch (error) {
             console.log(error)
         }
@@ -71,7 +68,7 @@ const CurrentClass = () => {
         try {
 
             if (subjectSelectRef.current.value !== "Choose Course...") {
-                const res = await axios.post(`http://127.0.0.1:3000/api/v1/attendance/takeAttendance/${courseId}/${lectureId}`, {},
+                const res = await axios.post(`https://attendance-by-qr-code-rrmg.vercel.app/api/v1/attendance/takeAttendance/${courseId}/${lectureId}`, {},
                     {
                         headers: {
                             "Authorization": "Bearer " + localStorage.token
@@ -96,9 +93,14 @@ const CurrentClass = () => {
         QRimg.classList.add('hide')
     }
     const handelBtnCreateLecture = () => {
-        let divCreateLecture = document.querySelector('#div-create-lecture')
-        divCreateLecture.classList.remove('hide')
-        setcourseId(subjectSelectRef.current.value)
+        if (subjectSelectRef.current.value !== 'Choose Course...') {
+            let divCreateLecture = document.querySelector('#div-create-lecture')
+            divCreateLecture.classList.remove('hide')
+            setcourseId(subjectSelectRef.current.value)
+        }
+        else {
+            toast.error('Choose Course...')
+        }
 
 
     }
@@ -110,7 +112,7 @@ const CurrentClass = () => {
 
     const handelBtnCreate = async () => {
         try {
-            const res = await axios.post('http://127.0.0.1:3000/api/v1/lecture',
+            const res = await axios.post('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/lecture',
                 {
                     lectureTitle: LectureTitle,
                     lectureNumber: LectureNum,
@@ -135,7 +137,7 @@ const CurrentClass = () => {
 
     const viewLectureAttendance = async () => {
         try {
-            const res = await axios.post('http://127.0.0.1:3000/api/v1/attendance/viewLectureAttendance/' + lectureId, {},
+            const res = await axios.post('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/attendance/viewLectureAttendance/' + lectureId, {},
                 {
                     headers: {
                         "Authorization": "Bearer " + localStorage.token
@@ -227,7 +229,7 @@ const CurrentClass = () => {
                         <option> Choose Course... </option>
                         {course.map((course, index) => {
                             return <option key={index} value={course._id}>
-                                {course.name} </option>
+                                {course.name} - Semster Year {course.level} </option>
                         })
                         }
                     </select>

@@ -12,6 +12,7 @@ const AllStudents = () => {
     const [Student, setStudents] = useState([])
     const [id, setId] = useState('')
     const [email, setEmail] = useState('')
+    const [searchStudents, setSearchStudents] = useState([])
 
     const inputRefName = useRef()
     const inputRefLevel = useRef()
@@ -19,24 +20,25 @@ const AllStudents = () => {
     const inputRefprogramme = useRef()
     const inputRefNewPassword = useRef()
     const inputRefConfirmPassword = useRef()
+    const searchStudentRef = useRef()
+
     useEffect(() => {
         getAllStudents()
     }, [])
 
     const getAllStudents = async () => {
-
-        const res = await axios.get('http://127.0.0.1:3000/api/v1/student',
+        const res = await axios.get('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/student',
             {
                 headers: {
                     "Authorization": 'Bearer ' + localStorage.token
                 }
             }
         )
-
         // if(res.data.data)
         setStudents(res.data.data)
         // console.log(res.data.data[0].role)
     }
+
     const deleteStudent = async (student) => {
         try {
             Swal.fire({
@@ -45,7 +47,7 @@ const AllStudents = () => {
                 showCancelButton: true,
             }).then(async (data) => {
                 if (data.isConfirmed) {
-                    const res = await axios.delete('http://127.0.0.1:3000/api/v1/student/' + student._id,
+                    const res = await axios.delete('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/student/' + student._id,
                         {
                             headers: {
                                 "Authorization": 'Bearer ' + localStorage.token
@@ -56,20 +58,18 @@ const AllStudents = () => {
                     getAllStudents()
                 }
             })
-
         }
         catch (error) {
-
+            console.log(error)
         }
     }
+
     const getInfo = async (student) => {
         try {
-
-            const res = await axios.get('http://127.0.0.1:3000/api/v1/student/' + student._id,
+            const res = await axios.get('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/student/' + student._id,
                 {
                     headers: {
                         "Authorization": 'Bearer ' + localStorage.token
-
                     }
                 }
             )
@@ -96,7 +96,6 @@ const AllStudents = () => {
             let btnChangePasswordLecturer = document.querySelector('.btn-ChangePasswordLecturer')
             btnChangePasswordLecturer.classList.remove('hide')
         }
-
         catch (error) {
             console.log(error)
         }
@@ -107,47 +106,63 @@ const AllStudents = () => {
         let divEditData = document.querySelector('#div-EditDataStudent')
         divEditData.classList.add('hide')
     }
+
     const handleBtnSeveEdit = async () => {
         try {
             let divEditData = document.querySelector('#div-EditDataStudent')
             divEditData.classList.add('hide')
-            if (inputRefEmail.current.value !== email) {
-                const res = await axios.put('http://127.0.0.1:3000/api/v1/student/' + id,
-                    {
-                        name: inputRefName.current.value,
-                        email: inputRefEmail.current.value,
-                        level: inputRefLevel.current.value,
-                        programme: inputRefprogramme.current.value
-                    },
-                    {
-                        headers: {
-                            "Authorization": 'Bearer ' + localStorage.token
+            if (inputRefNewPassword.current.value === '') {
+
+                if (inputRefEmail.current.value !== email) {
+                    const res = await axios.put('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/student/' + id,
+                        {
+                            name: inputRefName.current.value,
+                            email: inputRefEmail.current.value,
+                            level: inputRefLevel.current.value,
+                            programme: inputRefprogramme.current.value
+                        },
+                        {
+                            headers: {
+                                "Authorization": 'Bearer ' + localStorage.token
+                            }
                         }
-                    }
-
-                )
-                console.log(res)
-                toast.success('succsess Edit')
-
+                    )
+                    console.log(res)
+                    toast.success('succsess Edit')
+                }
+                else {
+                    const res = await axios.put('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/student/' + id,
+                        {
+                            name: inputRefName.current.value,
+                            level: inputRefLevel.current.value,
+                            programme: inputRefprogramme.current.value
+                        },
+                        {
+                            headers: {
+                                "Authorization": 'Bearer ' + localStorage.token
+                            }
+                        }
+                    )
+                    console.log(res)
+                    toast.success('succsess Edit')
+                }
             }
             else {
-                const res = await axios.put('http://127.0.0.1:3000/api/v1/student/' + id,
-                    {
-                        name: inputRefName.current.value,
-                        level: inputRefLevel.current.value,
-                        programme: inputRefprogramme.current.value
-                    },
+                const res = await axios.put('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/student/changePassword/' + id, {
+                    password: inputRefNewPassword.current.value,
+                    confirmPassword: inputRefConfirmPassword.current.value
+                },
                     {
                         headers: {
                             "Authorization": 'Bearer ' + localStorage.token
                         }
                     }
                 )
+                toast.success('success Change Password')
+                inputRefNewPassword.current.value = ''
+                inputRefConfirmPassword.current.value = ''
                 console.log(res)
-                toast.success('succsess Edit')
-
             }
-
             getAllStudents()
         }
         catch (error) {
@@ -155,6 +170,7 @@ const AllStudents = () => {
         }
 
     }
+
     const handleBtnChangePass = () => {
         let divName = document.querySelector('#div-name')
         divName.classList.add('hide')
@@ -170,6 +186,38 @@ const AllStudents = () => {
         let btnChangePasswordLecturer = document.querySelector('.btn-ChangePasswordLecturer')
         btnChangePasswordLecturer.classList.add('hide')
     }
+
+    const searchStudent = async () => {
+        try {
+            let tbodySearchStudent = document.querySelector('#tbody-searchStudent')
+            let tbodyAllStudent = document.querySelector('#tbody-AllStudent')
+            if (searchStudentRef.current.value === '') {
+                tbodyAllStudent.classList.remove('hide')
+                tbodySearchStudent.classList.add('hide')
+                console.log(searchStudentRef.current.value)
+            }
+            else {
+                const res = await axios.get('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/student/search/' + searchStudentRef.current.value,
+                    {
+                        headers: {
+                            "Authorization": 'Bearer ' + localStorage.token
+                        }
+                    }
+                )
+                console.log(res.data.data)
+                // setSearchStudents(res.data.data.query)
+                console.log(searchStudentRef.current.value)
+
+                tbodyAllStudent.classList.add('hide')
+                tbodySearchStudent.classList.remove('hide')
+            }
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+
+
     return (
         <div>
             <Header />
@@ -219,7 +267,7 @@ const AllStudents = () => {
             <div className='div-All-Lectrer-Student'>
                 <div style={{ marginLeft: '20px' }}>
                     <svg xmlns="http://www.w3.org/2000/svg" id='time' color='#1D2649' width="60" height="60" viewBox="0 0 640 512"><path fill="currentColor" d="M96 224c35.3 0 64-28.7 64-64s-28.7-64-64-64s-64 28.7-64 64s28.7 64 64 64m448 0c35.3 0 64-28.7 64-64s-28.7-64-64-64s-64 28.7-64 64s28.7 64 64 64m32 32h-64c-17.6 0-33.5 7.1-45.1 18.6c40.3 22.1 68.9 62 75.1 109.4h66c17.7 0 32-14.3 32-32v-32c0-35.3-28.7-64-64-64m-256 0c61.9 0 112-50.1 112-112S381.9 32 320 32S208 82.1 208 144s50.1 112 112 112m76.8 32h-8.3c-20.8 10-43.9 16-68.5 16s-47.6-6-68.5-16h-8.3C179.6 288 128 339.6 128 403.2V432c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48v-28.8c0-63.6-51.6-115.2-115.2-115.2m-223.7-13.4C161.5 263.1 145.6 256 128 256H64c-35.3 0-64 28.7-64 64v32c0 17.7 14.3 32 32 32h65.9c6.3-47.4 34.9-87.3 75.2-109.4" /></svg>
-                    <input className='input-search' placeholder='Search ' />
+                    <input ref={searchStudentRef} className='input-search' placeholder='Search ' onChange={searchStudent} />
                     <h2 style={{
                         marginLeft: '80px', marginTop: '-55px', fontSize: '35px', color: '#1D2649',
                         fontWeight: 'bold'
@@ -263,10 +311,9 @@ const AllStudents = () => {
                                 <th>Delete</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id='tbody-AllStudent'>
                             {Student.map((Student, index) => {
                                 return <tr key={index} >
-
                                     <td >{index + 1}</td>
                                     <td >{Student.name}</td>
                                     <td >{Student.level}</td>
@@ -277,7 +324,20 @@ const AllStudents = () => {
                                 </tr>
                             })
                             }</tbody>
-
+                        <tbody className='hide' id='tbody-searchLecturer'>
+                            {searchStudents.map((student, index) => {
+                                return <tr key={index} >
+                                    <td >{index + 1}</td>
+                                    <td >{Student.name}</td>
+                                    <td >{Student.level}</td>
+                                    <td>{Student.programme}</td>
+                                    <td>{Student.email}</td>
+                                    <td><button className='btn-editLecturer' onClick={() => getInfo(Student)}><FiEdit /></button> </td>
+                                    <td><button className='btn-deleteLecturer' onClick={() => deleteStudent(Student)}><MdDeleteOutline /></button></td>
+                                </tr>
+                            })
+                            }
+                        </tbody>
                     </table>
                 </div>
             </div>

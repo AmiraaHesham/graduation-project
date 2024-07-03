@@ -29,7 +29,7 @@ const Dashboard = () => {
         try {
             const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][new Date().getDay()]
 
-            const res = await axios.get(`http://127.0.0.1:3000/api/v1/courses/${localStorage.id}/${weekday}`
+            const res = await axios.get(`https://attendance-by-qr-code-rrmg.vercel.app/api/v1/courses/${localStorage.id}/${weekday}`
                 , {
                     headers: {
                         "Authorization": 'Bearer ' + localStorage.token
@@ -92,7 +92,7 @@ const Dashboard = () => {
                         {
                             course.map((course, index) => {
                                 return <div key={index} className='showCourses' >
-                                    <span> Name Lecture:  {course.name}</span>
+                                    <span> Name :  {course.name}</span>
                                     <hr></hr>
                                     <span> Duration:  {course.lectureDuration}</span>
                                     <hr></hr>
