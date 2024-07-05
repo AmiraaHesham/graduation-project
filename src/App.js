@@ -15,10 +15,12 @@ import CreateLec from './component/admin/CreateLec/CreateLec.js';
 import AllStudents from './component/admin/AllStudents/AllStudents.js';
 import AllLecturers from './component/admin/AllLecturer/AllLecturers.js';
 import AllCourses from './component/admin/AllCourses/AllCourses.js';
+import { SpeedInsights } from "@vercel/speed-insights/react"
+
 function App() {
   return (
     <div className="App">
-
+      <SpeedInsights />
       <Routes>
         <Route path='/CreateAccount' element={<CreateAccount />} />
         <Route path='/' element={<SignIn />} />
