@@ -13,21 +13,21 @@
 
 .createAccountStudent-continer {
     width: 50%;
-    height: 790px;
+    height: 850px;
     background: linear-gradient(200deg, #365486 0%, rgba(54, 84, 134, 0) 100%);
     border-radius: 30px;
     margin-left: 550px;
-    margin-top: 100px;
-    margin-bottom: 40px;
+    margin-top: 80px;
+    margin-bottom: 0px;
 }
 
 .createAccountStudent-continer h3 {
-    width: 400px;
+    width: 450px;
     height: 42px;
     color: #DCF2F1;
     font-size: 38px;
     font-weight: bold;
-    margin-left: 200px;
+    margin-left: 180px;
     padding-top: 30px;
 }
 
@@ -41,22 +41,55 @@
     font-weight: 700;
     word-wrap: break-word;
     border: none;
-    margin-top: 30px;
     margin-left: 200px;
     cursor: pointer;
+}
+
+.div-inputStudent {
+    width: 60%;
+    height: 500px;
+    margin-top: 70px;
+    margin-left: 150px;
+}
+
+.div-inputStudent input {
+    width: 100%;
+    height: 55px;
+    background: #DCF2F1;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    border: none;
+    font-size: 25px;
+    color: #365486;
+    font-weight: 700;
+    cursor: default;
+    padding-left: 10px;
+
+}
+
+.div-inputStudent input::placeholder {
+    color: #365386b6;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.div-inputStudent h4 {
+    color: rgb(1, 88, 1);
+
+    font-size: 25px;
+    font-weight: 800;
 }
 
 .div-cheekbox {
     background: #365486;
     width: 450px;
-    height: 200px;
-
+    height: 250px;
     overflow: hidden;
     overflow-y: scroll;
     font-size: 30px;
     position: absolute;
     margin-left: 160px;
-    margin-top: -70px;
+    margin-top: -350px;
     color: #DCF2F1;
     border-radius: 10px;
 
@@ -64,13 +97,13 @@
 
 .div-cheekbox button {
     width: 20%;
-    height: 20px;
-    margin-left: 10px;
+    height: 30px;
+    margin-left: 170px;
     border: none;
     border-radius: 4px;
     background: #7FC7D9;
-    margin-bottom: 2px;
-    font-size: 15px;
+    margin-top: 40px;
+    font-size: 20px;
     /* display: flex; */
     /* position: fixed; */
 }

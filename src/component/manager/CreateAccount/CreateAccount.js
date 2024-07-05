@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { toast, Toaster } from 'react-hot-toast'
 
 const CreateAccount = () => {
+    const [url, setUrl] = useState('https://attendance-by-qr-code-rrmg.vercel.app');
     const [fullname, setFullName] = useState();
     const [Email, setEmail] = useState();
     const [password, setPassword] = useState();
@@ -17,7 +18,7 @@ const CreateAccount = () => {
 
     const addNewUser = async () => {
         try {
-            const res = await axios.post('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/authLec/signup', {
+            const res = await axios.post(`${url}/api/v1/authLec/signup`, {
                 name: fullname,
                 email: Email,
                 password: password,

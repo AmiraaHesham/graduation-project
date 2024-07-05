@@ -7,7 +7,8 @@ import axios from 'axios'
 const CreateStu = () => {
     const [photo, setPhoto] = useState();
     const [courses, setcourse] = useState([]);
-    const [coursesSelect, setCoursesSelect] = useState([]);
+    const [coursesIdSelect, setCoursesIdSelect] = useState([]);
+    const [coursesNameSelect, setCoursesNameSelect] = useState([]);
 
 
     const inputphotoRef = useRef()
@@ -16,6 +17,8 @@ const CreateStu = () => {
     const inputEmailRef = useRef()
     const inputNameRef = useRef()
     const inputRefSemsteryear = useRef()
+    const coursesSelectRef = useRef()
+    const inputProgrammeRef = useRef()
     // const inputRef = useRef()
 
     useEffect(() => {
@@ -30,8 +33,9 @@ const CreateStu = () => {
                 password: inputPasswordRef.current.value,
                 passwordConfirm: inputConfirmPassRef.current.value,
                 profileImage: photo,
-                courses: coursesSelect,
-                programme: 'is'
+                courses: coursesIdSelect,
+                level: inputRefSemsteryear.current.value,
+                programme: inputProgrammeRef.current.value
             }, {
                 headers: {
                     "Authorization": 'Bearer ' + localStorage.token
@@ -42,7 +46,11 @@ const CreateStu = () => {
             inputEmailRef.current.value = ''
             inputPasswordRef.current.value = ''
             inputConfirmPassRef.current.value = ''
+            inputRefSemsteryear.current.value = ''
+            inputProgrammeRef.current.value = ''
             setPhoto('')
+            coursesSelectRef.current.value = ''
+
             console.log(res)
         }
         catch (error) {
@@ -85,17 +93,16 @@ const CreateStu = () => {
     }
 
     const handleSelectCourses = (event) => {
+        const selectedIdCourse = event.target.value
+        const selectedNameCourse = event.target.name
 
         if (event.target.checked === true) {
-            setCoursesSelect([...coursesSelect, event.target.name])
-            console.log(event.target.checked)
+            setCoursesIdSelect([...coursesIdSelect, event.target.value])
+            setCoursesNameSelect([...coursesNameSelect, event.target.name])
+        } else {
+            setCoursesIdSelect(coursesIdSelect.filter(course => course !== selectedIdCourse));
+            setCoursesNameSelect(coursesNameSelect.filter(course => course !== selectedNameCourse));
         }
-
-
-
-
-
-
 
     }
     const showDivCheakboxeCourses = () => {
@@ -103,9 +110,11 @@ const CreateStu = () => {
         divcheekbox.classList.add('div-cheekbox')
         divcheekbox.classList.remove('hide')
     }
-    const btn = () => {
-        console.log({ coursesSelect })
+    const btnSaveSelectCorses = () => {
 
+        coursesSelectRef.current.value = coursesNameSelect
+        let divcheekbox = document.querySelector('#div-cheekbox')
+        divcheekbox.classList.add('hide')
     }
     return (
         <div>
@@ -157,7 +166,7 @@ const CreateStu = () => {
                     <h5>Add Photo</h5>
 
                 </div>
-                <div className='div-inputs'>
+                <div className='div-inputStudent'>
                     <input placeholder='Name *' type='text' ref={inputNameRef}></input>
                     <input placeholder='Email *' type='text' ref={inputEmailRef} ></input>
                     <input placeholder='Password *' type='password' ref={inputPasswordRef}></input>
@@ -169,7 +178,9 @@ const CreateStu = () => {
                         <option value='3' />
                         <option value='4' />
                     </datalist>
-                    <input onClick={showDivCheakboxeCourses} placeholder='Courses *' ></input>
+                    <input placeholder='Programme *' type='text' ref={inputProgrammeRef}></input>
+
+                    <input onClick={showDivCheakboxeCourses} placeholder='Courses *' ref={coursesSelectRef}></input>
 
                 </div>
                 <div className='hide' id='div-cheekbox'>
@@ -182,7 +193,7 @@ const CreateStu = () => {
 
                         })
                     }
-                    <button onClick={btn}>Save</button>
+                    <button onClick={btnSaveSelectCorses}>Save</button>
                 </div>
                 <Toaster
                     position="bottom-center"

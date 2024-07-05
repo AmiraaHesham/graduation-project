@@ -14,14 +14,18 @@ const AllCourses = () => {
     const [searchCourses, setSearchCourses] = useState([])
     const [id, setId] = useState('')
     const [name, setName] = useState('')
+    const [lecturer, setLecturer] = useState('')
+    const [Lecturers, setLecturers] = useState('')
 
 
     const searchCourseRef = useRef()
     const inputRefName = useRef()
+    const inputRefLecturer = useRef()
     const inputRefLevel = useRef()
     const inputRefDay = useRef()
     const inputRefDuration = useRef()
     const inputRefTime = useRef()
+
     useEffect(() => {
         getAllCourses()
     }, [])
@@ -73,25 +77,27 @@ const AllCourses = () => {
         try {
             let tbodySearchCourse = document.querySelector('#tbody-searchCourse')
             let tbodyAllCourses = document.querySelector('#tbody-AllCourses')
+
+            const res = await axios.get('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/courses/search/' + searchCourseRef.current.value,
+                {
+                    headers: {
+                        "Authorization": 'Bearer ' + localStorage.token
+                    }
+                }
+            )
+            setSearchCourses(res.data.data.query)
+            console.log(searchCourseRef.current.value)
+
+            tbodyAllCourses.classList.add('hide')
+            tbodySearchCourse.classList.remove('hide')
+
             if (searchCourseRef.current.value === '') {
                 tbodyAllCourses.classList.remove('hide')
                 tbodySearchCourse.classList.add('hide')
+                getAllCourses()
                 console.log(searchCourseRef.current.value)
             }
-            else {
-                const res = await axios.get('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/courses/search/' + searchCourseRef.current.value,
-                    {
-                        headers: {
-                            "Authorization": 'Bearer ' + localStorage.token
-                        }
-                    }
-                )
-                setSearchCourses(res.data.data.query)
-                console.log(searchCourseRef.current.value)
 
-                tbodyAllCourses.classList.add('hide')
-                tbodySearchCourse.classList.remove('hide')
-            }
         }
         catch (error) {
             console.log(error)
@@ -108,6 +114,9 @@ const AllCourses = () => {
             )
             setName(course.email)
             setId(course._id)
+            setLecturer(course.lecturerId.name)
+            getAllLecturers()
+
             inputRefDay.current.value = res.data.data.lectureDay
             inputRefName.current.value = res.data.data.name
             inputRefLevel.current.value = res.data.data.level
@@ -135,6 +144,7 @@ const AllCourses = () => {
                 const res = await axios.put('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/courses/' + id,
                     {
                         name: inputRefName.current.value,
+                        lecturerId: inputRefLecturer.current.value,
                         level: inputRefLevel.current.value,
                         lectureTime: inputRefTime.current.value,
                         lectureDay: inputRefDay.current.value,
@@ -152,6 +162,7 @@ const AllCourses = () => {
             else {
                 const res = await axios.put('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/courses/' + id,
                     {
+                        lecturerId: inputRefLecturer.current.value,
                         level: inputRefLevel.current.value,
                         lectureTime: inputRefTime.current.value,
                         lectureDay: inputRefDay.current.value,
@@ -173,7 +184,20 @@ const AllCourses = () => {
         }
 
     }
+    const getAllLecturers = async () => {
 
+        const res = await axios.get('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/lecturer',
+            {
+                headers: {
+                    "Authorization": 'Bearer ' + localStorage.token
+                }
+            }
+        )
+
+        // if(res.data.data)
+        setLecturers(res.data.data)
+        console.log(res.data.data)
+    }
 
     return (
         <div>
@@ -232,6 +256,24 @@ const AllCourses = () => {
                     <h4>Duration</h4>
                     <input ref={inputRefDuration} className='inpEditDuration' />
 
+                    <h4>lecturer</h4>
+                    <select ref={inputRefLecturer} className='inputLecturer'>
+                        <option>{lecturer}</option>
+                        {Array.isArray(Lecturers) && Lecturers.length > 0 ? (
+                            Lecturers.map((Lecturer, index) => (
+                                <option
+                                    className={Lecturer.role === 'admin' ? 'hide' : ''}
+                                    key={index}
+                                    value={Lecturer._id}
+                                >
+                                    {Lecturer.name}
+                                </option>
+                            ))
+                        ) : (
+                            <option>No Lecturers Available</option>
+                        )}
+                    </select>
+
                     <button onClick={handleBtnSeveEdit} style={{ background: '#022f5c' }} >Save</button>
                     <button onClick={handleBtnClose} style={{ background: 'rgba(165, 42, 42, 0.836)' }} >Close</button>
                 </div>
@@ -252,7 +294,7 @@ const AllCourses = () => {
                             <tr>
                                 <th>#</th>
                                 <th>NAME</th>
-                                {/* <th>Lecturer</th> */}
+                                <th>Lecturer</th>
                                 <th>Day</th>
                                 <th>Level</th>
                                 <th>Time</th>
@@ -266,7 +308,7 @@ const AllCourses = () => {
                                 return <tr key={index}>
                                     <td >{index + 1}</td>
                                     <td >{course.name}</td>
-                                    {/* <td >{course[index].lecturerId.name}</td> */}
+                                    <td>{course.lecturerId ? course.lecturerId.name : 'No Lecturer Assigned'}</td>
                                     <td>{course.lectureDay}</td>
                                     <td> {course.level}</td>
                                     <td> {course.lectureTime}</td>

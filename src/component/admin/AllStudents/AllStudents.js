@@ -191,7 +191,7 @@ const AllStudents = () => {
         try {
             let tbodySearchStudent = document.querySelector('#tbody-searchStudent')
             let tbodyAllStudent = document.querySelector('#tbody-AllStudent')
-            if (searchStudentRef.current.value === '') {
+            if (searchStudentRef.current.value === 'undefined') {
                 tbodyAllStudent.classList.remove('hide')
                 tbodySearchStudent.classList.add('hide')
                 console.log(searchStudentRef.current.value)
@@ -205,11 +205,17 @@ const AllStudents = () => {
                     }
                 )
                 console.log(res.data.data)
-                // setSearchStudents(res.data.data.query)
+                setSearchStudents(res.data.data.query)
                 console.log(searchStudentRef.current.value)
 
                 tbodyAllStudent.classList.add('hide')
                 tbodySearchStudent.classList.remove('hide')
+                if (searchStudentRef.current.value === '') {
+                    tbodyAllStudent.classList.remove('hide')
+                    tbodySearchStudent.classList.add('hide')
+                    getAllStudents()
+                    console.log(searchStudentRef.current.value)
+                }
             }
         }
         catch (error) {
@@ -312,28 +318,28 @@ const AllStudents = () => {
                             </tr>
                         </thead>
                         <tbody id='tbody-AllStudent'>
-                            {Student.map((Student, index) => {
+                            {Student.map((student, index) => {
                                 return <tr key={index} >
                                     <td >{index + 1}</td>
-                                    <td >{Student.name}</td>
-                                    <td >{Student.level}</td>
-                                    <td>{Student.programme}</td>
-                                    <td>{Student.email}</td>
-                                    <td><button className='btn-editLecturer' onClick={() => getInfo(Student)}><FiEdit /></button> </td>
-                                    <td><button className='btn-deleteLecturer' onClick={() => deleteStudent(Student)}><MdDeleteOutline /></button></td>
+                                    <td >{student.name}</td>
+                                    <td >{student.level}</td>
+                                    <td>{student.programme}</td>
+                                    <td>{student.email}</td>
+                                    <td><button className='btn-editLecturer' onClick={() => getInfo(student)}><FiEdit /></button> </td>
+                                    <td><button className='btn-deleteLecturer' onClick={() => deleteStudent(student)}><MdDeleteOutline /></button></td>
                                 </tr>
                             })
                             }</tbody>
-                        <tbody className='hide' id='tbody-searchLecturer'>
+                        <tbody className='hide' id='tbody-searchStudent'>
                             {searchStudents.map((student, index) => {
                                 return <tr key={index} >
                                     <td >{index + 1}</td>
-                                    <td >{Student.name}</td>
-                                    <td >{Student.level}</td>
-                                    <td>{Student.programme}</td>
-                                    <td>{Student.email}</td>
-                                    <td><button className='btn-editLecturer' onClick={() => getInfo(Student)}><FiEdit /></button> </td>
-                                    <td><button className='btn-deleteLecturer' onClick={() => deleteStudent(Student)}><MdDeleteOutline /></button></td>
+                                    <td >{student.name}</td>
+                                    <td >{student.level}</td>
+                                    <td>{student.programme}</td>
+                                    <td>{student.email}</td>
+                                    <td><button className='btn-editLecturer' onClick={() => getInfo(student)}><FiEdit /></button> </td>
+                                    <td><button className='btn-deleteLecturer' onClick={() => deleteStudent(student)}><MdDeleteOutline /></button></td>
                                 </tr>
                             })
                             }

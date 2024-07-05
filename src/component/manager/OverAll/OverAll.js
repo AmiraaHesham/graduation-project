@@ -10,7 +10,9 @@ import toast, { Toaster } from 'react-hot-toast'
 const OverAll = () => {
   const [course, setcourse] = useState([])
   const [CourseAtten, setCourseAtten] = useState([])
+  const [searchStudents, setSearchStudents] = useState([])
 
+  const searchStudentRef = useRef()
   useEffect(() => {
     getCourses()
 
@@ -46,16 +48,20 @@ const OverAll = () => {
           }
         }
       )
+      console.log(res.data.data)
       setCourseAtten(res.data.data)
 
 
     }
     catch (error) {
       console.log(error)
+      setCourseAtten('')
+
       toast.error("No attendance recorded for this course")
 
     }
   }
+
   return (
     <div>
       <Toaster
@@ -120,23 +126,29 @@ const OverAll = () => {
           </select>
         </div>
         <div className='div-tableOverAllAttendance'>
+
           <div className='div-list-overall'>
             <table className='tab-attend' style={{ width: '100%', border: 'none' }}>
-              <tr>
-                <th>#</th>
-                <th>NAME</th>
-                <th>Total-Attendance</th>
-                <th>Attendance-Percentage</th>
-              </tr>
-              {CourseAtten.map((CourseAtten, index) => {
-                return <tr>
-                  <td>{index + 1}</td>
-                  <td style={{ color: '#1D2649' }}>{CourseAtten.studentName}</td>
-                  <td>{CourseAtten.attendedLectures} / {CourseAtten.totalLectures}</td>
-                  <td class={CourseAtten.attendancePercentage === '0.00' ? 'status-absent' : ''} > {CourseAtten.attendancePercentage}</td>
-                </tr>
-              })
-              }
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Total-Attendance</th>
+                  <th>Attendance-Percentage</th>
+                </tr></thead>
+              <tbody id='tbody-AllStudent'>
+
+                {CourseAtten.map((CourseAtten, index) => {
+                  return <tr>
+                    <td>{index + 1}</td>
+                    <td style={{ color: '#1D2649' }}>{CourseAtten.studentName}</td>
+                    <td>{CourseAtten.attendedLectures} / {CourseAtten.totalLectures}</td>
+                    <td class={CourseAtten.attendancePercentage === '0.00' ? 'status-absent' : ''} > {CourseAtten.attendancePercentage}</td>
+                  </tr>
+                })
+                }
+              </tbody>
+
             </table>
           </div>
         </div>

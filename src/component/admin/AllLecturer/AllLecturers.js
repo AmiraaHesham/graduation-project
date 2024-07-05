@@ -190,28 +190,30 @@ const AllLecturers = () => {
         try {
             let tbodySearchLecturer = document.querySelector('#tbody-searchLecturer')
             let tbodyAllLecturer = document.querySelector('#tbody-AllLecturer')
+
+
+            const res = await axios.get('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/lecturer/search/' + searchLecturerRef.current.value,
+                {
+                    headers: {
+                        "Authorization": 'Bearer ' + localStorage.token
+                    }
+                }
+            )
+            setSearchLecturers(res.data.data.query)
+            console.log(searchLecturerRef.current.value)
+
+            tbodyAllLecturer.classList.add('hide')
+            tbodySearchLecturer.classList.remove('hide')
             if (searchLecturerRef.current.value === '') {
                 tbodyAllLecturer.classList.remove('hide')
                 tbodySearchLecturer.classList.add('hide')
+                getAllLecturers()
                 console.log(searchLecturerRef.current.value)
             }
-            else {
-                const res = await axios.get('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/lecturer/search/' + searchLecturerRef.current.value,
-                    {
-                        headers: {
-                            "Authorization": 'Bearer ' + localStorage.token
-                        }
-                    }
-                )
-                setSearchLecturers(res.data.data.query)
-                console.log(searchLecturerRef.current.value)
-
-                tbodyAllLecturer.classList.add('hide')
-                tbodySearchLecturer.classList.remove('hide')
-            }
-
-
         }
+
+
+
         catch (error) {
             console.log(error)
         }
@@ -300,7 +302,7 @@ const AllLecturers = () => {
                     <table className='tab-Lecturer' style={{ width: '100%', border: 'none' }}>
                         <thead>
                             <tr>
-                                <th>#</th>
+                                {/* <th>#</th> */}
                                 <th>Name</th>
                                 <th>programme</th>
                                 <th>Email</th>
@@ -311,7 +313,7 @@ const AllLecturers = () => {
                         <tbody id='tbody-AllLecturer'>
                             {Lecturers.map((lecturer, index) => {
                                 return <tr key={index} className={lecturer.role === 'admin' ? 'hide' : ''}>
-                                    <td >{index}</td>
+                                    {/* <td >{index + 1}</td> */}
                                     <td >{lecturer.name}</td>
                                     <td>{lecturer.programme}</td>
                                     <td>{lecturer.email}</td>
@@ -323,7 +325,7 @@ const AllLecturers = () => {
                         <tbody className='hide' id='tbody-searchLecturer'>
                             {searchLecturers.map((lecturer, index) => {
                                 return <tr key={index} className={lecturer.role === 'admin' ? 'hide' : ''}>
-                                    <td >{index}</td>
+                                    {/* <td >{index + 1}</td> */}
                                     <td >{lecturer.name}</td>
                                     <td>{lecturer.programme}</td>
                                     <td>{lecturer.email}</td>

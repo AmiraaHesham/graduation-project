@@ -108,6 +108,8 @@ const CurrentClass = () => {
     const handelBtnDiscard = () => {
         let divCreateLecture = document.querySelector('#div-create-lecture')
         divCreateLecture.classList.add('hide')
+
+
     }
 
     const handelBtnCreate = async () => {
@@ -126,6 +128,8 @@ const CurrentClass = () => {
 
             )
             setlectureId(res.data.data.lecture._id)
+
+
             let divCreateLecture = document.querySelector('#div-create-lecture')
             divCreateLecture.classList.add('hide')
         }
