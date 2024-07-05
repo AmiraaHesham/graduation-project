@@ -4,7 +4,7 @@ import './weekly.css'
 import Header from '../headerManager/headerManager'
 import axios from 'axios'
 import toast, { Toaster } from 'react-hot-toast'
-import { FaArrowsRotate } from "react-icons/fa6";
+// import { FaArrowsRotate } from "react-icons/fa6";
 
 const Weekly = () => {
     const [course, setcourse] = useState([])
@@ -79,6 +79,8 @@ const Weekly = () => {
                 }
 
                 else {
+                    let tbodyAllStudent = document.querySelector('#tbody-AllStudent')
+                    tbodyAllStudent.classList.add('hide')
                     toast.error("No attendance recorded for this lecture")
 
                 }
@@ -213,7 +215,7 @@ const Weekly = () => {
                                     <th>NAME</th>
                                     <th>STATUS</th>
                                 </tr></thead>
-                            <tbody>
+                            <tbody id='tbody-AllStudent'>
                                 {LectureAtten.map((LectureAtten, index) => {
                                     return <tr class={'row-status ' + (LectureAtten.status === 'absent' ? 'row-absent' : 'row-present')} key={index}>
                                         <td>{index + 1}</td>

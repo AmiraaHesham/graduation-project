@@ -3,16 +3,16 @@ import { Link } from 'react-router-dom'
 import './OverAll.css'
 import Header from '../headerManager/headerManager'
 import axios from 'axios'
-import { FaArrowsRotate } from "react-icons/fa6";
+// import { FaArrowsRotate } from "react-icons/fa6";
 import toast, { Toaster } from 'react-hot-toast'
 
 
 const OverAll = () => {
   const [course, setcourse] = useState([])
   const [CourseAtten, setCourseAtten] = useState([])
-  const [searchStudents, setSearchStudents] = useState([])
+  // const [searchStudents, setSearchStudents] = useState([])
 
-  const searchStudentRef = useRef()
+  // const searchStudentRef = useRef()
   useEffect(() => {
     getCourses()
 
@@ -48,15 +48,19 @@ const OverAll = () => {
           }
         }
       )
+
       console.log(res.data.data)
       setCourseAtten(res.data.data)
+
+
+
 
 
     }
     catch (error) {
       console.log(error)
-      setCourseAtten('')
-
+      let tbodyAllStudent = document.querySelector('#tbody-AllStudent')
+      tbodyAllStudent.classList.add('hide')
       toast.error("No attendance recorded for this course")
 
     }
@@ -137,7 +141,6 @@ const OverAll = () => {
                   <th>Attendance-Percentage</th>
                 </tr></thead>
               <tbody id='tbody-AllStudent'>
-
                 {CourseAtten.map((CourseAtten, index) => {
                   return <tr>
                     <td>{index + 1}</td>
