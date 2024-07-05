@@ -61,6 +61,8 @@ const Weekly = () => {
         try {
             const lectureId = lectureSelectRef.current.value
             if (lectureId !== 'Choose Lecture...') {
+                let tbodyAllStudent = document.querySelector('#tbody-AllStudent')
+                tbodyAllStudent.classList.remove('hide')
                 const res = await axios.post('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/attendance/viewLectureAttendance/' + lectureId, {},
                     {
                         headers: {
