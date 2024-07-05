@@ -40,6 +40,8 @@ const OverAll = () => {
 
   const viewCourseAttendance = async () => {
     try {
+      let tbodyAllStudent = document.querySelector('#tbody-AllStudent')
+      tbodyAllStudent.classList.remove('hide')
       const courseId = subjectSelectRef.current.value
       const res = await axios.post('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/attendance/viewCourseAttendance/' + courseId, {},
         {
