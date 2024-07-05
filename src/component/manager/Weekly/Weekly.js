@@ -9,6 +9,7 @@ import toast, { Toaster } from 'react-hot-toast'
 const Weekly = () => {
     const [course, setcourse] = useState([])
     const [lecture, setLecture] = useState([])
+    const [chooselecture, setchooselecture] = useState([])
     const [LectureAtten, setLectureAtten] = useState([])
 
     useEffect(() => {
@@ -28,6 +29,7 @@ const Weekly = () => {
                 },
             )
             setcourse(res.data.data)
+            // setLecture('Choose Lecture...')
         }
         catch (error) {
             console.log(error)
@@ -51,6 +53,7 @@ const Weekly = () => {
                 },
             )
             setLecture(res.data.data.lectures)
+            setchooselecture('Choose Lecture...')
         }
         catch (error) {
             toast.error("Pleeas Choose Course")
@@ -193,7 +196,7 @@ const Weekly = () => {
                         }
                     </select>
                     <select onChange={viewLectureAttendance} ref={lectureSelectRef} onClick={getLecture} className='selectLecture'>
-                        <option> Choose Lecture... </option>
+                        <option> {chooselecture}</option>
                         {lecture.map((lecture, index) => {
                             return <option key={index} value={lecture._id}>
                                 Lecture Number: {lecture.lectureNumber} </option>
