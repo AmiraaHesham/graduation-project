@@ -9,7 +9,7 @@ import toast, { Toaster } from 'react-hot-toast'
 const Weekly = () => {
     const [course, setcourse] = useState([])
     const [lecture, setLecture] = useState([])
-    const [chooselecture, setchooselecture] = useState([])
+    // const [chooselecture, setchooselecture] = useState([])
     const [LectureAtten, setLectureAtten] = useState([])
 
     useEffect(() => {
@@ -53,7 +53,8 @@ const Weekly = () => {
                 },
             )
             setLecture(res.data.data.lectures)
-            setchooselecture('Choose Lecture...')
+
+
         }
         catch (error) {
             toast.error("Pleeas Choose Course")
@@ -63,6 +64,7 @@ const Weekly = () => {
     const viewLectureAttendance = async () => {
         try {
             const lectureId = lectureSelectRef.current.value
+            console.log(lectureSelectRef.current.name)
             if (lectureId !== 'Choose Lecture...') {
                 let tbodyAllStudent = document.querySelector('#tbody-AllStudent')
                 tbodyAllStudent.classList.remove('hide')
@@ -77,9 +79,10 @@ const Weekly = () => {
 
                 if (res.data.data.attendances.length !== 0) {
                     setLectureAtten(res.data.data.attendances)
+                    let tbodyAllStudent = document.querySelector('#tbody-AllStudent')
+                    tbodyAllStudent.classList.remove('hide')
 
-
-                    console.log(LectureAtten.length)
+                    console.log(res)
 
                 }
 
@@ -153,15 +156,15 @@ const Weekly = () => {
                 <Link to={"/CurrentClass"} style={{ textDecoration: 'none', color: '#1D2649' }}>
                     <div className='Current-Class'>
                         <h2>Current Class</h2>
-                        <svg xmlns="http://www.w3.org/2000/svg" id='time' width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round"
-                            d="M5.5 15.5c0-.943 0-1.414.293-1.707c.293-.293.764-.293 1.707-.293h1c.943 0 1.414 0 1.707.293c.293.293.293.764.293 1.707v1c0 .943 0 1.414-.293 1.707c-.293.293-.764.293-1.707.293c-1.414 0-2.121 0-2.56-.44" /><path d="M5.5 8.5c0-1.414 0-2.121.44-2.56c.439-.44 1.146-.44 2.56-.44c.943 0 1.414 0 1.707.293c.293.293.293.764.293 1.707v1c0 .943 0 1.414-.293 1.707c-.293.293-.764.293-1.707.293h-1c-.943 0-1.414 0-1.707-.293C5.5 9.914 5.5 9.443 5.5 8.5Zm8 7c0-.943 0-1.414.293-1.707c.293-.293.764-.293 1.707-.293h1c.943 0 1.414 0 1.707.293c.293.293.293.764.293 1.707c0 1.414 0 2.121-.44 2.56c-.439.44-1.146.44-2.56.44c-.943 0-1.414 0-1.707-.293c-.293-.293-.293-.764-.293-1.707z" /><path stroke-linecap="round" d="M18.5 8.5c0 .943 0 1.414-.293 1.707c-.293.293-.764.293-1.707.293h-1c-.943 0-1.414 0-1.707-.293c-.293-.293-.293-.764-.293-1.707v-1c0-.943 0-1.414.293-1.707c.293-.293.764-.293 1.707-.293c1.414 0 2.121 0 2.56.44M22 14v1m-8 7c3.771 0 5.657 0 6.828-1.172c.654-.653.943-1.528 1.07-2.828M10 22c-3.771 0-5.657 0-6.828-1.172C2 19.657 2 17.771 2 14m8-12C6.229 2 4.343 2 3.172 3.172C2.518 3.825 2.229 4.7 2.102 6M2 10V9" /><path stroke-linecap="round" d="M14 2c3.771 0 5.657 0 6.828 1.172C22 4.343 22 6.229 22 10" /></g></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" id='time' width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" strokeLinecap="1.5"><path strokeLinecap="round"
+                            d="M5.5 15.5c0-.943 0-1.414.293-1.707c.293-.293.764-.293 1.707-.293h1c.943 0 1.414 0 1.707.293c.293.293.293.764.293 1.707v1c0 .943 0 1.414-.293 1.707c-.293.293-.764.293-1.707.293c-1.414 0-2.121 0-2.56-.44" /><path d="M5.5 8.5c0-1.414 0-2.121.44-2.56c.439-.44 1.146-.44 2.56-.44c.943 0 1.414 0 1.707.293c.293.293.293.764.293 1.707v1c0 .943 0 1.414-.293 1.707c-.293.293-.764.293-1.707.293h-1c-.943 0-1.414 0-1.707-.293C5.5 9.914 5.5 9.443 5.5 8.5Zm8 7c0-.943 0-1.414.293-1.707c.293-.293.764-.293 1.707-.293h1c.943 0 1.414 0 1.707.293c.293.293.293.764.293 1.707c0 1.414 0 2.121-.44 2.56c-.439.44-1.146.44-2.56.44c-.943 0-1.414 0-1.707-.293c-.293-.293-.293-.764-.293-1.707z" /><path strokeLinecap="round" d="M18.5 8.5c0 .943 0 1.414-.293 1.707c-.293.293-.764.293-1.707.293h-1c-.943 0-1.414 0-1.707-.293c-.293-.293-.293-.764-.293-1.707v-1c0-.943 0-1.414.293-1.707c.293-.293.764-.293 1.707-.293c1.414 0 2.121 0 2.56.44M22 14v1m-8 7c3.771 0 5.657 0 6.828-1.172c.654-.653.943-1.528 1.07-2.828M10 22c-3.771 0-5.657 0-6.828-1.172C2 19.657 2 17.771 2 14m8-12C6.229 2 4.343 2 3.172 3.172C2.518 3.825 2.229 4.7 2.102 6M2 10V9" /><path strokeLinecap="round" d="M14 2c3.771 0 5.657 0 6.828 1.172C22 4.343 22 6.229 22 10" /></g></svg>
                     </div></Link>
 
                 <Link to={"/Timetable"} style={{ textDecoration: 'none', color: '#1D2649' }}>
                     <div className='Timetable'>
                         <h2>Timetable</h2>
-                        <svg xmlns="http://www.w3.org/2000/svg" id='time' viewBox="0 0 24 24"><g fill="currentColor"><path d="M8 13a1 1 0 1 1 0-2a1 1 0 0 1 0 2m0 4a1 1 0 1 1 0-2a1 1 0 0 1 0 2m3-1a1 1 0 1 0 2 0a1 1 0 0 0-2 0m5 1a1 1 0 1 1 0-2a1 1 0 0 1 0 2m-5-5a1 1 0 1 0 2 0a1 1 0 0 0-2 0m5 1a1 1 0 1 1 0-2a1 1 0 0 1 0 2M8 7a1 1 0 0 0 0 2h8a1 1 0 1 0 0-2z" /><path fill-rule="evenodd"
-                            d="M6 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3zm12 2H6a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1" clip-rule="evenodd" /></g></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" id='time' viewBox="0 0 24 24"><g fill="currentColor"><path d="M8 13a1 1 0 1 1 0-2a1 1 0 0 1 0 2m0 4a1 1 0 1 1 0-2a1 1 0 0 1 0 2m3-1a1 1 0 1 0 2 0a1 1 0 0 0-2 0m5 1a1 1 0 1 1 0-2a1 1 0 0 1 0 2m-5-5a1 1 0 1 0 2 0a1 1 0 0 0-2 0m5 1a1 1 0 1 1 0-2a1 1 0 0 1 0 2M8 7a1 1 0 0 0 0 2h8a1 1 0 1 0 0-2z" /><path fillRule="evenodd"
+                            d="M6 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3zm12 2H6a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1" clipRule="evenodd" /></g></svg>
                     </div> </Link>
 
                 <div className='Students-Attendance-page'>
@@ -174,7 +177,7 @@ const Weekly = () => {
                     <div className='div-OverAll-Weekly'>
                         <div className='OverAll-Weekly'>
                             <h2>Over All</h2>
-                            <svg xmlns="http://www.w3.org/2000/svg" id='time' width="20" height="20" viewBox="0 0 14 14"><path fill="currentColor" fill-rule="evenodd" d="M1.5.75a.75.75 0 0 0-1.5 0v12.5c0 .414.336.75.75.75h12.5a.75.75 0 0 0 0-1.5H1.5V9.72l2.202-2.352c.291.166.628.26.986.26c.454 0 .872-.15 1.208-.406L7.319 8.55a2.002 2.002 0 1 0 3.387-.71l.002-.005l1.159-3.183a1.999 1.999 0 1 0-1.437-.438l-1.081 2.97a2.029 2.029 0 0 0-1.057.223L6.75 5.967a.758.758 0 0 0-.08-.065a1.998 1.998 0 1 0-3.902.274l-.03.029L1.5 7.525z" clip-rule="evenodd" /></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" id='time' width="20" height="20" viewBox="0 0 14 14"><path fill="currentColor" fillRule="evenodd" d="M1.5.75a.75.75 0 0 0-1.5 0v12.5c0 .414.336.75.75.75h12.5a.75.75 0 0 0 0-1.5H1.5V9.72l2.202-2.352c.291.166.628.26.986.26c.454 0 .872-.15 1.208-.406L7.319 8.55a2.002 2.002 0 1 0 3.387-.71l.002-.005l1.159-3.183a1.999 1.999 0 1 0-1.437-.438l-1.081 2.97a2.029 2.029 0 0 0-1.057.223L6.75 5.967a.758.758 0 0 0-.08-.065a1.998 1.998 0 1 0-3.902.274l-.03.029L1.5 7.525z" clipRule="evenodd" /></svg>
                         </div>
                     </div>
                 </Link>
@@ -196,9 +199,9 @@ const Weekly = () => {
                         }
                     </select>
                     <select onChange={viewLectureAttendance} ref={lectureSelectRef} onClick={getLecture} className='selectLecture'>
-                        <option> {chooselecture}</option>
+                        <option> Choose Lecture ...</option>
                         {lecture.map((lecture, index) => {
-                            return <option key={index} value={lecture._id}>
+                            return <option key={index} value={lecture._id}  >
                                 Lecture Number: {lecture.lectureNumber} </option>
                         })
                         }
@@ -209,6 +212,7 @@ const Weekly = () => {
                         <button onClick={handleBtnAll} className='btn-all'>All</button>
                         <button onClick={handleBtnPreasent} className='btn-present'>Present</button>
                         <button onClick={handleBtnAbsent} className='btn-absent'>Absent</button>
+                        <h3>Lecture Title : { } </h3>
 
                     </div>
 
@@ -219,13 +223,15 @@ const Weekly = () => {
                                     <th>#</th>
                                     <th>NAME</th>
                                     <th>STATUS</th>
-                                </tr></thead>
+                                </tr>
+                            </thead>
+
                             <tbody id='tbody-AllStudent'>
                                 {LectureAtten.map((LectureAtten, index) => {
-                                    return <tr class={'row-status ' + (LectureAtten.status === 'absent' ? 'row-absent' : 'row-present')} key={index}>
+                                    return <tr className={'row-status ' + (LectureAtten.status === 'absent' ? 'row-absent' : 'row-present')} key={index}>
                                         <td>{index + 1}</td>
                                         <td>{LectureAtten.studentName}</td>
-                                        <td class={LectureAtten.status === 'absent' ? 'status-absent' : 'status-present'}>{LectureAtten.status}</td>
+                                        <td className={LectureAtten.status === 'absent' ? 'status-absent' : 'status-present'}>{LectureAtten.status}</td>
                                     </tr>
                                 })
                                 }

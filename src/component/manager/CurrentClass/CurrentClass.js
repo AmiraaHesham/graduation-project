@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import Header from '../headerManager/headerManager'
 import axios from 'axios'
 import { toast, Toaster } from 'react-hot-toast';
-import QRCode from "react-qr-code";
 import { FaArrowsRotate } from "react-icons/fa6";
 
 const CurrentClass = () => {
@@ -19,11 +18,12 @@ const CurrentClass = () => {
     const [LectureAtten, setLectureAtten] = useState([])
     const [courseId, setcourseId] = useState()
     const [LectureTitle, setLectureTitle] = useState()
-    const [LectureNum, setLectureNum] = useState()
     const [lectureId, setlectureId] = useState()
     const [qrCode, setqrCode] = useState()
 
     const subjectSelectRef = useRef()
+    const lectureTitleRef = useRef()
+    const lectureNumRef = useRef()
 
 
     const getCourses = async () => {
@@ -109,15 +109,16 @@ const CurrentClass = () => {
         let divCreateLecture = document.querySelector('#div-create-lecture')
         divCreateLecture.classList.add('hide')
 
-
+        lectureTitleRef.current.value = ''
+        lectureNumRef.current.value = ''
     }
 
     const handelBtnCreate = async () => {
         try {
             const res = await axios.post('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/lecture',
                 {
-                    lectureTitle: LectureTitle,
-                    lectureNumber: LectureNum,
+                    lectureTitle: lectureTitleRef.current.value,
+                    lectureNumber: lectureNumRef.current.value,
                     course: subjectSelectRef.current.value
                 },
                 {
@@ -127,14 +128,24 @@ const CurrentClass = () => {
                 }
 
             )
+
             setlectureId(res.data.data.lecture._id)
+            setLectureTitle(lectureTitleRef.current.value)
 
 
             let divCreateLecture = document.querySelector('#div-create-lecture')
             divCreateLecture.classList.add('hide')
+            lectureTitleRef.current.value = ''
+            lectureNumRef.current.value = ''
         }
         catch (error) {
-            toast.error("Enter lectureTitle || lectureNumber || course")
+            if (lectureTitleRef.current.value === '') {
+                toast.error("Enter lecture title")
+            }
+            if (lectureNumRef.current.value === '') {
+                toast.error("Enter lecture number")
+            }
+            console.log(error)
         }
 
     }
@@ -202,15 +213,15 @@ const CurrentClass = () => {
                     </div></Link>
                 <div className='Current-Class-page '>
                     <h2>Current Class</h2>
-                    <svg xmlns="http://www.w3.org/2000/svg" id='time' width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round"
-                        d="M5.5 15.5c0-.943 0-1.414.293-1.707c.293-.293.764-.293 1.707-.293h1c.943 0 1.414 0 1.707.293c.293.293.293.764.293 1.707v1c0 .943 0 1.414-.293 1.707c-.293.293-.764.293-1.707.293c-1.414 0-2.121 0-2.56-.44" /><path d="M5.5 8.5c0-1.414 0-2.121.44-2.56c.439-.44 1.146-.44 2.56-.44c.943 0 1.414 0 1.707.293c.293.293.293.764.293 1.707v1c0 .943 0 1.414-.293 1.707c-.293.293-.764.293-1.707.293h-1c-.943 0-1.414 0-1.707-.293C5.5 9.914 5.5 9.443 5.5 8.5Zm8 7c0-.943 0-1.414.293-1.707c.293-.293.764-.293 1.707-.293h1c.943 0 1.414 0 1.707.293c.293.293.293.764.293 1.707c0 1.414 0 2.121-.44 2.56c-.439.44-1.146.44-2.56.44c-.943 0-1.414 0-1.707-.293c-.293-.293-.293-.764-.293-1.707z" /><path stroke-linecap="round" d="M18.5 8.5c0 .943 0 1.414-.293 1.707c-.293.293-.764.293-1.707.293h-1c-.943 0-1.414 0-1.707-.293c-.293-.293-.293-.764-.293-1.707v-1c0-.943 0-1.414.293-1.707c.293-.293.764-.293 1.707-.293c1.414 0 2.121 0 2.56.44M22 14v1m-8 7c3.771 0 5.657 0 6.828-1.172c.654-.653.943-1.528 1.07-2.828M10 22c-3.771 0-5.657 0-6.828-1.172C2 19.657 2 17.771 2 14m8-12C6.229 2 4.343 2 3.172 3.172C2.518 3.825 2.229 4.7 2.102 6M2 10V9" /><path stroke-linecap="round" d="M14 2c3.771 0 5.657 0 6.828 1.172C22 4.343 22 6.229 22 10" /></g></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" id='time' width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" strokeWidth="1.5"><path strokeLinecap="round"
+                        d="M5.5 15.5c0-.943 0-1.414.293-1.707c.293-.293.764-.293 1.707-.293h1c.943 0 1.414 0 1.707.293c.293.293.293.764.293 1.707v1c0 .943 0 1.414-.293 1.707c-.293.293-.764.293-1.707.293c-1.414 0-2.121 0-2.56-.44" /><path d="M5.5 8.5c0-1.414 0-2.121.44-2.56c.439-.44 1.146-.44 2.56-.44c.943 0 1.414 0 1.707.293c.293.293.293.764.293 1.707v1c0 .943 0 1.414-.293 1.707c-.293.293-.764.293-1.707.293h-1c-.943 0-1.414 0-1.707-.293C5.5 9.914 5.5 9.443 5.5 8.5Zm8 7c0-.943 0-1.414.293-1.707c.293-.293.764-.293 1.707-.293h1c.943 0 1.414 0 1.707.293c.293.293.293.764.293 1.707c0 1.414 0 2.121-.44 2.56c-.439.44-1.146.44-2.56.44c-.943 0-1.414 0-1.707-.293c-.293-.293-.293-.764-.293-1.707z" /><path strokeLinecap="round" d="M18.5 8.5c0 .943 0 1.414-.293 1.707c-.293.293-.764.293-1.707.293h-1c-.943 0-1.414 0-1.707-.293c-.293-.293-.293-.764-.293-1.707v-1c0-.943 0-1.414.293-1.707c.293-.293.764-.293 1.707-.293c1.414 0 2.121 0 2.56.44M22 14v1m-8 7c3.771 0 5.657 0 6.828-1.172c.654-.653.943-1.528 1.07-2.828M10 22c-3.771 0-5.657 0-6.828-1.172C2 19.657 2 17.771 2 14m8-12C6.229 2 4.343 2 3.172 3.172C2.518 3.825 2.229 4.7 2.102 6M2 10V9" /><path strokeLinecap="round" d="M14 2c3.771 0 5.657 0 6.828 1.172C22 4.343 22 6.229 22 10" /></g></svg>
                 </div>
 
                 <Link to={"/Timetable"} style={{ textDecoration: 'none', color: '#1D2649' }}>
                     <div className='Timetable'>
                         <h2>Timetable</h2>
-                        <svg xmlns="http://www.w3.org/2000/svg" id='time' viewBox="0 0 24 24"><g fill="currentColor"><path d="M8 13a1 1 0 1 1 0-2a1 1 0 0 1 0 2m0 4a1 1 0 1 1 0-2a1 1 0 0 1 0 2m3-1a1 1 0 1 0 2 0a1 1 0 0 0-2 0m5 1a1 1 0 1 1 0-2a1 1 0 0 1 0 2m-5-5a1 1 0 1 0 2 0a1 1 0 0 0-2 0m5 1a1 1 0 1 1 0-2a1 1 0 0 1 0 2M8 7a1 1 0 0 0 0 2h8a1 1 0 1 0 0-2z" /><path fill-rule="evenodd"
-                            d="M6 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3zm12 2H6a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1" clip-rule="evenodd" /></g></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" id='time' viewBox="0 0 24 24"><g fill="currentColor"><path d="M8 13a1 1 0 1 1 0-2a1 1 0 0 1 0 2m0 4a1 1 0 1 1 0-2a1 1 0 0 1 0 2m3-1a1 1 0 1 0 2 0a1 1 0 0 0-2 0m5 1a1 1 0 1 1 0-2a1 1 0 0 1 0 2m-5-5a1 1 0 1 0 2 0a1 1 0 0 0-2 0m5 1a1 1 0 1 1 0-2a1 1 0 0 1 0 2M8 7a1 1 0 0 0 0 2h8a1 1 0 1 0 0-2z" /><path fillRule="evenodd"
+                            d="M6 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3zm12 2H6a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1" clipRule="evenodd" /></g></svg>
                     </div>
                 </Link>
 
@@ -240,8 +251,8 @@ const CurrentClass = () => {
                     <button onClick={handelBtnCreateLecture} className='btn-Create-Lecture'>Create Lecture</button>
                 </div>
                 <div className='hide' id='div-create-lecture'>
-                    <input placeholder='Lecture Title' type='text' onChange={(e) => setLectureTitle(e.target.value)}></input>
-                    <input placeholder='Lecture Number' type='text' onChange={(e) => setLectureNum(e.target.value)}></input>
+                    <input placeholder='Lecture Title' type='text' ref={lectureTitleRef} ></input>
+                    <input placeholder='Lecture Number' type='text' ref={lectureNumRef}></input>
                     <div>
                         <button onClick={handelBtnCreate} className='btn-confirm'>CREATE</button>
                         <button onClick={handelBtnDiscard} className='btn-discard'>DISCARD</button>
@@ -272,15 +283,19 @@ const CurrentClass = () => {
                         <button onClick={handleBtnPreasent} className='btn-present'>Present</button>
                         <button onClick={handleBtnAbsent} className='btn-absent'>Absent</button>
                         <button className='btn-refresh' onClick={viewLectureAttendance} ><FaArrowsRotate />                        </button>
-
+                        <h3>Lecture Title : {LectureTitle} </h3>
                     </div>
+
+
                     <div className='div-list' id='list'>
                         <table className='tab-attend' style={{ width: '100%', border: 'none' }}>
+                        <thead>
                             <tr>
                                 <th>#</th>
                                 <th>NAME</th>
                                 <th>STATUS</th>
-                            </tr>
+                                </tr></thead>
+                            <tbody>
                             {LectureAtten.map((LectureAtten, index) => {
                                 return <tr class={'row-status ' + (LectureAtten.status === 'absent' ? 'row-absent' : 'row-present')} key={index}>
                                     <td>{index + 1}</td>
@@ -288,7 +303,7 @@ const CurrentClass = () => {
                                     <td class={LectureAtten.status === 'absent' ? 'status-absent' : 'status-present'}>{LectureAtten.status}</td>
                                 </tr>
                             })
-                            }
+                            }</tbody>
                         </table>
                     </div>
                 </div>

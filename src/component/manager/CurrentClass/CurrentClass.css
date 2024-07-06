@@ -231,12 +231,26 @@
 }
 
 .btns-prs-aps {
-    width: 90%;
+    width: 100%;
     margin-left: 30px;
     margin-top: -65px;
     margin-bottom: 10px;
 }
 
+.btns-prs-aps h3 {
+    width: 40%;
+    height: 35px;
+    border: none;
+    border-Radius: 7px;
+    font-Size: 24px;
+    color: #263658;
+    font-Weight: bold;
+    margin-Left: 500px;
+    margin-Top: -40px;
+    padding-top: 10px;
+    padding-Left: 10px;
+    background: #DCF2F1;
+}
 
 
 .btn-present {
