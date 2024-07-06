@@ -212,7 +212,7 @@ const Weekly = () => {
                         <button onClick={handleBtnAll} className='btn-all'>All</button>
                         <button onClick={handleBtnPreasent} className='btn-present'>Present</button>
                         <button onClick={handleBtnAbsent} className='btn-absent'>Absent</button>
-                        <h3>Lecture Title : { } </h3>
+                        {/* <h3>Lecture Title : { } </h3> */}
 
                     </div>
 
