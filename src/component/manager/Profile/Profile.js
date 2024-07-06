@@ -16,7 +16,7 @@ const Profile = () => {
     const [userRole, setUserRole] = useState('')
 
     const inputRef = useRef()
-    const inputRefName = useRef()
+    // const inputRefName = useRef()
     const inputRefConfirmPass = useRef()
     const inputRefCurrentPass = useRef()
     const inputRefNewPass = useRef()
@@ -84,55 +84,50 @@ const Profile = () => {
         }
     }
 
-    const btnEditName = () => {
-        let inputEditName = document.querySelector('#inpEditName')
-        inputEditName.classList.remove('hide')
+    // const btnEditName = () => {
+    //     let inputEditName = document.querySelector('#inpEditName')
+    //     inputEditName.classList.remove('hide')
 
-        let name = document.querySelector('#name')
-        name.classList.add('hide')
+    //     let name = document.querySelector('#name')
+    //     name.classList.add('hide')
 
-        let email = document.querySelector('#email')
-        email.classList.add('hide')
+    //     let email = document.querySelector('#email')
+    //     email.classList.add('hide')
 
-        let btnsSaveCancelName = document.querySelector('#btns-save-cancel-Name')
-        btnsSaveCancelName.classList.remove('hide')
+    //     let btnsSaveCancelName = document.querySelector('#btns-save-cancel-Name')
+    //     btnsSaveCancelName.classList.remove('hide')
 
 
-        let Changepassword = document.querySelector('.btn-Changepassword')
-        Changepassword.classList.add('hide')
+    //     let Changepassword = document.querySelector('.btn-Changepassword')
+    //     Changepassword.classList.add('hide')
 
-        let divbtnlogoutDelete = document.querySelector('.btns-logout-delete')
-        divbtnlogoutDelete.classList.add('hide')
-        inputRefName.current.value = localStorage.name
-    }
+    //     let divbtnlogoutDelete = document.querySelector('.btns-logout-delete')
+    //     divbtnlogoutDelete.classList.add('hide')
+    //     inputRefName.current.value = localStorage.name
+    // }
 
     const handleBtnCancel = () => {
-        let inputEditName = document.querySelector('#inpEditName')
-        inputEditName.classList.add('hide')
+        // let inputEditName = document.querySelector('#inpEditName')
+        // inputEditName.classList.add('hide')
 
         let name = document.querySelector('#name')
         name.classList.remove('hide')
 
-
         let email = document.querySelector('#email')
         email.classList.remove('hide')
 
-        let btnsSaveCancelName = document.querySelector('#btns-save-cancel-Name')
-        btnsSaveCancelName.classList.add('hide')
-
-
-
         let btnChangepassword = document.querySelector('.btn-Changepassword')
         btnChangepassword.classList.remove('hide')
-
 
         let btnssavecancelChangepassword = document.querySelector('.btns-save-cancel-Changepassword')
         btnssavecancelChangepassword.classList.add('hide')
 
         let divInputsChangepass = document.querySelector('#div-inputs-changepasword')
         divInputsChangepass.classList.add('hide')
+
         let divbtnlogoutDelete = document.querySelector('.btns-logout-delete')
         divbtnlogoutDelete.classList.remove('hide')
+
         inputRefCurrentPass.current.value = ''
         inputRefConfirmPass.current.value = ''
         inputRefNewPass.current.value = ''
@@ -141,50 +136,50 @@ const Profile = () => {
 
     }
 
-    const saveName = async () => {
-        let inputEditName = document.querySelector('#inpEditName')
-        inputEditName.classList.add('hide')
+    // const saveName = async () => {
+    //     let inputEditName = document.querySelector('#inpEditName')
+    //     inputEditName.classList.add('hide')
 
-        let name = document.querySelector('#name')
-        name.classList.remove('hide')
+    //     let name = document.querySelector('#name')
+    //     name.classList.remove('hide')
 
 
 
-        let email = document.querySelector('#email')
-        email.classList.remove('hide')
+    //     let email = document.querySelector('#email')
+    //     email.classList.remove('hide')
 
-        let btnsSaveCancelName = document.querySelector('#btns-save-cancel-Name')
-        btnsSaveCancelName.classList.add('hide')
+    //     let btnsSaveCancelName = document.querySelector('#btns-save-cancel-Name')
+    //     btnsSaveCancelName.classList.add('hide')
 
-        let btnChangepassword = document.querySelector('.btn-Changepassword')
-        btnChangepassword.classList.remove('hide')
+    //     let btnChangepassword = document.querySelector('.btn-Changepassword')
+    //     btnChangepassword.classList.remove('hide')
 
-        let divbtnlogoutDelete = document.querySelector('.btns-logout-delete')
-        divbtnlogoutDelete.classList.remove('hide')
-        const newName = inputRefName.current.value
+    //     let divbtnlogoutDelete = document.querySelector('.btns-logout-delete')
+    //     divbtnlogoutDelete.classList.remove('hide')
+    //     const newName = inputRefName.current.value
 
-        try {
-            await axios.put('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/lecturer/updateMe',
-                {
-                    name: newName,
-                }
-                , {
-                    headers: {
-                        "Access-Control-Allow-Origin": "*",
-                        "Access-Control-Allow-Credentials": "true",
-                        "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
-                        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization",
-                        "Authorization": 'Bearer ' + localStorage.token
-                    }
-                })
+    //     try {
+    //         await axios.put('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/lecturer/updateMe',
+    //             {
+    //                 name: newName,
+    //             }
+    //             , {
+    //                 headers: {
+    //                     "Access-Control-Allow-Origin": "*",
+    //                     "Access-Control-Allow-Credentials": "true",
+    //                     "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
+    //                     "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+    //                     "Authorization": 'Bearer ' + localStorage.token
+    //                 }
+    //             })
 
-            localStorage.setItem('name', newName)
+    //         localStorage.setItem('name', newName)
 
-        }
-        catch (error) {
-            console.log(error)
-        }
-    }
+    //     }
+    //     catch (error) {
+    //         console.log(error)
+    //     }
+    // }
 
     const handleBtnChangepassword = async () => {
         let name = document.querySelector('#name')
@@ -205,8 +200,6 @@ const Profile = () => {
     }
 
     const saveChangePassword = async () => {
-
-
         try {
 
             const res = await axios.put('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/lecturer/changeMyPassword', {
@@ -287,14 +280,14 @@ const Profile = () => {
 
                         <div className='div-name' id='name' >
                             <span className='name'>Name:   {name}</span>
-                            <span onClick={btnEditName} style={{ position: 'absolute', left: '420px', cursor: 'pointer' }}><FiEdit /></span>
+                            {/* <span onClick={btnEditName} style={{ position: 'absolute', left: '420px', cursor: 'pointer' }}><FiEdit /></span> */}
                         </div>
 
-                        <input ref={inputRefName} onChange={(e) => setName(e.target.value)} className='hide' id='inpEditName' />
+                        {/* <input ref={inputRefName} onChange={(e) => setName(e.target.value)} className='hide' id='inpEditName' />
                         <div className='hide' id='btns-save-cancel-Name'>
                             <button onClick={saveName} id='btn-save'>Save</button>
                             <button onClick={handleBtnCancel} id='btn-cancel'>Cancel</button>
-                        </div>
+                        </div> */}
 
                     </div>
 
