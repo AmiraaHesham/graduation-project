@@ -48,7 +48,12 @@ const CreateStu = () => {
             inputConfirmPassRef.current.value = ''
             inputRefSemsteryear.current.value = ''
             inputProgrammeRef.current.value = ''
+            let upload = document.querySelector('#upload')
+            let img = document.querySelector('#img')
+            img.classList.add('hide');
+            upload.classList.remove('hide')
             setPhoto('')
+            toast.success('success')
             coursesSelectRef.current.value = ''
 
             console.log(res)

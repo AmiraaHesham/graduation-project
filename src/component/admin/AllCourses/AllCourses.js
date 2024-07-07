@@ -323,6 +323,8 @@ const AllCourses = () => {
                                 return <tr>
                                     <td >{index + 1}</td>
                                     <td >{course.name}</td>
+                                    <td>{course.lecturerId ? course.lecturerId.name : 'No Lecturer Assigned'}</td>
+
                                     <td>{course.lectureDay}</td>
                                     <td> {course.level}</td>
                                     <td>  {course.lectureTime}</td>
