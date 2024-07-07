@@ -38,7 +38,7 @@ const CreateLec = () => {
             img.classList.add('hide');
             upload.classList.remove('hide')
             setPhoto('')
-            toast.success('success')
+            toast.success('success create')
         }
         catch (error) {
             console.log(error)

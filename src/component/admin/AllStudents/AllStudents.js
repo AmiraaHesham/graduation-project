@@ -27,6 +27,10 @@ const AllStudents = () => {
     }, [])
 
     const getAllStudents = async () => {
+        let tbodySearchStudent = document.querySelector('#tbody-searchStudent')
+        let tbodyAllStudent = document.querySelector('#tbody-AllStudent')
+        tbodyAllStudent.classList.remove('hide')
+        tbodySearchStudent.classList.add('hide')
         const res = await axios.get('https://attendance-by-qr-code-rrmg.vercel.app/api/v1/student',
             {
                 headers: {
@@ -56,6 +60,7 @@ const AllStudents = () => {
                     )
                     console.log(res.data.data)
                     getAllStudents()
+                    toast.success('success delete')
                 }
             })
         }

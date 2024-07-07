@@ -53,7 +53,7 @@ const CreateStu = () => {
             img.classList.add('hide');
             upload.classList.remove('hide')
             setPhoto('')
-            toast.success('success')
+            toast.success('success create')
             coursesSelectRef.current.value = ''
 
             console.log(res)

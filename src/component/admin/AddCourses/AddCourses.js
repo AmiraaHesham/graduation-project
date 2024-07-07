@@ -46,7 +46,7 @@ const AddCourses = () => {
             inputRefLecTime.current.value = ''
             inputRefSemsteryear.current.value = ''
             lecturersSelectRef.current.value = 'Choose Lectrer...'
-
+            toast.success('success add the course')
 
         }
         catch (error) {
